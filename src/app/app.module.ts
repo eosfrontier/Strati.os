@@ -3,6 +3,14 @@ import { NgModule } from '@angular/core';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { GridModule } from './grid/grid.module';
+import { Routes, RouterModule } from '@angular/router';
+import { GridComponent } from './grid/grid.component';
+import { SharedModule } from './shared/shared.module';
+
+const appRoutes: Routes = [
+  { path: '**', component: GridComponent }
+];
 
 @NgModule({
   declarations: [
@@ -10,7 +18,10 @@ import { AppComponent } from './app.component';
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    RouterModule.forRoot(appRoutes),
+    AppRoutingModule,
+    GridModule,
+    SharedModule
   ],
   providers: [],
   bootstrap: [AppComponent]
