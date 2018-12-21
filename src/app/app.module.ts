@@ -7,20 +7,27 @@ import { GridModule } from './grid/grid.module';
 import { Routes, RouterModule } from '@angular/router';
 import { GridComponent } from './grid/grid.component';
 import { SharedModule } from './shared/shared.module';
+import { ErrorPageComponent } from './error-page/error-page.component';
+import { AdminGridModule } from './admin-grid/admin-grid.module';
+import { AdminGridComponent } from './admin-grid/admin-grid.component';
+
 
 const appRoutes: Routes = [
+  { path: 'admin', component: AdminGridComponent },
   { path: '**', component: GridComponent }
 ];
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    ErrorPageComponent
   ],
   imports: [
     BrowserModule,
     RouterModule.forRoot(appRoutes),
     AppRoutingModule,
     GridModule,
+    AdminGridModule,
     SharedModule
   ],
   providers: [],

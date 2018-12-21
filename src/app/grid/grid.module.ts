@@ -1,18 +1,16 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { GridComponent } from './grid.component';
-import { ClockComponent } from './clock/clock.component';
 import { SideComponent } from './side/side.component';
 import { FooterLeftComponent } from './footer-left/footer-left.component';
 import { MainComponent } from './main/main.component';
 
-import { MenuComponent } from '../shared/menu/menu.component';
-import { TopComponent } from '../shared/top/top.component';
+import { SharedModule } from '../shared/shared.module';
 
 @NgModule({
-  declarations: [GridComponent, TopComponent, ClockComponent, SideComponent, FooterLeftComponent, MainComponent, MenuComponent],
+  declarations: [GridComponent, SideComponent, FooterLeftComponent, MainComponent ],
   imports: [
-    CommonModule
+    CommonModule, SharedModule
   ]
 })
 export class GridModule { }
