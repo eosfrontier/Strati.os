@@ -1,2 +1,5 @@
-# Strati.os
-(FrontEnd) Version 2.0 of the old Eos-missionboard, built in Angular 7.
+# Strati.OS
+Mission Board/Control for sci-fi larps, built for the Sci-fi LARP/LAIT Eos: Frontier.
+
+### Old version:
+[Click here to see the old Strati.OS!](https://github.com/goblinbot/eos-missionboard)

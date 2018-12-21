@@ -1,0 +1,35 @@
+// Collection of Colours
+$dark: #111;
+$dark-alt: #222;
+$dark-terminal: #343a40;
+
+$white: #FFF;
+$gray: #DEDEDE;
+
+$gubatyellow: #FFCC00;
+$joshrange: #fb6e3b;
+$terminalorange: #ff922b;
+
+$tomatored: tomato;
+$orbitred: #ed3737;
+
+$terminalgreen: #17ff0b;
+$orbitgreen: #4fe38b;
+
+$soered: #4d0105;
+$soelite: #a0a2a1;
+$soedark: #909090;
+
+$beaconblue: #39DBCC;
+$bluedim: #0f5879;
+$bluebright: #05aded;
+
+$googleShade: 0 1px 8px 0 rgba(0,0,0,.2),0 3px 4px 0 rgba(0,0,0,.14),0 3px 3px -2px rgba(0,0,0,.12);
+
+// font variables
+$fontregular : 'Quantico', "Helvetica Neue", Arial, sans-serif;
+$fonttitle : 'Quantico Bold', $fontregular;
+$fonttime : 'digital-7', $fontregular;
+
+// media query breakpoint
+$break-sm: 768px;
