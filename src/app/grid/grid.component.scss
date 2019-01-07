@@ -24,6 +24,9 @@
         "footerconnect footer footer footerclock";
 
   .item {
+
+    animation: fadein 0.3s ease-in forwards;
+
     width: auto;
     height: auto;
     padding: .8rem;
@@ -47,6 +50,10 @@
 
     &.menu {
       grid-area: menu;
+      transition: 0.4s;
+      &:hover {
+        border-bottom: 2px solid $bluedim;
+      }
     }
 
     &.side {

@@ -5,6 +5,10 @@ p {
     margin: 0.8rem 0.2rem;
     text-transform: uppercase;
 
+    opacity: 0;
+    animation: fadein 0.3s ease-in forwards;
+    animation-delay: 0.4s;
+
     &.status {
         background: $gray;
         color: $dark;

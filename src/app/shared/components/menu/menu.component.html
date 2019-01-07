@@ -1,3 +1,19 @@
-<p>
-  menu works!
-</p>
+<div class="menu--bar">
+
+  <a class="menu--block">
+    <i class="fas fa-home"></i>
+  </a>
+
+  <a class="menu--block">
+    <i class="fas fa-fighter-jet"></i>
+  </a>
+
+  <a *ngIf="!loggedIn" class="menu--block">
+    <i class="fas fa-lock"></i>
+  </a>
+
+  <a *ngIf="loggedIn" class="menu--block">
+    <i class="fas fa-lock-open"></i>
+  </a>
+
+</div>
