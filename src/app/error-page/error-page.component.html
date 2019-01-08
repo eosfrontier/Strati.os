@@ -1,3 +1,29 @@
-<p>
-  error-page works!
-</p>
+<div class="grid">
+    <app-top class="item top"></app-top>
+    <app-menu class="item menu"></app-menu>
+
+    <div class="item main">
+      <h1><i class="fas fa-times"></i> Error: {{ errorCode }}</h1>
+
+      <p *ngIf='!errorCode'>
+        An unknown error has occured. The system isn't sure how you got here.
+      </p>
+
+      <p *ngIf='errorCode === 404'>
+        This might not be the kind of message you were hoping to see in a strategic system.<br/>
+        However, it only means you are trying to access a place that either does not exist, or <i>"does not exist"</i>.
+      </p>
+
+      <p>
+        <strong>Please</strong> contact administrator <strong>Maati Infor Danam</strong> if this error happens consistently.
+      </p>
+
+      <h2>Stay safe.</h2>
+    </div>
+
+    <div class="item footer">
+
+    </div>
+
+    <app-clock class="item footer-clock"></app-clock>
+</div>
