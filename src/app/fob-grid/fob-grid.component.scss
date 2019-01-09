@@ -2,6 +2,7 @@
 @import '../../assets/css/grid.global.scss';
 
 .grid {
+
     grid-template-rows: 8.5rem 1fr auto;
     grid-template-columns: 1fr 1fr 32rem;
     grid-template-areas:
@@ -12,20 +13,12 @@
   .item {
 
     &.main {
-        animation: shake 1.3s linear;
-        background-image: none;
-        color: $terminalgreen;
         grid-area: main;
-
-        h1,h2,h3,p {
-            margin: 1.6rem;
-        }
     }
 
     &.footer {
       grid-area: footer;
     }
-
   }
 
 }

@@ -3,7 +3,7 @@
     <app-menu class="item menu"></app-menu>
 
     <div class="item main">
-      <h1><i class="fas fa-times"></i> Error: {{ errorCode }}</h1>
+      <h1><fa-icon icon="satellite"></fa-icon> Error: {{ errorCode }}</h1>
 
       <p *ngIf='!errorCode'>
         An unknown error has occured. The system isn't sure how you got here.
@@ -11,7 +11,7 @@
 
       <p *ngIf='errorCode === 404'>
         This might not be the kind of message you were hoping to see in a strategic system.<br/>
-        However, it only means you are trying to access a place that either does not exist, or <i>"does not exist"</i>.
+        However, it only means you are trying to access a node that either does not exist or <i>"does not exist"</i>.
       </p>
 
       <p>

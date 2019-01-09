@@ -1,21 +1,10 @@
+@import '../../assets/css/grid.global.scss';
 @import '../../assets/css/variables.scss';
 
 .grid {
 
-    display: grid;
-    transition: 0.4s;
-    grid-gap: .8rem;
-    padding: .8rem;
-
-    height: 100vh;
-    @media(min-width: 992px) {
-      overflow: hidden;
-      width: 100vw;
-    }
-
     grid-template-rows: 8.5rem 1fr 1fr 1fr auto;
     grid-template-columns: 16.5rem 22rem 1fr 32rem;
-
     grid-template-areas:
         "top top menu menu"
         "side main main main"
@@ -24,37 +13,6 @@
         "footerconnect footer footer footerclock";
 
   .item {
-
-    animation: fadein 0.3s ease-in forwards;
-
-    width: auto;
-    height: auto;
-    padding: .8rem;
-
-    border-bottom: 2px solid rgba($bluedim, 0.5);
-    background-color: $dark-alt;
-    background-image: url('/assets/img/pattern.png');
-    box-shadow: $googleShade;
-    border-top: 1px solid lighten($dark-alt,5%);
-
-    @media(min-width: 992px) {
-        overflow: hidden;
-        width: 100%;
-    }
-
-    &.top {
-      grid-area: top;
-      display: flex;
-      border-bottom: 2px solid rgba($gray, 0.5);
-    }
-
-    &.menu {
-      grid-area: menu;
-      transition: 0.4s;
-      &:hover {
-        border-bottom: 2px solid $bluedim;
-      }
-    }
 
     &.side {
       grid-area: side;
@@ -72,20 +30,6 @@
       grid-area: footer;
     }
 
-    &.footer-clock {
-      grid-area: footerclock;
-      background-image: none;
-      border-bottom: 2px solid rgba($gubatyellow, 0.5);
-      color: $gubatyellow;
-      transition: 0.2s;
-      &:hover {
-        color: $dark;
-        background: $gubatyellow;
-      }
-    }
-
   }
-
-
 
 }

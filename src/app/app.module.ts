@@ -7,6 +7,19 @@ import { GridModule } from './home-grid/grid.module';
 import { SharedModule } from './shared/shared.module';
 import { ErrorPageComponent } from './error-page/error-page.component';
 import { AdminGridModule } from './admin-grid/admin-grid.module';
+import { FobGridModule } from './fob-grid/fob-grid.module';
+
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { library } from '@fortawesome/fontawesome-svg-core';
+import {
+  faHome,
+  faProjectDiagram,
+  faPlaneDeparture,
+  faLock,
+  faLockOpen,
+  faSatellite,
+  faBroadcastTower
+} from '@fortawesome/free-solid-svg-icons';
 
 @NgModule({
   declarations: [
@@ -18,9 +31,22 @@ import { AdminGridModule } from './admin-grid/admin-grid.module';
     AppRoutingModule,
     GridModule,
     AdminGridModule,
-    SharedModule
+    SharedModule,
+    FobGridModule,
+    FontAwesomeModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {
+  constructor() {
+    // add only the FA icons that we're using to prevent potential bloat.
+    library.add(faHome);
+    library.add(faProjectDiagram);
+    library.add(faPlaneDeparture);
+    library.add(faLock);
+    library.add(faLockOpen);
+    library.add(faSatellite);
+    library.add(faBroadcastTower);
+  }
+}

@@ -1,0 +1,59 @@
+@import '../../assets/css/variables.scss';
+.grid {
+
+    display: grid;
+    transition: 0.4s;
+    grid-gap: .8rem;
+    padding: .8rem;
+
+    height: 100vh;
+    @media(min-width: 992px) {
+      overflow: hidden;
+      width: 100vw;
+    }
+
+    .item {
+
+        animation: fadein 0.3s ease-in forwards;
+        background-color: $dark-alt;
+        background-image: url('/assets/img/pattern.png');
+        border-bottom: 2px solid rgba($bluedim, 0.5);
+        border-top: 1px solid lighten($dark-alt,5%);
+        box-shadow: $googleShade;
+        height: auto;
+        padding: .8rem;
+        width: auto;
+
+        @media(min-width: 992px) {
+            overflow: hidden;
+            width: 100%;
+        }
+
+        &.top {
+            border-bottom: 2px solid rgba($gray, 0.5);
+            display: flex;
+            grid-area: top;
+        }
+
+        &.menu {
+            grid-area: menu;
+            transition: 0.4s;
+            &:hover {
+                border-bottom: 2px solid $bluedim;
+            }
+        }
+
+        &.footer-clock {
+            background-image: none;
+            border-bottom: 2px solid rgba($gubatyellow, 0.5);
+            color: $gubatyellow;
+            grid-area: footerclock;
+            transition: 0.2s;
+            &:hover {
+                background: $gubatyellow;
+                color: $dark;
+            }
+        }
+    }
+
+}

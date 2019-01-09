@@ -1,1 +1,24 @@
 @import '../../assets/css/variables.scss';
+@import '../../assets/css/grid.global.scss';
+
+.grid {
+
+    grid-template-rows: 8.5rem 1fr auto;
+    grid-template-columns: 1fr 1fr 32rem;
+    grid-template-areas:
+        "top menu menu"
+        "main main main"
+        "footer footer footerclock";
+
+  .item {
+
+    &.main {
+      grid-area: main;
+    }
+
+    &.footer {
+      grid-area: footer;
+    }
+  }
+
+}

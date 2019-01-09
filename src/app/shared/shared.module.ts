@@ -5,6 +5,7 @@ import { TopComponent } from './components/top/top.component';
 import { ClockComponent } from './components/clock/clock.component';
 import { AppRoutingModule } from '../app-routing.module';
 import { HttpClientModule } from '@angular/common/http';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
 @NgModule({
   declarations: [MenuComponent, TopComponent, ClockComponent],
@@ -12,6 +13,7 @@ import { HttpClientModule } from '@angular/common/http';
     CommonModule,
     AppRoutingModule,
     HttpClientModule,
+    FontAwesomeModule,
   ],
   exports: [
     MenuComponent,
