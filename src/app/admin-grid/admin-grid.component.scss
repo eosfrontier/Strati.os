@@ -4,11 +4,11 @@
 .grid {
 
     grid-template-rows: 8.5rem 1fr auto;
-    grid-template-columns: 1fr 1fr 32rem;
+    grid-template-columns: 1fr 1fr 26rem 6rem;
     grid-template-areas:
-        "top menu menu"
-        "main main main"
-        "footer footer footerclock";
+        "top menu menu menu"
+        "main main main rightbar"
+        "footer footer footerclock footerclock";
 
   .item {
 
@@ -16,9 +16,14 @@
       grid-area: main;
     }
 
+    &.rightbar {
+      grid-area: rightbar;
+    }
+
     &.footer {
       grid-area: footer;
     }
+
   }
 
 }

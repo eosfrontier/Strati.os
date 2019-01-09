@@ -7,11 +7,12 @@ import { MainComponent } from './main/main.component';
 
 import { SharedModule } from '../shared/shared.module';
 import { FooterComponent } from './footer/footer.component';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
 @NgModule({
   declarations: [GridComponent, SideComponent, FooterLeftComponent, MainComponent, FooterComponent ],
   imports: [
-    CommonModule, SharedModule
+    CommonModule, SharedModule, FontAwesomeModule
   ]
 })
 export class GridModule { }
