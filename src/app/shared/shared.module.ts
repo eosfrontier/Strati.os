@@ -6,9 +6,10 @@ import { ClockComponent } from './components/clock/clock.component';
 import { AppRoutingModule } from '../app-routing.module';
 import { HttpClientModule } from '@angular/common/http';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { DateComponent } from './components/date/date.component';
 
 @NgModule({
-  declarations: [MenuComponent, TopComponent, ClockComponent],
+  declarations: [MenuComponent, TopComponent, ClockComponent, DateComponent],
   imports: [
     CommonModule,
     AppRoutingModule,
@@ -18,7 +19,8 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
   exports: [
     MenuComponent,
     TopComponent,
-    ClockComponent
+    ClockComponent,
+    DateComponent,
   ]
 })
 export class SharedModule { }
