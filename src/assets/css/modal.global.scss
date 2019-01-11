@@ -1,0 +1,27 @@
+@import 'variables.scss';
+
+.modal {
+
+    &__dialog {
+        position: absolute;
+
+        z-index: 5;
+    }
+
+    &__overlay {
+        animation: activateOverlay 0.4s ease-in forwards;
+        background-color: $dark-alt;
+        background-image: url('/assets/img/pattern.png');
+        height: 100vh;
+        left: 0;
+        margin: 0;
+        opacity: 0.75;
+        overflow: hidden;
+        padding: 0;
+        position: fixed;
+        top: 0;
+        transition: 0.4s;
+        width: 100vw;
+        z-index: 4;
+    }
+}

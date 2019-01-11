@@ -1,33 +1,40 @@
 @import '../../../assets/css/variables.scss';
 
-/* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
- *   'responsive-grid-of-hexagons' credits to 'web-tiki' @ Github!       *
- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
+/* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *\
+|*   'responsive-grid-of-hexagons' credits to 'web-tiki' @ Github!       *|
+\* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
 
 .hex {
 
     &__inner { // div inside __tile
 
         position: absolute;
-        width:100%;
+        width: 100%;
         padding-bottom: 115.470%; /* =  width / sin(60) */
         overflow: hidden;
         visibility: hidden;
-        outline:1px solid transparent; /* fix for jagged edges in FF on hover transition */
+        outline: 1px solid transparent; /* fix for jagged edges in FF on hover transition */
         -webkit-transform: rotate3d(0,0,1,-60deg) skewY(30deg);
         -ms-transform: rotate3d(0,0,1,-60deg) skewY(30deg);
         transform: rotate3d(0,0,1,-60deg) skewY(30deg);
 
-        * {
+        > * {
             background: $dark-terminal;
             position: absolute;
+            transition: 0.2s;
             visibility: visible;
-            outline:1px solid transparent; /* fix for jagged edges in FF on hover transition */
+            outline: 1px solid transparent; /* fix for jagged edges in FF on hover transition */
+
+            &:hover {
+                background: lighten($dark-terminal, 5%);
+            }
         }
+
     }
 
     &__link {
-        display:block;
+        cursor: pointer;
+        display: block;
         width: 100%;
         height: 100%;
         text-align: center;
@@ -36,6 +43,9 @@
         -webkit-transform: skewY(-30deg) rotate3d(0,0,1,60deg);
         -ms-transform: skewY(-30deg) rotate3d(0,0,1,60deg);
         transform: skewY(-30deg) rotate3d(0,0,1,60deg);
+
+        // h1, p, fa-icon {
+        // }
     }
 }
 
@@ -52,13 +62,14 @@ img {
 
 p, h1 {
     width: 100%;
-    padding: 5%;
-    box-sizing:border-box;
+    padding: 0 1.5rem;
+    box-sizing: border-box;
     font-weight: 300;
 }
 h1 {
-    bottom: 50%;
-    padding-top:50%;
+    // bottom: 50%;
+    // padding-top:50%;
+    margin-top: 25%;
     font-size: 1.5em;
     z-index: 1;
     &::after {
@@ -68,10 +79,6 @@ h1 {
         left: 45%;
         width: 10%;
         text-align: center;
-        border-bottom: 1px solid $white;
+        // border-bottom: 1px solid $white;
     }
-}
-p {
-    top: 50%;
-    padding-bottom:50%;
 }

@@ -1,13 +1,16 @@
 <ul class="hex">
 
-  <app-base class="hex__tile"></app-base>
-  <app-base class="hex__tile"></app-base>
-  <app-base class="hex__tile"></app-base>
-  <app-base class="hex__tile"></app-base>
-  <app-base class="hex__tile"></app-base>
-  <app-base class="hex__tile"></app-base>
-  <app-base class="hex__tile"></app-base>
-  <app-base class="hex__tile"></app-base>
-  <app-base class="hex__tile"></app-base>
+  <app-base
+    *ngFor="let fob of fobList"
+    class="hex__tile"
+    [fobData]="fob"
+    (click)="openFobModal(fob)"
+  ></app-base>
+
+  <app-base-modal
+    *ngIf="selectedFob"
+    [fobData]="selectedFob"
+    (click)="closeFobModal()"
+  ></app-base-modal>
 
 </ul>

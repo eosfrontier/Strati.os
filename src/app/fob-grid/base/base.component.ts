@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 
 @Component({
   selector: 'app-base',
@@ -6,10 +6,12 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./base.component.scss']
 })
 export class BaseComponent implements OnInit {
+  @Input() fobData;
 
   constructor() { }
 
   ngOnInit() {
+    console.log(this.fobData);
   }
 
 }

@@ -19,6 +19,7 @@
     &.overview {
       grid-area: overview;
       border-bottom: 2px solid $soered;
+      padding-bottom: 2rem;
     }
 
     &.titlebar {

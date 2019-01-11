@@ -1,7 +1,8 @@
 
   <div class="hex__inner">
-    <a class="hex__link" href="#">
-      <h1>This is a title</h1>
-      <p>Some sample text about the article this hexagon leads to</p>
+    <a class="hex__link">
+      <h1>{{fobData.name}}</h1>
+      <p><fa-icon icon="map-marker-alt"></fa-icon>&nbsp;{{fobData.coordinates | uppercase}}</p>
+      <p><fa-icon icon="user-shield"></fa-icon>&nbsp;{{fobData.forces}}</p>
     </a>
   </div>
