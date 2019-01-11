@@ -1,6 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { GridModule } from './home-grid/grid.module';
@@ -18,7 +17,12 @@ import {
   faLock,
   faLockOpen,
   faSatellite,
-  faBroadcastTower
+  faBroadcastTower,
+  faUserCog,
+  faUserShield,
+  faSatelliteDish,
+  faMapMarkerAlt,
+  faBoxes,
 } from '@fortawesome/free-solid-svg-icons';
 
 @NgModule({
@@ -41,12 +45,19 @@ import {
 export class AppModule {
   constructor() {
     // add only the FA icons that we're using to prevent potential bloat.
-    library.add(faHome);
-    library.add(faProjectDiagram);
-    library.add(faPlaneDeparture);
-    library.add(faLock);
-    library.add(faLockOpen);
-    library.add(faSatellite);
-    library.add(faBroadcastTower);
+    library.add(
+      faHome,
+      faProjectDiagram,
+      faPlaneDeparture,
+      faLock,
+      faLockOpen,
+      faSatellite,
+      faBroadcastTower,
+      faUserCog,
+      faUserShield,
+      faSatelliteDish,
+      faMapMarkerAlt,
+      faBoxes
+    );
   }
 }
