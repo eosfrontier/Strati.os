@@ -3,13 +3,17 @@
 
 .grid {
     grid-template-rows: 8.5rem 1fr auto;
-    grid-template-columns: 1fr 1fr 32rem;
+    grid-template-columns: 1fr auto 32rem;
     grid-template-areas:
         "top menu menu"
         "main main main"
-        "footer footer footerclock";
+        "footer date footerclock";
 
   .item {
+
+    &.top {
+        animation: blink 4.2s linear infinite;
+    }
 
     &.main {
         animation: shake 1.3s linear;
@@ -23,7 +27,18 @@
     }
 
     &.footer {
-      grid-area: footer;
+        grid-area: footer;
+        background: none;
+        border: none;
+    }
+
+    &.date {
+        grid-area: date;
+        animation: blink 5.1s linear infinite;
+    }
+
+    &.footer-clock {
+        animation: blink 3.7s linear infinite;
     }
 
   }

@@ -1,3 +1,7 @@
-<p class="day">FRI 01</p>
+<p *ngIf="dateReceived" class="day">
+    {{ icDate$.dayName | uppercase }} {{ icDate$.day | number }}
+</p>
 
-<p class="monthyear">MONTH 240NT</p>
+<p *ngIf="dateReceived" class="monthyear">
+    {{ icDate$.monthName | uppercase }} {{ icDate$.year | number }}{{ icDate$.yearAfter }}
+</p>
