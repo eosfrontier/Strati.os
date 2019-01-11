@@ -2,11 +2,11 @@
 .grid {
 
     display: grid;
-    transition: 0.4s;
     grid-gap: .8rem;
-    padding: .8rem;
-
     height: 100vh;
+    padding: .8rem;
+    transition: 0.4s;
+
     @media(min-width: 992px) {
       overflow: hidden;
       width: 100vw;
@@ -30,14 +30,16 @@
         }
 
         &.top {
+            animation: none;
             border-bottom: 2px solid rgba($gray, 0.5);
             display: flex;
             grid-area: top;
         }
 
         &.menu {
+            animation: none;
             grid-area: menu;
-            transition: 0.4s;
+            transition: 0.3s;
             &:hover {
                 border-bottom: 2px solid $bluedim;
             }

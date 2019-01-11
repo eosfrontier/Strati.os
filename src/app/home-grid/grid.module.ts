@@ -10,7 +10,9 @@ import { FooterComponent } from './footer/footer.component';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
 @NgModule({
-  declarations: [GridComponent, SideComponent, FooterLeftComponent, MainComponent, FooterComponent ],
+  declarations: [
+    GridComponent, SideComponent, FooterLeftComponent, MainComponent, FooterComponent
+  ],
   imports: [
     CommonModule, SharedModule, FontAwesomeModule
   ]

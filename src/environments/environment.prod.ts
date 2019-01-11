@@ -9,5 +9,8 @@ export const environment = {
   },
   SOCKET: {
     API_URL: `${API_BASE}io/`
+  },
+  DATETIME: {
+    API_URL: `${API_BASE}time/`
   }
 };

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { SocketService } from 'src/app/shared/services/socket.service';
+import { SocketService } from '../../shared/services/socket.service';
 
 @Component({
   selector: 'app-grid-footer',
