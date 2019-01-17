@@ -11,7 +11,7 @@ export class BaseComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
-    console.log(this.fobData);
+    // console.log(this.fobData);
   }
 
 }

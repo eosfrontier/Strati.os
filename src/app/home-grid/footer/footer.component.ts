@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { SocketService } from '../../shared/services/socket.service';
+// import { SocketService } from '../../shared/services/socket.service';
 
 @Component({
   selector: 'app-grid-footer',
@@ -8,16 +8,16 @@ import { SocketService } from '../../shared/services/socket.service';
 })
 export class FooterComponent implements OnInit {
 
-  $weather: any;
-  ioConnection: any;
+  // $weather: any;
+  // ioConnection: any;
 
-  constructor(private socketService: SocketService) { }
+  constructor(/* private socketService: SocketService */) { }
 
   ngOnInit() {
-    this.socketService.getWeatherData().subscribe(res => {
-      console.log(res);
-      this.$weather = res;
-    });
+  //   this.socketService.getWeatherData().subscribe(res => {
+  //     console.log(res);
+  //     this.$weather = res;
+  //   });
   }
 
 }

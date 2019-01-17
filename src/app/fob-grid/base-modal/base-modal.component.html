@@ -1,1 +1,50 @@
-<div class="modal__overlay"></div>
+<div class="modal">
+
+    <div class="modal__dialog">
+
+        <div class="modal__close" (click)='closeModal()'>
+            <fa-icon icon="times"></fa-icon>
+        </div>
+
+        <h1>{{ fobData.name | uppercase }}</h1>
+
+        <h2 class="modal__coordinates">
+            <fa-icon icon="map-marker-alt"></fa-icon>&nbsp;
+            {{ fobData.coordinates | uppercase }}
+        </h2>
+
+        <p><strong>
+            STATUS:&nbsp;{{ fobData.status | uppercase }}
+        </strong></p>
+
+        <p>
+            <fa-icon icon="user-shield"></fa-icon>&nbsp;
+            {{ fobData.forces }}
+        </p>
+
+        <p>
+            <fa-icon icon="boxes"></fa-icon>&nbsp;
+            Current supplies:
+        </p>
+
+        <div [ngClass]="{'progress__bar': true, 'progress__bar--empty': fobData.supplyPercentage <= 0 }">
+            <div
+                [ngClass]="{
+                    'progress__bar__inner': true,
+                    'progress__bar__inner--full': fobData.supplyPercentage >= 100,
+                    'progress__bar__inner--red': fobData.supplyPercentage <= 40,
+                    'progress__bar__inner--yellow': fobData.supplyPercentage <= 80,
+                    'progress__bar__inner--green': fobData.supplyPercentage >= 80
+                }"
+                [ngStyle]="{ 'max-width': fobData.supplyPercentage + '%' }">
+            </div>
+        </div>
+
+    </div>
+
+    <div class="modal__overlay modal__overlay--top" (click)='closeModal()'></div>
+    <div class="modal__overlay modal__overlay--left" (click)='closeModal()'></div>
+    <div class="modal__overlay modal__overlay--bottom" (click)='closeModal()'></div>
+    <div class="modal__overlay modal__overlay--right" (click)='closeModal()'></div>
+
+</div>

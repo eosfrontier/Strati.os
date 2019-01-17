@@ -14,20 +14,16 @@ export class DateService {
 
   constructor(private http: HttpClient) {
     this.getDateFromAPI().subscribe((date) => {
-      this.setIcDate(
-        this.convertToIcDate(date)
+      this.setInGameDate(
+        this.convertToInGameDate(date)
       );
     });
   }
-
 
   public getIcDate(): Observable<IcDate> {
     return this.icDate.asObservable();
   }
 
-  /**
-   * @description Get the JSON 'Ic Date' from the watchTower API.
-   */
   private getDateFromAPI(): Observable<any> {
     return this.http.get(environment.DATETIME.API_URL).pipe(map(res => {
       return res;
@@ -37,21 +33,18 @@ export class DateService {
   /**
    * @description converts the JSON from the API into a valid IcDate object
    */
-  private convertToIcDate(dateJson): IcDate {
+  private convertToInGameDate(dateJson): IcDate {
     const convertedDate = new IcDate();
-    convertedDate.day = dateJson.iDay;
-    convertedDate.dayName = this.shortenDayName(dateJson.iDayName);
-    convertedDate.month = dateJson.iMonth;
-    convertedDate.monthName = dateJson.iMonthName;
-    convertedDate.year = dateJson.iYear;
-    convertedDate.yearAfter = dateJson.iYearAfter;
+      convertedDate.day = dateJson.iDay;
+      convertedDate.dayName = this.shortenDayName(dateJson.iDayName);
+      convertedDate.month = dateJson.iMonth;
+      convertedDate.monthName = dateJson.iMonthName;
+      convertedDate.year = dateJson.iYear;
+      convertedDate.yearAfter = dateJson.iYearAfter;
     return convertedDate;
   }
 
-  /**
-   * @description Updates the existing 'icDate' with the new date received from the API.
-   */
-  private setIcDate(date: IcDate): void {
+  private setInGameDate(date: IcDate): void {
     this.icDate.next(date);
   }
 

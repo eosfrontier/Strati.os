@@ -1,4 +1,4 @@
-const SERVER_URL = 'http://localhost:5000';
+const SERVER_URL = 'http://localhost:5000/';
 const API_BASE = `${SERVER_URL}api/`;
 
 export const environment = {
@@ -12,5 +12,8 @@ export const environment = {
   },
   DATETIME: {
     API_URL: `${API_BASE}time/`
+  },
+  FOB: {
+    API_URL: `${API_BASE}fob/`
   }
 };
