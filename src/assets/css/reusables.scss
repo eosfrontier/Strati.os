@@ -1,0 +1,46 @@
+@import 'variables';
+.progress {
+
+    &__bar {
+        background-color: $soedark;
+        border-radius: 2.5rem;
+        height: 2.5rem;
+        padding: 1rem;
+        position: relative;
+        transition: 0.4s;
+
+        &--empty {
+            animation: blink 3s infinite linear;
+        }
+
+        &__inner {
+            animation: expandWidthToMax 1.5s ease-out forwards;
+            background-color: $soelite;
+            border-bottom-left-radius: 20px;
+            border-bottom-right-radius: 8px;
+            border-top-left-radius: 20px;
+            border-top-right-radius: 8px;
+            bottom: 0.4rem;
+            display: block;
+            height: 1.2rem;
+            overflow: hidden;
+            position: relative;
+            transition: 0.4s;
+
+            &--green {
+                background-color: $terminalgreen;
+            }
+            &--yellow {
+                background-color: $gubatyellow;
+            }
+            &--red {
+                background-color: $orbitred;
+            }
+            &--full {
+                border-radius: 20px;
+            }
+        }
+
+    }
+
+}

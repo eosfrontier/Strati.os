@@ -23,6 +23,7 @@ import {
   faSatelliteDish,
   faMapMarkerAlt,
   faBoxes,
+  faTimes,
 } from '@fortawesome/free-solid-svg-icons';
 
 @NgModule({
@@ -57,7 +58,8 @@ export class AppModule {
       faUserShield,
       faSatelliteDish,
       faMapMarkerAlt,
-      faBoxes
+      faBoxes,
+      faTimes,
     );
   }
 }

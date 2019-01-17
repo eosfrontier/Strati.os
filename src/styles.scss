@@ -36,3 +36,22 @@ h4, h5 {
 .time {
   font-family: $fonttime;
 }
+
+a.btn {
+  text-decoration: none;
+  border: 1px solid $beaconblue;
+  border-radius: 3px;
+  color: $beaconblue;
+  padding: 0.8rem 1.2rem;
+  transition: 0.3s;
+
+  &--green {
+    border-color: $terminalgreen;
+    color: $terminalgreen;
+  }
+
+  &:hover, &:active, &:focus {
+    border-color: $white;
+    color: $white;
+  }
+}
