@@ -22,3 +22,13 @@
         top: 2.5rem;
     }
 }
+
+.progress__bar {
+    &--empty {
+        animation: shake 1.3s ease-in-out;
+    }
+}
+
+.highlight {
+    color: #FFF;
+}

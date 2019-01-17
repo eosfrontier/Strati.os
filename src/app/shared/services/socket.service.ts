@@ -11,30 +11,30 @@ import { environment } from '../../../environments/environment';
 export class SocketService {
 
   private socket;
-  public weatherData: BehaviorSubject<any> = new BehaviorSubject(null);
+  // public weatherData: BehaviorSubject<any> = new BehaviorSubject(null);
 
   constructor(private http: HttpClient) {
     this.initSocket();
-    this.getWeatherDataFromAPI().subscribe((weather) => {
-      this.setWeatherData(weather);
-    });
+    // this.getWeatherDataFromAPI().subscribe((weather) => {
+    //   this.setWeatherData(weather);
+    // });
   }
 
   public initSocket(): void {
     this.socket = socketIo(environment.SOCKET.API_URL);
   }
 
-  public getWeatherData(): Observable<any> {
-    return this.weatherData.asObservable();
-  }
+  // public getWeatherData(): Observable<any> {
+  //   return this.weatherData.asObservable();
+  // }
 
-  private setWeatherData(data): void {
-    this.weatherData.next(data);
-  }
+  // private setWeatherData(data): void {
+  //   this.weatherData.next(data);
+  // }
 
-  private getWeatherDataFromAPI(): Observable<any> {
-    return this.http.get(environment.WEATHER.API_URL).pipe(map(res => {
-      return res;
-    }));
-  }
+  // private getWeatherDataFromAPI(): Observable<any> {
+  //   return this.http.get(environment.WEATHER.API_URL).pipe(map(res => {
+  //     return res;
+  //   }));
+  // }
 }

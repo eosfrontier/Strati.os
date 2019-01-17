@@ -8,19 +8,21 @@
 
         <h1>{{ fobData.name | uppercase }}</h1>
 
-        <h2 class="modal__coordinates">
+        <h2 class="modal__coordinates ">
             <fa-icon icon="map-marker-alt"></fa-icon>&nbsp;
-            {{ fobData.coordinates | uppercase }}
+            <span class="highlight">{{ fobData.coordinates | uppercase }}</span>
         </h2>
 
         <p><strong>
-            STATUS:&nbsp;{{ fobData.status | uppercase }}
-        </strong></p>
+                STATUS:&nbsp;<span class="highlight">{{ fobData.status | uppercase }}</span>
+            </strong></p>
 
         <p>
-            <fa-icon icon="user-shield"></fa-icon>&nbsp;
-            {{ fobData.forces }}
+            <fa-icon icon="user-shield"></fa-icon>:&nbsp;
+            <span class="highlight">{{ fobData.forces }}</span>
         </p>
+
+        <p>&nbsp;</p>
 
         <p>
             <fa-icon icon="boxes"></fa-icon>&nbsp;
@@ -28,17 +30,18 @@
         </p>
 
         <div [ngClass]="{'progress__bar': true, 'progress__bar--empty': fobData.supplyPercentage <= 0 }">
-            <div
-                [ngClass]="{
+            <div [ngClass]="{
                     'progress__bar__inner': true,
                     'progress__bar__inner--full': fobData.supplyPercentage >= 100,
-                    'progress__bar__inner--red': fobData.supplyPercentage <= 40,
-                    'progress__bar__inner--yellow': fobData.supplyPercentage <= 80,
+                    'progress__bar__inner--red': fobData.supplyPercentage < 40,
+                    'progress__bar__inner--yellow': fobData.supplyPercentage < 80 && fobData.supplyPercentage >= 40,
                     'progress__bar__inner--green': fobData.supplyPercentage >= 80
                 }"
                 [ngStyle]="{ 'max-width': fobData.supplyPercentage + '%' }">
             </div>
         </div>
+
+        <p class="text-right">{{ fobData.supplyPercentage }}%</p>
 
     </div>
 
