@@ -1,6 +1,7 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { DateComponent } from './date.component';
+import { HttpClientModule } from '@angular/common/http';
 
 describe('DateComponent', () => {
   let component: DateComponent;
@@ -8,7 +9,8 @@ describe('DateComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ DateComponent ]
+      declarations: [ DateComponent ],
+      imports: [ HttpClientModule ]
     })
     .compileComponents();
   }));
