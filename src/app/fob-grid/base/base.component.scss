@@ -7,7 +7,6 @@
 .hex {
 
     &__inner { // div inside __tile
-
         position: absolute;
         width: 100%;
         padding-bottom: 115.470%; /* =  width / sin(60) */
@@ -29,7 +28,28 @@
                 background: lighten($dark-terminal, 5%);
             }
         }
+    }
 
+    &__coordinates {
+        color: $soelite;
+        margin-top: 17.5%;
+    }
+
+    &__title {
+        box-sizing: border-box;
+        font-weight: 300;
+        padding: 0 1.5rem;
+        width: 100%;
+        font-size: 1.5em;
+        z-index: 1;
+        &::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 45%;
+            width: 10%;
+            text-align: center;
+        }
     }
 
     &__link {
@@ -43,9 +63,47 @@
         -webkit-transform: skewY(-30deg) rotate3d(0,0,1,60deg);
         -ms-transform: skewY(-30deg) rotate3d(0,0,1,60deg);
         transform: skewY(-30deg) rotate3d(0,0,1,60deg);
+    }
 
-        // h1, p, fa-icon {
-        // }
+    &__supplies {
+        align-items: center;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+
+        &__category {
+
+            min-width: 3.5rem;
+
+            fa-icon {
+                font-size: 1.8rem;
+                margin-left: -2rem;
+                padding: 0.1rem 0.8rem 0rem 0.8rem;
+                transition: 0.4s;
+            }
+
+            .dot {
+                background-color: $soedark;
+                border-radius: 100%;
+                height: 0.8rem;
+                margin-top: 0.7rem;
+                position: absolute;
+                right: calc(50% - 2rem);
+                transition: 0.3s;
+                width: 0.8rem;
+                z-index: 3;
+
+                &--high {
+                    background: $terminalgreen;
+                }
+                &--medium {
+                    background: $gubatyellow;
+                }
+                &--low {
+                    background: $orbitred;
+                }
+            }
+        }
     }
 }
 
@@ -58,27 +116,4 @@ img {
     -webkit-transform: rotate3d(0,0,0,0deg);
     -ms-transform: rotate3d(0,0,0,0deg);
     transform: rotate3d(0,0,0,0deg);
-}
-
-p, h1 {
-    width: 100%;
-    padding: 0 1.5rem;
-    box-sizing: border-box;
-    font-weight: 300;
-}
-h1 {
-    // bottom: 50%;
-    // padding-top:50%;
-    margin-top: 25%;
-    font-size: 1.5em;
-    z-index: 1;
-    &::after {
-        content: '';
-        position: absolute;
-        bottom: 0;
-        left: 45%;
-        width: 10%;
-        text-align: center;
-        // border-bottom: 1px solid $white;
-    }
 }

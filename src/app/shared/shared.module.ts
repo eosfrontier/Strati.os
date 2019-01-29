@@ -7,9 +7,10 @@ import { AppRoutingModule } from '../app-routing.module';
 import { HttpClientModule } from '@angular/common/http';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { DateComponent } from './components/date/date.component';
+import { SupplyBreakpointPipe } from './pipes/supply-breakpoint.pipe';
 
 @NgModule({
-  declarations: [MenuComponent, TopComponent, ClockComponent, DateComponent],
+  declarations: [MenuComponent, TopComponent, ClockComponent, DateComponent, SupplyBreakpointPipe],
   imports: [
     CommonModule,
     AppRoutingModule,
@@ -21,6 +22,7 @@ import { DateComponent } from './components/date/date.component';
     TopComponent,
     ClockComponent,
     DateComponent,
+    SupplyBreakpointPipe,
   ]
 })
 export class SharedModule { }

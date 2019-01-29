@@ -3,13 +3,13 @@ import { AdminMenuService } from '../admin-menu.service';
 import { Subscription } from 'rxjs';
 
 @Component({
-  selector: 'app-admin-right',
-  templateUrl: './admin-right.component.html',
-  styleUrls: ['./admin-right.component.scss']
+  selector: 'app-admin-router',
+  templateUrl: './admin-router.component.html',
+  styleUrls: ['./admin-router.component.scss']
 })
-export class AdminRightComponent implements OnInit, OnDestroy {
+export class AdminRouterComponent implements OnInit, OnDestroy {
 
-  selectedMenuItem: string;
+  private selectedMenuItem: string;
   private subscription: Subscription;
 
   constructor(private adminMenuService: AdminMenuService) { }
@@ -18,10 +18,6 @@ export class AdminRightComponent implements OnInit, OnDestroy {
     this.subscription = this.adminMenuService.getSelectedMenuItem().subscribe(item => {
       this.selectedMenuItem = item;
     });
-  }
-
-  public selectMenuItem(input: string): void {
-    this.adminMenuService.setSelectedMenuItem(input);
   }
 
   ngOnDestroy() {

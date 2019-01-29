@@ -8,6 +8,11 @@ import { MissionsEditComponent } from './missions/edit/edit.component';
 
 import { SharedModule } from '../shared/shared.module';
 import { AdminRightComponent } from './admin-right/admin-right.component';
+import { AddFobComponent } from './fobs/add/add.component';
+import { EditFobComponent } from './fobs/edit/edit.component';
+import { ViewFobComponent } from './fobs/view/view.component';
+import { AdminRouterComponent } from './admin-router/admin-router.component';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
 @NgModule({
   declarations: [
@@ -17,9 +22,13 @@ import { AdminRightComponent } from './admin-right/admin-right.component';
     MissionsAddComponent,
     MissionsEditComponent,
     AdminRightComponent,
+    AddFobComponent,
+    EditFobComponent,
+    ViewFobComponent,
+    AdminRouterComponent,
   ],
   imports: [
-    CommonModule, SharedModule
+    CommonModule, SharedModule, FontAwesomeModule
   ]
 })
 export class AdminGridModule { }

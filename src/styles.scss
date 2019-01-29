@@ -41,12 +41,20 @@ h4, h5 {
     text-align: right;
 }
 
-a.btn {
-  text-decoration: none;
+.text-truncate {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+a.btn, .btn {
+  background: none;
   border: 1px solid $beaconblue;
   border-radius: 3px;
   color: $beaconblue;
+  cursor: pointer;
   padding: 0.8rem 1.2rem;
+  text-decoration: none;
   transition: 0.3s;
 
   &--green {

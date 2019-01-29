@@ -2,6 +2,7 @@ import { Component, OnInit, Input, OnDestroy } from '@angular/core';
 import { Fob } from '../../shared/models/fob';
 import { FobService } from '../../shared/services/fob.service';
 import { Subscription } from 'rxjs';
+import { SupplyBreakpoints } from '../../shared/models/supplybreakpoints';
 
 @Component({
   selector: 'app-base-modal',
@@ -12,6 +13,7 @@ export class BaseModalComponent implements OnInit, OnDestroy {
 
   fobSubscription: Subscription;
   fobData: Fob;
+  supplyBreakpoints: SupplyBreakpoints;
 
   constructor(private fobService: FobService) { }
 
@@ -19,6 +21,7 @@ export class BaseModalComponent implements OnInit, OnDestroy {
     this.fobSubscription = this.fobService.getSelectedFob().subscribe(fob => {
       this.fobData = fob;
     });
+    this.supplyBreakpoints = new SupplyBreakpoints();
   }
 
   closeModal() {

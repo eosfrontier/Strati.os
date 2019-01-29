@@ -5,6 +5,7 @@ import { map } from 'rxjs/operators';
 import { Fob } from '../models/fob';
 import { environment } from '../../../environments/environment';
 import { SocketService } from './socket.service';
+import { SupplyBreakpoints } from '../models/supplybreakpoints';
 
 @Injectable({
   providedIn: 'root'
@@ -13,11 +14,13 @@ export class FobService {
 
   fobList: BehaviorSubject<Fob[]> = new BehaviorSubject(null);
   selectedFob: BehaviorSubject<Fob> = new BehaviorSubject(null);
+  breakpoints: SupplyBreakpoints;
 
   constructor(private http: HttpClient, private socketService: SocketService) {
     this.getFobsFromAPI().subscribe((fobs) => {
       this.setFobList(fobs);
     });
+    this.breakpoints = new SupplyBreakpoints();
   }
 
   public getFobList(): Observable<Fob[]> {

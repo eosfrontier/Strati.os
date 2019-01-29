@@ -13,9 +13,12 @@
             <span class="highlight">{{ fobData.coordinates | uppercase }}</span>
         </h2>
 
-        <p><strong>
-                STATUS:&nbsp;<span class="highlight">{{ fobData.status | uppercase }}</span>
-            </strong></p>
+        <p>
+            <strong>
+                <fa-icon icon="heartbeat"></fa-icon>:&nbsp;
+                <span class="highlight">{{ fobData.status | uppercase }}</span>
+            </strong>
+        </p>
 
         <p>
             <fa-icon icon="user-shield"></fa-icon>:&nbsp;
@@ -29,19 +32,50 @@
             Current supplies:
         </p>
 
-        <div [ngClass]="{'progress__bar': true, 'progress__bar--empty': fobData.supplyPercentage <= 0 }">
+        <p>Food & Water</p>
+        <div class="progress__bar">
             <div [ngClass]="{
                     'progress__bar__inner': true,
-                    'progress__bar__inner--full': fobData.supplyPercentage >= 100,
-                    'progress__bar__inner--red': fobData.supplyPercentage < 40,
-                    'progress__bar__inner--yellow': fobData.supplyPercentage < 80 && fobData.supplyPercentage >= 40,
-                    'progress__bar__inner--green': fobData.supplyPercentage >= 80
+                    'progress__bar__inner--full': fobData.foodSupplyPercentage >= supplyBreakpoints.full,
+                    'progress__bar__inner--green': fobData.foodSupplyPercentage >= supplyBreakpoints.high,
+                    'progress__bar__inner--yellow': fobData.foodSupplyPercentage < supplyBreakpoints.high && fobData.foodSupplyPercentage >= supplyBreakpoints.medium,
+                    'progress__bar__inner--red': fobData.foodSupplyPercentage < supplyBreakpoints.medium
                 }"
-                [ngStyle]="{ 'max-width': fobData.supplyPercentage + '%' }">
+                [ngStyle]="{ 'max-width': fobData.foodSupplyPercentage + '%' }">
             </div>
         </div>
 
-        <p class="text-right">{{ fobData.supplyPercentage }}%</p>
+        <p class="text-right">{{ fobData.foodSupplyPercentage | supplyBreakpoint }}</p>
+
+        <p>Weapons & Munitions</p>
+        <div class="progress__bar">
+            <div [ngClass]="{
+                    'progress__bar__inner': true,
+                    'progress__bar__inner--full': fobData.weaponSupplyPercentage >= supplyBreakpoints.full,
+                    'progress__bar__inner--green': fobData.weaponSupplyPercentage >= supplyBreakpoints.high,
+                    'progress__bar__inner--yellow': fobData.weaponSupplyPercentage < supplyBreakpoints.high && fobData.weaponSupplyPercentage >= supplyBreakpoints.medium,
+                    'progress__bar__inner--red': fobData.weaponSupplyPercentage < supplyBreakpoints.medium
+                }"
+                [ngStyle]="{ 'max-width': fobData.weaponSupplyPercentage + '%' }">
+            </div>
+        </div>
+
+        <p class="text-right">{{ fobData.weaponSupplyPercentage| supplyBreakpoint }}</p>
+
+        <p>Medical</p>
+        <div class="progress__bar">
+            <div [ngClass]="{
+                    'progress__bar__inner': true,
+                    'progress__bar__inner--full': fobData.medicalSupplyPercentage >= supplyBreakpoints.full,
+                    'progress__bar__inner--green': fobData.medicalSupplyPercentage >= supplyBreakpoints.high,
+                    'progress__bar__inner--yellow': fobData.medicalSupplyPercentage < supplyBreakpoints.high && fobData.medicalSupplyPercentage >= supplyBreakpoints.medium,
+                    'progress__bar__inner--red': fobData.medicalSupplyPercentage < supplyBreakpoints.medium
+                }"
+                [ngStyle]="{ 'max-width': fobData.medicalSupplyPercentage + '%' }">
+            </div>
+        </div>
+
+        <p class="text-right">{{ fobData.medicalSupplyPercentage| supplyBreakpoint }}</p>
 
     </div>
 

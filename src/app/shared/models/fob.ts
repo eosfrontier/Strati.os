@@ -4,5 +4,8 @@ export class Fob {
     coordinates: string;
     forces: number;
     status: string;
-    supplyPercentage: number;
+    orderCode: number;
+    foodSupplyPercentage: number;
+    weaponSupplyPercentage: number;
+    medicalSupplyPercentage: number;
 }

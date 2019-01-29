@@ -20,7 +20,6 @@ export class FobOverviewComponent implements OnInit, OnDestroy {
   ngOnInit() {
     this.fobListSubscription = this.fobService.getFobList().subscribe(fobs => {
       this.fobList = fobs;
-      // console.log(fobs); // logs WITH _id attached.
     });
     this.fobSubscription = this.fobService.getSelectedFob().subscribe(fob => {
       this.selectedFob = fob;

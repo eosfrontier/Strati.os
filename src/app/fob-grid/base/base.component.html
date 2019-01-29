@@ -1,8 +1,52 @@
+<div class="hex__inner">
+  <a class="hex__link">
 
-  <div class="hex__inner">
-    <a class="hex__link">
-      <h1>{{fobData.name}}</h1>
-      <p><fa-icon icon="map-marker-alt"></fa-icon>&nbsp;{{fobData.coordinates | uppercase}}</p>
-      <p><fa-icon icon="user-shield"></fa-icon>&nbsp;{{fobData.forces}}</p>
-    </a>
-  </div>
+    <div class="hex__coordinates">
+      <fa-icon icon="map-marker-alt"></fa-icon>&nbsp;{{fobData.coordinates | uppercase}}
+    </div>
+
+    <h1 class="hex__title text-truncate">{{fobData.name}}</h1>
+
+    <div class="hex__supplies">
+
+      <div class="hex__supplies__category">
+        <fa-icon icon="utensils"></fa-icon>
+        <span [ngClass]="{
+                  'dot': true,
+                  'dot--high': fobData.foodSupplyPercentage >= supplyBreakpoints.high,
+                  'dot--medium' : fobData.foodSupplyPercentage < supplyBreakpoints.high && fobData.foodSupplyPercentage >= supplyBreakpoints.medium,
+                  'dot--low': fobData.foodSupplyPercentage < supplyBreakpoints.medium
+                }"></span>
+      </div>
+
+      <div class="hex__supplies__category">
+        <fa-icon icon="crosshairs"></fa-icon>
+        <span [ngClass]="{
+                  'dot': true,
+                  'dot--high': fobData.weaponSupplyPercentage >= supplyBreakpoints.high,
+                  'dot--medium' : fobData.weaponSupplyPercentage < supplyBreakpoints.high && fobData.weaponSupplyPercentage >= supplyBreakpoints.medium,
+                  'dot--low': fobData.weaponSupplyPercentage < supplyBreakpoints.medium
+                }"></span>
+      </div>
+
+      <div class="hex__supplies__category">
+        <fa-icon icon="briefcase-medical"></fa-icon>
+        <span [ngClass]="{
+                  'dot': true,
+                  'dot--high': fobData.medicalSupplyPercentage >= supplyBreakpoints.high,
+                  'dot--medium' : fobData.medicalSupplyPercentage < supplyBreakpoints.high && fobData.medicalSupplyPercentage >= supplyBreakpoints.medium,
+                  'dot--low': fobData.medicalSupplyPercentage < supplyBreakpoints.medium
+                }"></span>
+      </div>
+
+    </div>
+
+    <!-- [ngClass]="{
+        'status': true,
+        'status--none': fobData.medicalSupplyPercentage >= supplyBreakpoints.high,
+        'status--critical': fobData.medicalSupplyPercentage < supplyBreakpoints.medium,
+        'status--low' : fobData.medicalSupplyPercentage < supplyBreakpoints.high && fobData.medicalSupplyPercentage >= supplyBreakpoints.medium
+      }" -->
+
+  </a>
+</div>

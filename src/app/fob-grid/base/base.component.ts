@@ -1,4 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
+import { SupplyBreakpoints } from '../../shared/models/supplybreakpoints';
 
 @Component({
   selector: 'app-base',
@@ -7,11 +8,12 @@ import { Component, OnInit, Input } from '@angular/core';
 })
 export class BaseComponent implements OnInit {
   @Input() fobData;
+  supplyBreakpoints: SupplyBreakpoints;
 
   constructor() { }
 
   ngOnInit() {
-    // console.log(this.fobData);
+    this.supplyBreakpoints = new SupplyBreakpoints();
   }
 
 }

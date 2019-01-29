@@ -24,6 +24,12 @@ import {
   faMapMarkerAlt,
   faBoxes,
   faTimes,
+  faHeartbeat,
+  faCog,
+  faBriefcaseMedical,
+  faUtensils,
+  faCrosshairs,
+  faExclamationTriangle,
 } from '@fortawesome/free-solid-svg-icons';
 
 @NgModule({
@@ -60,6 +66,12 @@ export class AppModule {
       faMapMarkerAlt,
       faBoxes,
       faTimes,
+      faHeartbeat,
+      faCog,
+      faBriefcaseMedical,
+      faUtensils,
+      faCrosshairs,
+      faExclamationTriangle,
     );
   }
 }
