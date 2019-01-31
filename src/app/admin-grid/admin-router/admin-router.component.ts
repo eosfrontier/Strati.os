@@ -9,7 +9,7 @@ import { Subscription } from 'rxjs';
 })
 export class AdminRouterComponent implements OnInit, OnDestroy {
 
-  private selectedMenuItem: string;
+  public selectedMenuItem: string;
   private subscription: Subscription;
 
   constructor(private adminMenuService: AdminMenuService) { }

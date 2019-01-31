@@ -9,7 +9,7 @@ import { Subscription } from 'rxjs';
 })
 export class ClockComponent implements OnInit, OnDestroy {
 
-  private clockSubscription$: Subscription;
+  public clockSubscription$: Subscription;
   time: Date;
   fictionalTimeStandard = 'ETC';
 

@@ -9,7 +9,7 @@
 
     <div class="hex__supplies">
 
-      <div class="hex__supplies__category">
+      <div id="foodSupplies" class="hex__supplies__category">
         <fa-icon icon="utensils"></fa-icon>
         <span [ngClass]="{
                   'dot': true,
@@ -40,13 +40,6 @@
       </div>
 
     </div>
-
-    <!-- [ngClass]="{
-        'status': true,
-        'status--none': fobData.medicalSupplyPercentage >= supplyBreakpoints.high,
-        'status--critical': fobData.medicalSupplyPercentage < supplyBreakpoints.medium,
-        'status--low' : fobData.medicalSupplyPercentage < supplyBreakpoints.high && fobData.medicalSupplyPercentage >= supplyBreakpoints.medium
-      }" -->
 
   </a>
 </div>

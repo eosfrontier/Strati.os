@@ -7,6 +7,8 @@ import { Component, OnInit } from '@angular/core';
 })
 export class MissionsComponent implements OnInit {
 
+  missionList: any;
+
   constructor() { }
 
   ngOnInit() {

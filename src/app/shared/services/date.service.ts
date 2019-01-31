@@ -51,7 +51,7 @@ export class DateService {
   /**
    * @description turns 'monday' into 'mon', 'tuesday' into 'tue', etc.
    */
-  private shortenDayName(dayname: string): string {
+  public shortenDayName(dayname: string): string {
     return dayname.substr(0, 3);
   }
 }
