@@ -1,0 +1,87 @@
+<div class="modal">
+
+    <div class="modal__dialog">
+
+        <div class="modal__close" (click)='closeModal()'>
+            <fa-icon icon="times"></fa-icon>
+        </div>
+
+        <h1>{{ fobData.name | uppercase }}</h1>
+
+        <h2 class="modal__coordinates ">
+            <fa-icon icon="map-marker-alt"></fa-icon>&nbsp;
+            <span class="highlight">{{ fobData.coordinates | uppercase }}</span>
+        </h2>
+
+        <p>
+            <strong>
+                <fa-icon icon="heartbeat"></fa-icon>:&nbsp;
+                <span class="highlight">{{ fobData.status | uppercase }}</span>
+            </strong>
+        </p>
+
+        <p>
+            <fa-icon icon="user-shield"></fa-icon>:&nbsp;
+            <span class="highlight">{{ fobData.forces }}</span>
+        </p>
+
+        <p>&nbsp;</p>
+
+        <p>
+            <fa-icon icon="boxes"></fa-icon>&nbsp;
+            Current supplies:
+        </p>
+
+        <p>Food & Water</p>
+        <div class="progress__bar">
+            <div [ngClass]="{
+                    'progress__bar__inner': true,
+                    'progress__bar__inner--full': fobData.foodSupplyPercentage >= supplyBreakpoints.full,
+                    'progress__bar__inner--green': fobData.foodSupplyPercentage >= supplyBreakpoints.high,
+                    'progress__bar__inner--yellow': fobData.foodSupplyPercentage < supplyBreakpoints.high && fobData.foodSupplyPercentage >= supplyBreakpoints.medium,
+                    'progress__bar__inner--red': fobData.foodSupplyPercentage < supplyBreakpoints.medium
+                }"
+                [ngStyle]="{ 'max-width': fobData.foodSupplyPercentage + '%' }">
+            </div>
+        </div>
+
+        <p class="text-right">{{ fobData.foodSupplyPercentage | supplyBreakpoint }}</p>
+
+        <p>Weapons & Munitions</p>
+        <div class="progress__bar">
+            <div [ngClass]="{
+                    'progress__bar__inner': true,
+                    'progress__bar__inner--full': fobData.weaponSupplyPercentage >= supplyBreakpoints.full,
+                    'progress__bar__inner--green': fobData.weaponSupplyPercentage >= supplyBreakpoints.high,
+                    'progress__bar__inner--yellow': fobData.weaponSupplyPercentage < supplyBreakpoints.high && fobData.weaponSupplyPercentage >= supplyBreakpoints.medium,
+                    'progress__bar__inner--red': fobData.weaponSupplyPercentage < supplyBreakpoints.medium
+                }"
+                [ngStyle]="{ 'max-width': fobData.weaponSupplyPercentage + '%' }">
+            </div>
+        </div>
+
+        <p class="text-right">{{ fobData.weaponSupplyPercentage| supplyBreakpoint }}</p>
+
+        <p>Medical</p>
+        <div class="progress__bar">
+            <div [ngClass]="{
+                    'progress__bar__inner': true,
+                    'progress__bar__inner--full': fobData.medicalSupplyPercentage >= supplyBreakpoints.full,
+                    'progress__bar__inner--green': fobData.medicalSupplyPercentage >= supplyBreakpoints.high,
+                    'progress__bar__inner--yellow': fobData.medicalSupplyPercentage < supplyBreakpoints.high && fobData.medicalSupplyPercentage >= supplyBreakpoints.medium,
+                    'progress__bar__inner--red': fobData.medicalSupplyPercentage < supplyBreakpoints.medium
+                }"
+                [ngStyle]="{ 'max-width': fobData.medicalSupplyPercentage + '%' }">
+            </div>
+        </div>
+
+        <p class="text-right">{{ fobData.medicalSupplyPercentage| supplyBreakpoint }}</p>
+
+    </div>
+
+    <div class="modal__overlay modal__overlay--top" (click)='closeModal()'></div>
+    <div class="modal__overlay modal__overlay--left" (click)='closeModal()'></div>
+    <div class="modal__overlay modal__overlay--bottom" (click)='closeModal()'></div>
+    <div class="modal__overlay modal__overlay--right" (click)='closeModal()'></div>
+
+</div>

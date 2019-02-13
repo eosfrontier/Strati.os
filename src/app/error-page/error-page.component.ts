@@ -7,9 +7,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ErrorPageComponent implements OnInit {
 
+  errorCode: string | number;
+
   constructor() { }
 
+  // default error. Why define like this? For keeping options open for later.
   ngOnInit() {
+    this.errorCode = 404;
   }
 
 }

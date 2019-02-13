@@ -36,3 +36,34 @@ h4, h5 {
 .time {
   font-family: $fonttime;
 }
+
+.text-right {
+    text-align: right;
+}
+
+.text-truncate {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+a.btn, .btn {
+  background: none;
+  border: 1px solid $beaconblue;
+  border-radius: 3px;
+  color: $beaconblue;
+  cursor: pointer;
+  padding: 0.8rem 1.2rem;
+  text-decoration: none;
+  transition: 0.3s;
+
+  &--green {
+    border-color: $terminalgreen;
+    color: $terminalgreen;
+  }
+
+  &:hover, &:active, &:focus {
+    border-color: $white;
+    color: $white;
+  }
+}

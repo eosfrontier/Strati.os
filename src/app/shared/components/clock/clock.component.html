@@ -1,4 +1,1 @@
-<h2 class="time">
-  <span *ngIf="!time">00:00:00</span>
-  {{ time | date:'HH:mm:ss' }}&nbsp;ECT
-</h2>
+<h2 class="time">{{ time | date:'HH:mm:ss' }}&nbsp;{{ fictionalTimeStandard }}</h2>

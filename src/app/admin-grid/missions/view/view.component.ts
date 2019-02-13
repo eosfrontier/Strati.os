@@ -1,11 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'app-view',
+  selector: 'app-mission-view',
   templateUrl: './view.component.html',
   styleUrls: ['./view.component.scss']
 })
-export class ViewComponent implements OnInit {
+export class MissionsViewComponent implements OnInit {
 
   constructor() { }
 

@@ -1,0 +1,17 @@
+@import '../../../assets/css/variables.scss';
+
+p {
+    animation: blink 2.6s ease-in forwards;
+    animation-delay: 0.4s;
+    font-weight: bold;
+    margin: 0.8rem 0.2rem;
+    text-transform: uppercase;
+
+    &.status {
+        background: $gray;
+        color: $dark;
+        padding: .8rem;
+        text-align: center;
+    }
+
+}

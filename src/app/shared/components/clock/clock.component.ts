@@ -9,12 +9,14 @@ import { Subscription } from 'rxjs';
 })
 export class ClockComponent implements OnInit, OnDestroy {
 
-  private clockSubscription$: Subscription;
+  public clockSubscription$: Subscription;
   time: Date;
+  fictionalTimeStandard = 'ETC';
 
   constructor(private clockService: ClockService) { }
 
   ngOnInit() {
+    this.time = new Date();
     this.clockSubscription$ = this.clockService.getClock().subscribe(
       time => this.time = time
     );

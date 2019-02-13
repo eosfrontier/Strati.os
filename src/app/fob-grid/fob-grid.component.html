@@ -1,0 +1,27 @@
+<div class="grid">
+
+  <app-top class="item top"></app-top>
+  <app-menu class="item menu"></app-menu>
+
+  <div class="item titlebar">
+    <div class="titlebar__split titlebar__split--double">
+        <h2>Forward operating bases</h2>
+    </div>
+
+    <div class="titlebar__split">
+      <h2 *ngIf="dateReceived" class="date">
+          {{ icDate$.day | number }}.{{ icDate$.month | number }}.{{ icDate$.year | number }}{{ icDate$.yearAfter }}
+      </h2>
+    </div>
+
+    <div class="titlebar__split">
+      <h2 class="time">
+        {{ time | date:'HH:mm:ss' }}&nbsp;{{ fictionalTimeStandard }}
+      </h2>
+    </div>
+
+  </div>
+
+  <app-fob-overview class="item overview"></app-fob-overview>
+
+</div>

@@ -1,0 +1,71 @@
+@import '../../../assets/css/variables.scss';
+
+.missions {
+
+    height: auto;
+    width: 100%;
+
+    &__header {
+        align-items: center;
+        display: flex;
+        flex-direction: row;
+        padding: 1rem 0.5rem;
+
+        &__rows {
+            flex: 1;
+            width: auto;
+        }
+    }
+
+    &__entry {
+        align-items: center;
+        background-color: $gray;
+        border-bottom: 5px solid darken($gray, 20%);
+        border-top: 1px solid lighten($gray,10%);
+        box-shadow: $googleShade;
+        color: $dark;
+        display: flex;
+        flex-direction: row;
+        font-family: $fonttitle;
+        justify-content: center;
+        margin: 1.25rem;
+        @media(min-width: 992px) {
+            margin: 2.5rem;
+        }
+        width: auto;
+
+        &--green {
+            background-color: $orbitgreen;
+            border-bottom: 5px solid darken($orbitgreen, 20%);
+            border-top: 1px solid lighten($orbitgreen,10%);
+        }
+        &--blue {
+            background-color: $bluebright;
+            border-bottom: 5px solid darken($bluebright, 20%);
+            border-top: 1px solid lighten($bluebright,10%);
+        }
+        &--yellow {
+            background-color: $gubatyellow;
+            border-bottom: 5px solid darken($gubatyellow, 20%);
+            border-top: 1px solid lighten($gubatyellow,10%);
+        }
+        &--orange {
+            background-color: $joshrange;
+            border-bottom: 5px solid darken($joshrange, 20%);
+            border-top: 1px solid lighten($joshrange,10%);
+        }
+        &--red {
+            background-color: $orbitred;
+            border-bottom: 5px solid darken($orbitred, 20%);
+            border-top: 1px solid lighten($orbitred,10%);
+        }
+
+    }
+
+
+    &__null {
+        animation: blink 3s infinite;
+        margin-top: 3.5rem;
+        text-align: center;
+    }
+}

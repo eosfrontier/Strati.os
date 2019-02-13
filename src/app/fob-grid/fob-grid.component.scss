@@ -1,0 +1,58 @@
+@import '../../assets/css/variables.scss';
+@import '../../assets/css/grid.global.scss';
+
+.grid {
+
+    height: auto;
+    min-height: 100vh;
+    overflow: auto;
+
+    grid-template-rows: 8.5rem 5rem auto;
+    grid-template-columns: 1fr 48rem;
+    grid-template-areas:
+      "top menu"
+      "titlebar titlebar"
+      "overview overview";
+
+  .item {
+
+    &.overview {
+      grid-area: overview;
+      border-bottom: 2px solid $soered;
+      padding-bottom: 2rem;
+    }
+
+    &.titlebar {
+      grid-area: titlebar;
+      border-bottom: 2px solid $soered;
+    }
+
+  }
+
+}
+
+.titlebar {
+  align-items: center;
+  color: $soelite;
+  display: flex;
+  flex-direction: row;
+
+  h2 {
+    color: $soelite;
+  }
+
+  &__split {
+    flex: 1;
+    &--double {
+      flex: 2;
+    }
+  }
+}
+
+.time, .date {
+  text-align: right;
+}
+
+.time {
+  font-size: 2.8rem;
+}

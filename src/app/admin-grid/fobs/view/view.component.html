@@ -1,0 +1,41 @@
+<div class="fob" *ngIf="fobList">
+
+  <h1>Forward operational bases - scrollable overview</h1>
+
+  <ul class="fob__list">
+
+    <li class="header">
+      <div>NAME</div>
+      <div>STATUS</div>
+      <div>COORDINATES</div>
+      <div class="half">&nbsp;</div>
+    </li>
+
+    <li *ngFor="let fob of fobList">
+
+      <div># {{ fob.name }}</div>
+
+      <div>
+        <fa-icon icon="heartbeat"></fa-icon>:&nbsp;{{ fob.status }}
+      </div>
+
+      <div>
+        <fa-icon icon="map-marker-alt"></fa-icon>&nbsp;{{ fob.coordinates | uppercase }}
+      </div>
+
+      <div class="half text-right">
+        <button class="btn">
+          <fa-icon icon="cog"></fa-icon>&nbsp;DETAILS / EDIT
+        </button>
+      </div>
+    </li>
+
+  </ul>
+
+</div>
+
+<div class="fob__error" *ngIf="!fobList">
+  <h1>No FOBs detected.</h1>
+  <p>This is most likely a connectivity issue.</p>
+  <p>If this error persists, please contact sys.admin <strong>Maati Infor Danam</strong>.</p>
+</div>

@@ -1,0 +1,36 @@
+@import '../../assets/css/grid.global.scss';
+@import '../../assets/css/variables.scss';
+
+.grid {
+
+    grid-template-rows: 8.5rem 1fr 1fr 1fr auto;
+    grid-template-columns: 16.5rem 22rem 1fr 32rem;
+    grid-template-areas:
+        "top top menu menu"
+        "side main main main"
+        "side main main main"
+        "side main main main"
+        "footerconnect footer footer footerclock";
+
+  .item {
+
+    &.side {
+      grid-area: side;
+    }
+
+    &.main {
+      grid-area: main;
+      overflow-y: visible;
+    }
+
+    &.footer-left {
+      grid-area: footerconnect;
+    }
+
+    &.footer {
+      grid-area: footer;
+    }
+
+  }
+
+}

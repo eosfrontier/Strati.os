@@ -2,24 +2,33 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { MenuRightComponent } from './menu-right/menu-right.component';
 import { AdminGridComponent } from './admin-grid.component';
-import { AdminLeftComponent } from './admin-left/admin-left.component';
-import { ViewComponent } from './missions/view/view.component';
-import { AddComponent } from './missions/add/add.component';
-import { EditComponent } from './missions/edit/edit.component';
+import { MissionsViewComponent } from './missions/view/view.component';
+import { MissionsAddComponent } from './missions/add/add.component';
+import { MissionsEditComponent } from './missions/edit/edit.component';
 
 import { SharedModule } from '../shared/shared.module';
+import { AdminRightComponent } from './admin-right/admin-right.component';
+import { AddFobComponent } from './fobs/add/add.component';
+import { EditFobComponent } from './fobs/edit/edit.component';
+import { ViewFobComponent } from './fobs/view/view.component';
+import { AdminRouterComponent } from './admin-router/admin-router.component';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
 @NgModule({
   declarations: [
     MenuRightComponent,
     AdminGridComponent,
-    AdminLeftComponent,
-    ViewComponent,
-    AddComponent,
-    EditComponent,
+    MissionsViewComponent,
+    MissionsAddComponent,
+    MissionsEditComponent,
+    AdminRightComponent,
+    AddFobComponent,
+    EditFobComponent,
+    ViewFobComponent,
+    AdminRouterComponent,
   ],
   imports: [
-    CommonModule, SharedModule
+    CommonModule, SharedModule, FontAwesomeModule
   ]
 })
 export class AdminGridModule { }
