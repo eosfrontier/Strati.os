@@ -1,5 +1,5 @@
 export class SupplyBreakpoints {
-    full: 100;
-    high: 70;
-    medium: 35;
+    full = 100;
+    high = 70;
+    medium = 35;
 }

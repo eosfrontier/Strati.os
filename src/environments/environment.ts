@@ -15,7 +15,10 @@ export const environment = {
   },
   FOB: {
     API_URL: `${API_BASE}fob/`
-  }
+  },
+  MISSIONS: {
+    API_URL: `${API_BASE}missions/`
+  },
 };
 /*
  * For easier debugging in development mode, you can import the following file

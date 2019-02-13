@@ -22,6 +22,7 @@ export class BaseModalComponent implements OnInit, OnDestroy {
       this.fobData = fob;
     });
     this.supplyBreakpoints = new SupplyBreakpoints();
+    console.log(this.supplyBreakpoints);
   }
 
   closeModal() {

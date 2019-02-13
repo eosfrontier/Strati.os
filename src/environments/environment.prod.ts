@@ -15,5 +15,8 @@ export const environment = {
   },
   FOB: {
     API_URL: `${API_BASE}fob/`
-  }
+  },
+  MISSIONS: {
+    API_URL: `${API_BASE}missions/`
+  },
 };

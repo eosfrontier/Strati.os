@@ -6,7 +6,6 @@ export class Mission {
     title: string;
     authorised: boolean;
     authorisedby: string;
-    debriefagent: string;
     xo: string;
     icdate: string; // string? Yup. In-game date.
     time: Date;
