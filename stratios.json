@@ -1,0 +1,9 @@
+{
+    "apps": [
+        {
+            "name": "StratiOS",
+            "script": "npm",
+            "args" : "run server"
+        }
+    ]
+}
