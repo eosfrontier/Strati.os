@@ -3,12 +3,13 @@ export class Mission {
     creationtimestamp: number; // epoch
     type: string;
     goal: string;
+    colorcode: string;
     title: string;
     authorised: boolean;
     authorisedby: string;
-    xo: string;
+    xo?: string;
     icdate: string; // string? Yup. In-game date.
-    time: Date;
+    departureTime?: Date;
     delayed: boolean;
     editcounter: number;
 }

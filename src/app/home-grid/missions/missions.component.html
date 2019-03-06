@@ -1,6 +1,8 @@
 <div *ngIf="missionList" class="missions">
 
-
+    <p *ngFor="let mission of missionList">
+        {{ mission.title }}
+    </p>
 
 
 </div>

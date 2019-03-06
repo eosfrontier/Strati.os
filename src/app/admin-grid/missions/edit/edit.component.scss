@@ -1,0 +1,53 @@
+@import '../../../../assets/css/form.scss';
+@import '../../../../assets/css/variables.scss';
+
+.confirm-dialog-overlay {
+    align-items: center;
+    -webkit-animation: fadeIn 0.1s linear;
+    animation: fadeIn 0.1s linear;
+    background: rgba(0, 0, 0, 0.4);
+    display: flex;
+    height: 100vh;
+    justify-content: center;
+    left: 0;
+    position: fixed;
+    top: 0;
+    width: 100vw;
+    z-index: 998;
+}
+
+.confirm-dialog {
+    animation: fadeIn 0.3s linear;
+    background: $dark-terminal;
+    border-bottom: 2px solid $terminalorange;
+    border-radius: 3px 0 0 0;
+    box-shadow: $googleShade;
+    padding: 2.4rem;
+    margin: -1rem 1rem 0 1rem;
+    position: absolute;
+    text-align: center;
+    transition: 0.3s;
+    width: 90%;
+    z-index: 999;
+
+    .warning {
+        color: $terminalorange;
+    }
+
+    .aow {
+        color: rgba($soedark, 0.75);
+        strong {
+            font-weight: bolder;
+        }
+    }
+
+    .buttons {
+        min-height: 5rem;
+        height: auto;
+    }
+
+    p {
+        padding-top: 0.5rem;
+        padding-bottom: 1rem;
+    }
+}
