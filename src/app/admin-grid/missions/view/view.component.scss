@@ -1,0 +1,56 @@
+@import '../../../../assets/css/variables.scss';
+
+.missions {
+
+    display: flex;
+    height: auto;
+    flex-direction: column;
+    padding: 1.5rem;
+    transition: 0.4s;
+    width: 100%;
+
+    &__null {
+        color: $orbitgreen;
+    }
+
+    &__row {
+        align-items: center;
+        background-color: rgba($soedark, 0.33);
+        border-left: 0.8rem solid rgba($soedark, 0.33);
+        border-radius: 2px;
+        box-shadow: $googleShade;
+        display: flex;
+        margin-bottom: 0.2rem;
+        padding: 0.8rem 1.5rem;
+        justify-content: center;
+        width: 100%;
+
+        &__block {
+            flex: 1;
+            width: auto;
+        }
+
+        &.green {
+            border-color: rgba($orbitgreen, 0.33);
+        }
+        &.red {
+            border-color: rgba($orbitred, 0.33);
+        }
+        &.orange {
+            border-color: rgba($terminalorange, 0.33);
+        }
+        &.yellow {
+            border-color: rgba($gubatyellow, 0.33);
+        }
+        &.blue {
+            border-color: rgba($beaconblue, 0.33);
+        }
+    }
+
+
+}
+
+.btn {
+    padding-left: 2.2rem;
+    padding-right: 2.2rem;
+}
