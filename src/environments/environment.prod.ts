@@ -1,4 +1,4 @@
-const SERVER_URL = 'http://localhost:5000/';
+const SERVER_URL = 'http://www.eosfrontier.space:5000/';
 const API_BASE = `${SERVER_URL}api/`;
 
 export const environment = {
