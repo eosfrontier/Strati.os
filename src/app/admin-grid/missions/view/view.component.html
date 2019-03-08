@@ -1,3 +1,18 @@
-<p>
-  view works!
-</p>
+<div *ngIf="missionList" class="missions">
+
+  <div class="missions__row" *ngFor="let mission of missionList | orderBy: 'priority' : reverse" [ngClass]="mission.colorcode">
+    <div class="missions__row__block" style="flex: 2;">{{ mission.title }}</div>
+    <div class="missions__row__block">{{ mission.departureTime | date:'HH:mm' }}</div>
+    <div class="missions__row__block" style="text-align: right;">
+      <button (click)="selectMission(mission);" class="btn btn--green">EDIT</button>
+    </div>
+    <div class="missions__row__block" style="text-align: right;">
+      <button (click)="deleteMission(mission);" class="btn btn--orange">DELETE</button>
+    </div>
+  </div>
+
+</div>
+
+<h2 *ngIf="!missionList" class="missions__null">
+  No active missions.
+</h2>

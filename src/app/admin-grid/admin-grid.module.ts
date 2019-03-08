@@ -13,6 +13,9 @@ import { EditFobComponent } from './fobs/edit/edit.component';
 import { ViewFobComponent } from './fobs/view/view.component';
 import { AdminRouterComponent } from './admin-router/admin-router.component';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { ReactiveFormsModule, FormsModule } from '@angular/forms';
+import { AdminstatusComponent } from './adminstatus/adminstatus.component';
+import { OrderModule } from 'ngx-order-pipe';
 
 @NgModule({
   declarations: [
@@ -26,9 +29,10 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
     EditFobComponent,
     ViewFobComponent,
     AdminRouterComponent,
+    AdminstatusComponent,
   ],
   imports: [
-    CommonModule, SharedModule, FontAwesomeModule
+    CommonModule, SharedModule, FontAwesomeModule, ReactiveFormsModule, FormsModule, OrderModule
   ]
 })
 export class AdminGridModule { }

@@ -1,17 +1,28 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
+import { MissionService } from '../../shared/services/mission.service';
+import { Subscription, Observable, BehaviorSubject } from 'rxjs';
+import { Mission } from '../../shared/models/mission';
 
 @Component({
   selector: 'app-missions',
   templateUrl: './missions.component.html',
   styleUrls: ['./missions.component.scss']
 })
-export class MissionsComponent implements OnInit {
+export class MissionsComponent implements OnInit, OnDestroy {
 
-  missionList: any;
+  missionList: Mission[];
+  missionSubscription: Subscription;
 
-  constructor() { }
+  constructor(private missionService: MissionService) { }
 
   ngOnInit() {
+    this.missionSubscription = this.missionService.getMissionList().subscribe(missions => {
+      this.missionList = missions;
+      console.log(missions);
+    });
   }
 
+  ngOnDestroy() {
+    this.missionSubscription.unsubscribe();
+  }
 }

@@ -58,12 +58,23 @@ a.btn, .btn {
   transition: 0.3s;
 
   &--green {
-    border-color: $terminalgreen;
-    color: $terminalgreen;
+    border-color: $orbitgreen;
+    color: $orbitgreen;
+  }
+
+  &--orange {
+    border-color: $terminalorange;
+    color: $terminalorange;
   }
 
   &:hover, &:active, &:focus {
     border-color: $white;
     color: $white;
+  }
+
+  &:disabled {
+    border-color: $soedark;
+    color: $soedark;
+    cursor: not-allowed;
   }
 }

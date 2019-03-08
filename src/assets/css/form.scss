@@ -1,0 +1,81 @@
+@import 'variables.scss';
+
+input, textarea, select {
+    // prevent the weird yellow Chrome 'autofill' color; we can't tell it to have no background, so we're cheating with animations.
+    &:-webkit-autofill,
+    &:-webkit-autofill:hover,
+    &:-webkit-autofill:focus,
+    &:-webkit-autofill:active {
+        transition: background-color 5000s color 0.3s ease-in-out 0s;
+        transition-delay: 5000s;
+        color: $beaconblue;
+    }
+}
+
+.form {
+
+    &__group {
+        display: flex;
+        flex-direction: column;
+        padding: 1.5rem;
+        width: 100%;
+    }
+
+    &__item {
+        display: flex;
+        flex: 1;
+        flex-direction: column;
+        margin-bottom: 1.5rem;
+
+        label {
+            font-size: 1.6rem;
+            margin: 0.5rem 0 1.5rem 0;
+        }
+
+    }
+
+    &__input {
+
+        background-color: $dark-terminal;
+        background-position: 99%;
+        border-bottom: 2px solid $bluedim;
+        box-shadow: 0 1px 8px 0 rgba(0,0,0,0.2), 0 3px 4px 0 rgba(0,0,0,0.14), 0 3px 3px -2px rgba(0,0,0,0.12);
+        display: flex;
+        padding: 0.8rem 0.2rem;
+        flex: 1;
+        flex-direction: column;
+        position: relative;
+        transition: 0.2s;
+        width: 100%;
+
+        &:hover, &:active, &:focus {
+            background-color: lighten($dark-terminal, 2%);
+            border-color: $bluebright;
+        }
+
+        input, select, textarea {
+            background: none;
+            border: none;
+            color: $soelite;
+            flex: 1;
+            font-size: 1.4rem;
+            outline: 0;
+            padding: 0.4rem;
+        }
+
+        &.error {
+            border-color: $orbitred;
+            input, select {
+                color: $orbitred;
+            }
+        }
+
+    }
+
+}
+
+.error-text {
+    color: $orbitred;
+}
+
+// CHECKBOX SCSS ///////////////
