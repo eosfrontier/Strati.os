@@ -1,4 +1,4 @@
-<div *ngIf="missionList" class="missions">
+<div *ngIf="missionList && missionList.length > 0" class="missions">
 
     <p *ngFor="let mission of missionList">
         {{ mission.title }}
@@ -7,7 +7,7 @@
 
 </div>
 
-<h1 *ngIf="!missionList" class="missions__null">
+<h1 *ngIf="!missionList || missionList.length === 0" class="missions__null">
     NO ACTIVE OR PLANNED MISSIONS.
     <br />
     PLEASE STAND BY.

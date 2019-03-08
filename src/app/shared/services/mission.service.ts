@@ -37,10 +37,6 @@ export class MissionService {
   }
 
   private renewApiSubscription(): void {
-    console.log('renew trigger');
-    if (this.apiSubscription) {
-      this.apiSubscription.unsubscribe();
-    }
     this.apiSubscription = this.getMissionsFromAPI().subscribe((missions) => {
       this.setMissionList(missions);
     });
@@ -74,6 +70,7 @@ export class MissionService {
       departureTime.setMinutes(formData.departureTime.split(':')[1]);
 
     const mission = new Mission();
+      mission._id = formData._id;
       mission.priority = formData.priority;
       mission.creationtimestamp = Date.now();
       mission.type = formData.type;

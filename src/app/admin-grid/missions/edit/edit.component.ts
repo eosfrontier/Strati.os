@@ -33,6 +33,7 @@ export class MissionsEditComponent implements OnInit, OnDestroy {
   ngOnInit() {
     this.missionSubscription = this.missionService.getSelectedMission().subscribe(mission => {
       this.currentMission = mission;
+      console.log(this.currentMission);
 
       if (this.currentMission.delayed === true) {
         console.log('(!) delayed');
@@ -59,9 +60,9 @@ export class MissionsEditComponent implements OnInit, OnDestroy {
 
     this.oldDepartureTime = new Date(this.currentMission.departureTime);
     const newDeparture = this.convertDateToTime(this.oldDepartureTime);
-    console.log(newDeparture);
 
     const formGroup = new FormGroup({
+      _id: new FormControl(this.currentMission._id),
       priority: new FormControl(this.currentMission.priority, [Validators.required, Validators.max(9), Validators.min(0)]),
       departureTime: new FormControl(newDeparture, [Validators.required]),
       colorcode: new FormControl(this.currentMission.colorcode),
@@ -84,7 +85,13 @@ export class MissionsEditComponent implements OnInit, OnDestroy {
 
 
   clickSubmit() {
-    this.showConfirmDialog = true;
+    const oldTime = this.convertDateToTime(this.oldDepartureTime);
+    const newTime = this.missionForm.value.departureTime;
+    if (oldTime !== newTime) {
+      this.showConfirmDialog = true;
+    } else {
+      this.submitMission(this.delayed);
+    }
   }
 
   submitMission(delayed: boolean) {
@@ -93,7 +100,9 @@ export class MissionsEditComponent implements OnInit, OnDestroy {
     if (delayed === true) {
       mission.delayed = true;
     } else {
+      // save without delay
       mission.delayed = mission.delayed ? true : false;
+      mission.departureTime = this.oldDepartureTime;
     }
     this.missionService.updateMission(mission);
     this.adminRouter.setSelectedMenuItem('missionView');

@@ -2,7 +2,7 @@ const SERVER_URL = 'http://localhost:5000/';
 const API_BASE = `${SERVER_URL}api/`;
 
 export const environment = {
-  production: false,
+  production: true,
   SERVER_URL: SERVER_URL,
   API_URL: API_BASE,
   WEATHER: {
