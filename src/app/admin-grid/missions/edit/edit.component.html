@@ -94,12 +94,6 @@
   </div>
 
   <div>
-    <!-- <button *ngIf="!delayed" [disabled]="!missionForm.valid" class="btn btn--green" (click)="submitMission('false')">
-      SAVE CHANGES
-    </button>
-    <button *ngIf="delayed" [disabled]="!missionForm.valid" class="btn btn--green" (click)="clickSubmit()">
-      SAVE CHANGES
-    </button> -->
     <button [disabled]="!missionForm.valid" class="btn btn--green" (click)="clickSubmit()">
       SAVE CHANGES
     </button>
@@ -117,20 +111,18 @@
 
   <div class="confirm-dialog">
 
-    <h3 class="warning" (click)="closeDialog()" style="text-align: right; cursor: pointer;">
+    <p class="warning" (click)="closeDialog()" style="text-align: right; cursor: pointer;">
       <fa-icon icon="times"></fa-icon>
-    </h3>
+    </p>
 
     <h3 class="warning">
-      <fa-icon icon="exclamation-triangle"></fa-icon>&nbsp;You are about to delay an operation
+      <fa-icon icon="exclamation-triangle"></fa-icon>&nbsp;A time difference has been detected
     </h3>
-    <p>Delaying an operation can have negative effects on morale, strategic situation and other operations.</p>
-    <p>Please be absolutely sure before you delay.</p>
 
     <p class="buttons">
-      <a class="btn btn--orange" (click)="submitMission('true');">I'm sure, delay the operation.</a>
+      <a class="btn btn--orange" (click)="submitMission('true');">Confirm changes</a>
       &nbsp;
-      <a class="btn" (click)="submitMission('false');">Save changes without delay.</a>
+      <a class="btn" (click)="submitMission('false');">Save without time changes</a>
     </p>
 
     <p class="aow"><i>
