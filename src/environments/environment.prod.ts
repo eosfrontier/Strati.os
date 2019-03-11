@@ -1,4 +1,4 @@
-const SERVER_URL = 'http://localhost:5000/';
+const SERVER_URL = 'https://cic.eosfrontier.space/';
 const API_BASE = `${SERVER_URL}api/`;
 
 export const environment = {
