@@ -25,7 +25,7 @@
         width: auto;
 
         @media(min-width: 992px) {
-            overflow: hidden;
+            overflow-y: hidden;
             width: 100%;
         }
 
@@ -40,22 +40,18 @@
             animation: none;
             grid-area: menu;
             transition: 0.3s;
-            &:hover {
-                border-bottom: 2px solid $bluedim;
-            }
+            padding-left: 0;
         }
 
-        &.footer-clock {
+        &.footer-clock, &.clock {
             background-image: none;
             border-bottom: 2px solid rgba($gubatyellow, 0.5);
             color: $gubatyellow;
             grid-area: footerclock;
             transition: 0.2s;
-            &:hover {
-                background: $gubatyellow;
-                color: $dark;
-            }
         }
+
+
     }
 
 }

@@ -1,5 +1,4 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
-import { ClockService } from '../shared/services/clock.service';
 import { Subscription } from 'rxjs';
 import { IcDate } from '../shared/models/icdate';
 import { DateService } from '../shared/services/date.service';
@@ -11,20 +10,14 @@ import { DateService } from '../shared/services/date.service';
 })
 export class FobGridComponent implements OnInit, OnDestroy {
 
-  private clockSubscription$: Subscription;
   private dateSubscription$: Subscription;
-  time: Date;
   icDate$: IcDate;
   dateReceived: boolean;
   fictionalTimeStandard = 'ETC';
 
-  constructor(private clockService: ClockService, private dateService: DateService) { }
+  constructor(private dateService: DateService) { }
 
   ngOnInit() {
-    this.time = new Date();
-    this.clockSubscription$ = this.clockService.getClock().subscribe(
-      time => this.time = time
-    );
     this.dateSubscription$ = this.dateService.getIcDate().subscribe(res => {
       if (res) {
         this.icDate$ = res;
@@ -34,7 +27,6 @@ export class FobGridComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy() {
-    this.clockSubscription$.unsubscribe();
     this.dateSubscription$.unsubscribe();
   }
 

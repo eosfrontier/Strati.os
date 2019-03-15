@@ -6,9 +6,10 @@
     height: auto;
     min-height: 100vh;
     overflow: auto;
+    overflow-x: hidden;
 
     grid-template-rows: 8.5rem 5rem auto;
-    grid-template-columns: 1fr 48rem;
+    grid-template-columns: 1fr auto;
     grid-template-areas:
       "top menu"
       "titlebar titlebar"
@@ -24,7 +25,8 @@
 
     &.titlebar {
       grid-area: titlebar;
-      border-bottom: 2px solid $soered;
+      border-bottom: 2px solid transparent;
+      margin-bottom: -.6rem;
     }
 
   }
@@ -45,14 +47,20 @@
     flex: 1;
     &--double {
       flex: 2;
+      @media(max-width: $break-sm) {
+        display: none;
+      }
     }
   }
 }
 
-.time, .date {
+.date {
   text-align: right;
 }
 
-.time {
-  font-size: 2.8rem;
+:host /deep/ .time {
+  font-size: 2.4rem;
+  margin: 0rem auto;
+  text-align: right;
+  color: $gray;
 }

@@ -8,4 +8,5 @@ export class Fob {
     foodSupplyPercentage: number;
     weaponSupplyPercentage: number;
     medicalSupplyPercentage: number;
+    combinedPercentage?: number;
 }
