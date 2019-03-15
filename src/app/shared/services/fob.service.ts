@@ -28,7 +28,8 @@ export class FobService {
   }
 
   private setFobList(list: Fob[]): void {
-    this.fobList.next(list);
+    const convertedFobList = this.addCombinedSupplyPercentage(list);
+    this.fobList.next(convertedFobList);
   }
 
   public selectFob(selected: Fob) {
@@ -44,6 +45,15 @@ export class FobService {
 
   public getSelectedFob(): Observable<Fob> {
     return this.selectedFob.asObservable();
+  }
+
+  private addCombinedSupplyPercentage(list: Fob[]): Fob[] {
+    const fobList = [];
+    for (const fob of list) {
+      fob.combinedPercentage = ((fob.foodSupplyPercentage + fob.medicalSupplyPercentage + fob.weaponSupplyPercentage) / 3);
+      fobList.push(fob);
+    }
+    return fobList;
   }
 
   private getFobsFromAPI(): Observable<any> {

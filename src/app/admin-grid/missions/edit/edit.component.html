@@ -5,47 +5,41 @@
 
   <div class="form__item">
     <label for="title">Title</label>
-    <div class="form__input" [ngClass]="{'error': title.invalid && (title.touched || title.dirty)}">
+    <div class="form__input" [ngClass]="fieldCss(title)">
       <input type="text" formControlName="title" id="title" name="title" placeholder="Operation Skyjack" />
     </div>
-    <div class="error-text" *ngIf='title.invalid && (title.touched || title.dirty)'>
-      <p *ngIf='title.errors.required'>Title is missing. Imagine if someone dies on "operation Untitled". What will you
-        tell their parents?</p>
-    </div>
+    <app-form-error-field [displayError]="isValid(title)" errorMsg='Title is missing. Imagine if someone dies on "operation Untitled". What will you
+        tell their parents?'></app-form-error-field>
   </div>
 
 
   <div class="form__item">
     <label for="title">Departure time</label>
-    <div class="form__input"
-      [ngClass]="{'error': departureTime.invalid && (departureTime.touched || departureTime.dirty)}">
+    <div class="form__input" [ngClass]="fieldCss(departureTime)">
       <input type="time" formControlName="departureTime" id="departureTime" name="departureTime" />
     </div>
-    <div class="error-text" *ngIf='departureTime.invalid && (departureTime.touched || departureTime.dirty)'>
-      <p *ngIf='title.errors.required'>This is not a valid time.</p>
-    </div>
+    <app-form-error-field [displayError]="isValid(departureTime)" errMsg='This is not a valid time.'>
+    </app-form-error-field>
   </div>
 
 
   <div class="form__item">
     <label for="priority">Priority</label>
-    <div class="form__input" [ngClass]="{'error': priority.invalid && (priority.touched || priority.dirty)}">
+    <div class="form__input" [ngClass]="fieldCss(priority)">
       <input type="number" formControlName="priority" id="priority" name="priority" min="0" max="9" />
     </div>
-    <div class="error-text" *ngIf='priority.invalid && (priority.touched || priority.dirty)'>
-      <p *ngIf='priority.errors.required'>The priority is invalid/missing It can be a number from 0 to 9.</p>
-    </div>
+    <app-form-error-field [displayError]="isValid(priority)"
+      errMsg='he priority is invalid/missing It can be a number from 0 to 9.'></app-form-error-field>
   </div>
 
 
   <div class="form__item">
     <label for="type">Mission type</label>
-    <div class="form__input" [ngClass]="{'error': type.invalid && (type.touched || type.dirty)}">
+    <div class="form__input" [ngClass]="fieldCss(type)">
       <input type="text" formControlName="type" id="type" name="type" placeholder="Combat" />
     </div>
-    <div class="error-text" *ngIf='type.invalid && (type.touched || type.dirty)'>
-      <p *ngIf='type.errors.required'>Please define what kind of mission this will be.</p>
-    </div>
+    <app-form-error-field [displayError]="isValid(type)" errMsg='Please define what kind of mission this will be.'>
+    </app-form-error-field>
   </div>
 
 
@@ -66,44 +60,38 @@
 
   <div class="form__item">
     <label for="goal">Mission goal</label>
-    <div class="form__input" [ngClass]="{'error': goal.invalid && (goal.touched || goal.dirty)}">
+    <div class="form__input" [ngClass]="fieldCss(goal)">
       <input type="text" formControlName="goal" id="goal" name="goal" placeholder="Keep it less than 200 letters short."
         maxlength="200" />
     </div>
-    <div class="error-text" *ngIf='goal.invalid && (goal.touched || goal.dirty)'>
-      <p *ngIf='goal.errors.required'>This mission is missing a goal.</p>
-    </div>
+    <app-form-error-field [displayError]="isValid(goal)" errMsg='This mission is missing a goal.'>
+    </app-form-error-field>
   </div>
 
 
-  <div class="form__item">
-    <label for="goal">Authorised?</label>
+    <div class="form__item">
+      <label for="goal">Authorised?</label>
 
-    <input formControlName="authorisedby" id="authorisedby" name="authorisedby" type="checkbox" value="authorisedby" />
-    <div class="form__checkbox"></div>
+      <input formControlName="authorisedby" id="authorisedby" name="authorisedby" type="checkbox"
+        value="authorisedby" />
+      <div class="form__checkbox"></div>
 
-  </div>
-
-
-  <div class="form__item">
-    <label for="authorisedby">Authorised by</label>
-    <div class="form__input">
-      <input type="text" formControlName="authorisedby" id="authorisedby" name="authorisedby" placeholder="" />
     </div>
 
-  </div>
 
-  <div>
-    <!-- <button *ngIf="!delayed" [disabled]="!missionForm.valid" class="btn btn--green" (click)="submitMission('false')">
-      SAVE CHANGES
-    </button>
-    <button *ngIf="delayed" [disabled]="!missionForm.valid" class="btn btn--green" (click)="clickSubmit()">
-      SAVE CHANGES
-    </button> -->
-    <button [disabled]="!missionForm.valid" class="btn btn--green" (click)="clickSubmit()">
-      SAVE CHANGES
-    </button>
-  </div>
+    <div class="form__item">
+      <label for="authorisedby">Authorised by</label>
+      <div class="form__input">
+        <input type="text" formControlName="authorisedby" id="authorisedby" name="authorisedby" placeholder="" />
+      </div>
+
+    </div>
+
+    <div>
+      <button [disabled]="!missionForm.valid" class="btn btn--green" (click)="clickSubmit()">
+        SAVE CHANGES
+      </button>
+    </div>
 
 </form>
 
@@ -117,20 +105,20 @@
 
   <div class="confirm-dialog">
 
-    <h3 class="warning" (click)="closeDialog()" style="text-align: right; cursor: pointer;">
+    <p class="warning" (click)="closeDialog()" style="text-align: right; cursor: pointer;">
       <fa-icon icon="times"></fa-icon>
-    </h3>
+    </p>
 
     <h3 class="warning">
-      <fa-icon icon="exclamation-triangle"></fa-icon>&nbsp;You are about to delay an operation
+      <fa-icon icon="exclamation-triangle"></fa-icon>&nbsp;Departure time has been altered
     </h3>
-    <p>Delaying an operation can have negative effects on morale, strategic situation and other operations.</p>
-    <p>Please be absolutely sure before you delay.</p>
+
+    <p>Delaying a mission can have strategic consequences, and affect crew morale.</p>
 
     <p class="buttons">
-      <a class="btn btn--orange" (click)="submitMission('true');">I'm sure, delay the operation.</a>
+      <a class="btn btn--orange" (click)="submitMission('true');">Confirm changes</a>
       &nbsp;
-      <a class="btn" (click)="submitMission('false');">Save changes without delay.</a>
+      <a class="btn" (click)="submitMission('false');">Save without time changes</a>
     </p>
 
     <p class="aow"><i>

@@ -1,4 +1,5 @@
 export class Mission {
+    _id: string;
     priority: number;
     creationtimestamp: number; // epoch
     type: string;

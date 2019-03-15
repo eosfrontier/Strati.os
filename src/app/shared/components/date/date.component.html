@@ -1,7 +1,12 @@
-<p *ngIf="dateReceived" class="day">
-    {{ icDate$.dayName | uppercase }} {{ icDate$.day | number }}
-</p>
 
-<p *ngIf="dateReceived" class="monthyear">
-    {{ icDate$.monthName | uppercase }} {{ icDate$.year | number }}{{ icDate$.yearAfter }}
-</p>
+<div class="date-container">
+
+    <p *ngIf="dateReceived" class="day">
+        {{ icDate$.dayName | uppercase }} {{ icDate$.day | number }}
+    </p>
+
+    <p *ngIf="dateReceived" class="monthyear">
+        {{ icDate$.monthName | uppercase }} {{ icDate$.year | number }}{{ icDate$.yearAfter }}
+    </p>
+
+</div>

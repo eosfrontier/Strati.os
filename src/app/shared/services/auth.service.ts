@@ -7,6 +7,7 @@ import { Observable, BehaviorSubject } from 'rxjs';
 export class AuthService {
 
   private authStatus = new BehaviorSubject(false);
+  private readonly passcode = 451; // yes, right here in the code. IT doesn't need to be secure.
 
   constructor() {
     this.setLoginToFalse();
@@ -18,5 +19,10 @@ export class AuthService {
 
   public getAuthStatus(): Observable<boolean> {
     return this.authStatus;
+  }
+
+  public setAuthStatus(passcode: number): boolean {
+    this.authStatus.next(passcode === this.passcode);
+    return (passcode === this.passcode);
   }
 }

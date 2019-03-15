@@ -32,7 +32,11 @@
 
     &__coordinates {
         color: $soelite;
-        margin-top: 17.5%;
+        margin-top: 27.5%;
+
+         @media (max-width: 900px) {
+             margin-top: 17.5%;
+         }
     }
 
     &__title {
@@ -70,40 +74,6 @@
         display: flex;
         flex-direction: column;
         justify-content: center;
-
-        &__category {
-
-            min-width: 3.5rem;
-
-            fa-icon {
-                font-size: 1.8rem;
-                margin-left: -2rem;
-                padding: 0.1rem 0.8rem 0rem 0.8rem;
-                transition: 0.4s;
-            }
-
-            .dot {
-                background-color: $soedark;
-                border-radius: 100%;
-                height: 0.8rem;
-                margin-top: 0.7rem;
-                position: absolute;
-                right: calc(50% - 2rem);
-                transition: 0.3s;
-                width: 0.8rem;
-                z-index: 3;
-
-                &--high {
-                    background: $terminalgreen;
-                }
-                &--medium {
-                    background: $gubatyellow;
-                }
-                &--low {
-                    background: $orbitred;
-                }
-            }
-        }
     }
 }
 
@@ -116,4 +86,27 @@ img {
     -webkit-transform: rotate3d(0,0,0,0deg);
     -ms-transform: rotate3d(0,0,0,0deg);
     transform: rotate3d(0,0,0,0deg);
+}
+
+$dotSize: 0.8rem;
+.dot {
+    background-color: $soedark;
+    border-radius: 100%;
+    height: $dotSize;
+    margin-top: $dotSize;
+    position: absolute;
+    right: calc(50% - 0.4rem);
+    transition: 0.3s;
+    width: $dotSize;
+    z-index: 3;
+
+    &--high {
+        background: $terminalgreen;
+    }
+    &--medium {
+        background: $gubatyellow;
+    }
+    &--low {
+        background: $orbitred;
+    }
 }
