@@ -3,6 +3,7 @@ import { FormGroup, FormControl, Validators, FormBuilder } from '@angular/forms'
 import { MissionService } from '../../../shared/services/mission.service';
 import { DateService } from '../../../shared/services/date.service';
 import { AdminMenuService } from '../../admin-menu.service';
+import { ValidatorService } from '../../../shared/services/form/validator.service';
 
 @Component({
   selector: 'app-mission-add',
@@ -15,7 +16,8 @@ export class MissionsAddComponent implements OnInit, OnDestroy {
     private missionService: MissionService,
     private dateService: DateService,
     private fb: FormBuilder,
-    private adminRouter: AdminMenuService
+    private adminRouter: AdminMenuService,
+    private validator: ValidatorService
   ) { }
 
   missionForm: FormGroup;
@@ -24,6 +26,12 @@ export class MissionsAddComponent implements OnInit, OnDestroy {
     this.missionForm = this.generateMissionFormGroup();
   }
 
+  fieldCss(field: any): {} {
+    return this.validator.displayFieldCss(field);
+  }
+  isValid(field: any): boolean {
+    return this.validator.isFieldValid(field);
+  }
 
   submitMission(): void {
     const mission = this.missionService.convertFormDataToMission(this.missionForm.value);

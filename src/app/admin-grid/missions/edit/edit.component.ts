@@ -6,6 +6,7 @@ import { MissionService } from '../../../shared/services/mission.service';
 import { IcDate } from '../../../shared/models/icdate';
 import { AdminMenuService } from '../../admin-menu.service';
 import { DateService } from '../../../shared/services/date.service';
+import { ValidatorService } from '../../../shared/services/form/validator.service';
 
 
 @Component({
@@ -23,7 +24,8 @@ export class MissionsEditComponent implements OnInit, OnDestroy {
     private missionService: MissionService,
     private fb: FormBuilder,
     private dateService: DateService,
-    private adminRouter: AdminMenuService
+    private adminRouter: AdminMenuService,
+    private validator: ValidatorService
   ) { }
 
   oldDepartureTime: Date;
@@ -42,6 +44,13 @@ export class MissionsEditComponent implements OnInit, OnDestroy {
     });
 
     this.missionForm = this.generateMissionForm();
+  }
+
+  fieldCss(field: any): {} {
+    return this.validator.displayFieldCss(field);
+  }
+  isValid(field: any): boolean {
+    return this.validator.isFieldValid(field);
   }
 
 

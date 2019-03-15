@@ -8,13 +8,14 @@ import { SharedModule } from '../shared/shared.module';
 import { FooterComponent } from './footer/footer.component';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { MissionsComponent } from './missions/missions.component';
+import { OrderModule } from 'ngx-order-pipe';
 
 @NgModule({
   declarations: [
     GridComponent, SideComponent, FooterLeftComponent, FooterComponent, MissionsComponent
   ],
   imports: [
-    CommonModule, SharedModule, FontAwesomeModule
+    CommonModule, SharedModule, FontAwesomeModule, OrderModule
   ]
 })
 export class GridModule { }
