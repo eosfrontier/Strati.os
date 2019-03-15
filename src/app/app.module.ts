@@ -18,6 +18,7 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { library } from '@fortawesome/fontawesome-svg-core';
 import {
   faHome,
+  faChevronDown,
   faProjectDiagram,
   faPlaneDeparture,
   faLock,
@@ -62,6 +63,7 @@ export class AppModule {
     // add only the FA icons that we're using to prevent potential bloat.
     library.add(
       faHome,
+      faChevronDown,
       faProjectDiagram,
       faPlaneDeparture,
       faLock,
