@@ -9,7 +9,9 @@ export class AdminMenuService {
 
   selectedMenuItem: BehaviorSubject<string> = new BehaviorSubject(null);
 
-  constructor() { }
+  constructor() {
+    this.selectedMenuItem.next('missionView');
+  }
 
   public getSelectedMenuItem(): Observable<string> {
     return this.selectedMenuItem.asObservable();

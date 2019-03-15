@@ -16,6 +16,7 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { AdminstatusComponent } from './adminstatus/adminstatus.component';
 import { OrderModule } from 'ngx-order-pipe';
+import { LoginComponent } from './login/login.component';
 
 @NgModule({
   declarations: [
@@ -30,6 +31,7 @@ import { OrderModule } from 'ngx-order-pipe';
     ViewFobComponent,
     AdminRouterComponent,
     AdminstatusComponent,
+    LoginComponent,
   ],
   imports: [
     CommonModule, SharedModule, FontAwesomeModule, ReactiveFormsModule, FormsModule, OrderModule

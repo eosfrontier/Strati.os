@@ -1,8 +1,23 @@
-<div *ngIf="missionList && missionList.length > 0" class="missions">
+<div *ngIf="missionList && missionList.length > 0" class="missions" >
 
-    <p *ngFor="let mission of missionList">
-        {{ mission.title }}
-    </p>
+    <div class="missions__header">
+        <div class="missions__rows">Status <fa-icon icon="chevron-down"></fa-icon></div>
+        <div class="missions__rows">Title <fa-icon icon="chevron-down"></fa-icon></div>
+        <div class="missions__rows">Type <fa-icon icon="chevron-down"></fa-icon></div>
+        <div class="missions__rows">Departure <fa-icon icon="chevron-down"></fa-icon></div>
+    </div>
+
+    <div *ngFor="let mission of missionList | orderBy: 'priority' : reverse"
+    [ngClass]="mission.colorcode" class="missions__entry">
+        <!-- <div class="missions__rows"></div> -->
+        <div class="missions__rows">
+            <div class="status-ball"></div>
+            &nbsp;&nbsp;Status
+        </div>
+        <div class="missions__rows">{{ mission.title }}</div>
+        <div class="missions__rows">{{ mission.type }}</div>
+        <div class="missions__rows">{{ mission.departureTime | date:'HH:mm' }}</div>
+    </div>
 
 
 </div>

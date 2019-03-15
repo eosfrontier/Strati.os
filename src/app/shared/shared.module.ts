@@ -8,9 +8,17 @@ import { HttpClientModule } from '@angular/common/http';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { DateComponent } from './components/date/date.component';
 import { SupplyBreakpointPipe } from './pipes/supply-breakpoint.pipe';
+import { FormErrorFieldComponent } from './components/form-error-field/form-error-field.component';
 
 @NgModule({
-  declarations: [MenuComponent, TopComponent, ClockComponent, DateComponent, SupplyBreakpointPipe],
+  declarations: [
+    MenuComponent,
+    TopComponent,
+    ClockComponent,
+    DateComponent,
+    SupplyBreakpointPipe,
+    FormErrorFieldComponent
+  ],
   imports: [
     CommonModule,
     AppRoutingModule,
@@ -22,6 +30,7 @@ import { SupplyBreakpointPipe } from './pipes/supply-breakpoint.pipe';
     TopComponent,
     ClockComponent,
     DateComponent,
+    FormErrorFieldComponent,
     SupplyBreakpointPipe,
   ]
 })

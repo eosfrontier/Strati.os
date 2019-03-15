@@ -3,14 +3,12 @@
 
 .grid {
 
-    grid-template-rows: 8.5rem 1fr 1fr 1fr auto;
-    grid-template-columns: 16.5rem 22rem 1fr 32rem;
+    grid-template-rows: 8.5rem auto 1fr;
+    grid-template-columns: 1fr auto;
     grid-template-areas:
-        "top top menu menu"
-        "main main main main"
-        "main main main main"
-        "main main main main"
-        "footerconnect footer footer footerclock";
+        "top menu"
+        "headerconnect headerconnect"
+        "main main";
 
   .item {
 
@@ -23,14 +21,44 @@
       overflow-y: visible;
     }
 
-    &.footer-left {
-      grid-area: footerconnect;
+    &.header-connect {
+      grid-area: headerconnect;
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      padding: .2rem .8rem .2rem 1.6rem;
+      border-bottom: 0;
+      margin-bottom: -.6rem;
+      .block {
+        flex: 1;
+      }
     }
 
-    &.footer {
-      grid-area: footer;
+    &.clock {
+      align-items: center;
+      display: flex;
+      grid-area: clock;
+
+      border-bottom: 2px solid rgba($soelite, 0.5);
     }
 
   }
 
+}
+
+:host /deep/ {
+
+  .date-container {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-end;
+  }
+
+  h2.time {
+    color: $gray;
+    margin: 0.2rem auto;
+    font-size: 2rem;
+    text-align: left;
+  }
 }
