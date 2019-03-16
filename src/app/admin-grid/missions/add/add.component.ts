@@ -60,10 +60,8 @@ export class MissionsAddComponent implements OnInit, OnDestroy {
       authorised: new FormControl(false),
       authorisedby: new FormControl(''),
     });
-
     return formGroup;
   }
-
 
   ngOnDestroy() {
     this.missionForm = null;

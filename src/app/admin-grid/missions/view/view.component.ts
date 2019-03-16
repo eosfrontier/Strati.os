@@ -24,7 +24,6 @@ export class MissionsViewComponent implements OnInit, OnDestroy {
   ngOnInit() {
     this.missionSubscription = this.missionService.getMissionList().subscribe(missions => {
       this.missionList = missions;
-      console.log(this.missionList);
     });
   }
 

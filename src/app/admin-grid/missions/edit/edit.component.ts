@@ -8,7 +8,6 @@ import { AdminMenuService } from '../../admin-menu.service';
 import { DateService } from '../../../shared/services/date.service';
 import { ValidatorService } from '../../../shared/services/form/validator.service';
 
-
 @Component({
   selector: 'app-mission-edit',
   templateUrl: './edit.component.html',
@@ -35,14 +34,10 @@ export class MissionsEditComponent implements OnInit, OnDestroy {
   ngOnInit() {
     this.missionSubscription = this.missionService.getSelectedMission().subscribe(mission => {
       this.currentMission = mission;
-      console.log(this.currentMission);
-
       if (this.currentMission.delayed === true) {
-        console.log('(!) delayed');
         this.delayed = true;
       }
     });
-
     this.missionForm = this.generateMissionForm();
   }
 
@@ -52,8 +47,6 @@ export class MissionsEditComponent implements OnInit, OnDestroy {
   isValid(field: any): boolean {
     return this.validator.isFieldValid(field);
   }
-
-
 
   /**
   * @description getters for the validated input fields.
@@ -92,7 +85,6 @@ export class MissionsEditComponent implements OnInit, OnDestroy {
     return `${hours}:${minutes}`;
   }
 
-
   clickSubmit() {
     const oldTime = this.convertDateToTime(this.oldDepartureTime);
     const newTime = this.missionForm.value.departureTime;
@@ -109,7 +101,6 @@ export class MissionsEditComponent implements OnInit, OnDestroy {
     if (delayed === true) {
       mission.delayed = true;
     } else {
-      // save without delay
       mission.delayed = mission.delayed ? true : false;
       mission.departureTime = this.oldDepartureTime;
     }
