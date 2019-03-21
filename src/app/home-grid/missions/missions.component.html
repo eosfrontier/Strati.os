@@ -7,7 +7,7 @@
         <div class="missions__rows">Departure <fa-icon icon="chevron-down"></fa-icon></div>
     </div>
 
-    <div *ngFor="let mission of missionList | orderBy: 'priority' : reverse"
+    <div *ngFor="let mission of missionList | orderBy: 'priority'"
     [ngClass]="mission.colorcode" class="missions__entry">
         <!-- <div class="missions__rows"></div> -->
         <div class="missions__rows">

@@ -1,6 +1,6 @@
 <ul class="hex">
 
-  <app-base *ngFor="let fob of fobList" class="hex__tile" [fobData]="fob" (click)="selectFob(fob)"></app-base>
+  <app-base *ngFor="let fob of fobList | orderBy: 'priority'" class="hex__tile" [fobData]="fob" (click)="selectFob(fob)"></app-base>
 
   <app-base-modal *ngIf="selectedFob"></app-base-modal>
 
