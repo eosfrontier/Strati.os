@@ -1,10 +1,9 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHandler } from '@angular/common/http';
-import { Observable, BehaviorSubject } from 'rxjs';
+import { Observable, BehaviorSubject, Subscription } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { Fob } from '../models/fob';
 import { environment } from '../../../environments/environment';
-import { SocketService } from './socket.service';
 import { SupplyBreakpoints } from '../models/supplybreakpoints';
 
 @Injectable({
@@ -15,12 +14,17 @@ export class FobService {
   fobList: BehaviorSubject<Fob[]> = new BehaviorSubject(null);
   selectedFob: BehaviorSubject<Fob> = new BehaviorSubject(null);
   breakpoints: SupplyBreakpoints;
+  apiSubscription: Subscription;
 
-  constructor(private http: HttpClient, private socketService: SocketService) {
-    this.getFobsFromAPI().subscribe((fobs) => {
+  constructor(private http: HttpClient) {
+    this.renewApiSubscription();
+    this.breakpoints = new SupplyBreakpoints();
+  }
+
+  private renewApiSubscription(): void {
+    this.apiSubscription = this.getFobsFromAPI().subscribe((fobs) => {
       this.setFobList(fobs);
     });
-    this.breakpoints = new SupplyBreakpoints();
   }
 
   public getFobList(): Observable<Fob[]> {
@@ -54,6 +58,19 @@ export class FobService {
       fobList.push(fob);
     }
     return fobList;
+  }
+
+  public updateFob(fob: Fob): void {
+    this.http.post(environment.FOB.API_URL + 'update', fob).subscribe(
+      data => {
+        console.log(data);
+      }
+    );
+  }
+
+  public socketUpdateTrigger(): void {
+    console.log('socketupdatetrigger');
+    this.renewApiSubscription();
   }
 
   private getFobsFromAPI(): Observable<any> {

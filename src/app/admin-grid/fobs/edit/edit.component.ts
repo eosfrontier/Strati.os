@@ -26,7 +26,6 @@ export class EditFobComponent implements OnInit, OnDestroy {
   ngOnInit() {
     this.fobSubscription = this.fobService.getSelectedFob().subscribe(fob => {
       this.currentFob = fob;
-      console.log(this.currentFob);
     });
     this.fobForm = this.generateForm();
   }
@@ -39,7 +38,9 @@ export class EditFobComponent implements OnInit, OnDestroy {
   }
 
   onSubmit() {
-    console.log(this.fobForm.value);
+    this.fobService.updateFob(this.fobForm.value);
+    this.fobService.unselectFob();
+    this.adminRouter.setSelectedMenuItem('fobView');
   }
 
   private generateForm(): FormGroup {
