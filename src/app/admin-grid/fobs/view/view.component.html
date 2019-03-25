@@ -11,7 +11,7 @@
       <div class="half">&nbsp;</div>
     </li>
 
-    <li *ngFor="let fob of fobList">
+    <li *ngFor="let fob of fobList | orderBy: 'orderCode'">
 
       <div># {{ fob.name }}</div>
 
@@ -24,7 +24,7 @@
       </div>
 
       <div class="half text-right">
-        <button class="btn">
+        <button class="btn" (click)="editFob(fob)">
           <fa-icon icon="cog"></fa-icon>&nbsp;DETAILS / EDIT
         </button>
       </div>

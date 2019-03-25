@@ -18,7 +18,7 @@
     <div class="form__input" [ngClass]="fieldCss(departureTime)">
       <input type="time" formControlName="departureTime" id="departureTime" name="departureTime" />
     </div>
-    <app-form-error-field [displayError]="isValid(departureTime)" errMsg='This is not a valid time.'>
+    <app-form-error-field [displayError]="isValid(departureTime)" errorMsg='This is not a valid time.'>
     </app-form-error-field>
   </div>
 
@@ -29,7 +29,7 @@
       <input type="number" formControlName="priority" id="priority" name="priority" min="0" max="9" />
     </div>
     <app-form-error-field [displayError]="isValid(priority)"
-      errMsg='he priority is invalid/missing It can be a number from 0 to 9.'></app-form-error-field>
+      errorMsg='The priority is invalid/missing. It can be a number from 0 to 9.'></app-form-error-field>
   </div>
 
 
@@ -38,7 +38,8 @@
     <div class="form__input" [ngClass]="fieldCss(type)">
       <input type="text" formControlName="type" id="type" name="type" placeholder="Combat" />
     </div>
-    <app-form-error-field [displayError]="isValid(type)" errMsg='Please define what kind of mission this will be.'>
+    <app-form-error-field [displayError]="isValid(type)"
+      errorMsg='What kind of mission will this be? Or are you planning to send soldiers to do xeno-archeology?'>
     </app-form-error-field>
   </div>
 
@@ -64,34 +65,60 @@
       <input type="text" formControlName="goal" id="goal" name="goal" placeholder="Keep it less than 200 letters short."
         maxlength="200" />
     </div>
-    <app-form-error-field [displayError]="isValid(goal)" errMsg='This mission is missing a goal.'>
+    <app-form-error-field [displayError]="isValid(goal)"
+      errorMsg='So, there is no reason for this mission to exist? A mission needs a goal.'>
     </app-form-error-field>
   </div>
 
 
-    <div class="form__item">
-      <label for="goal">Authorised?</label>
 
-      <input formControlName="authorisedby" id="authorisedby" name="authorisedby" type="checkbox"
-        value="authorisedby" />
-      <div class="form__checkbox"></div>
-
+  <div class="form__item">
+    <label for="xo">Mission Leader (XO)</label>
+    <div class="form__input" [ngClass]="fieldCss(xo)">
+      <input type="text" formControlName="xo" id="xo" name="xo" placeholder="" />
     </div>
 
+    <app-form-error-field [displayError]="isValid(xo)"
+      errorMsg='A mission without someone being responsible. Excellent use of your budget.'>
+    </app-form-error-field>
+  </div>
 
-    <div class="form__item">
-      <label for="authorisedby">Authorised by</label>
-      <div class="form__input">
-        <input type="text" formControlName="authorisedby" id="authorisedby" name="authorisedby" placeholder="" />
-      </div>
 
+  <div class="form__item">
+    <label for="goal">Authorised?</label>
+
+    <input formControlName="authorisedby" id="authorisedby" name="authorisedby" type="checkbox" value="authorisedby" />
+    <div class="form__checkbox"></div>
+
+  </div>
+
+
+  <div class="form__item">
+    <label for="authorisedby">Authorised by</label>
+    <div class="form__input">
+      <input type="text" formControlName="authorisedby" id="authorisedby" name="authorisedby" placeholder="" />
     </div>
+  </div>
 
-    <div>
-      <button [disabled]="!missionForm.valid" class="btn btn--green" (click)="clickSubmit()">
-        SAVE CHANGES
-      </button>
+
+  <div class="form__item">
+    <label for="shuttle">Shuttle Needed</label>
+    <div class="form__input">
+      <select name="shuttle" id="shuttle" formControlName="shuttle">
+        <option value="none" selected="selected">None</option>
+        <option value="#1">#1</option>
+        <option value="#2">#2</option>
+        <option value="#3">#3</option>
+      </select>
     </div>
+  </div>
+
+
+  <div>
+    <button [disabled]="!missionForm.valid" class="btn btn--green" (click)="clickSubmit()">
+      SAVE CHANGES
+    </button>
+  </div>
 
 </form>
 

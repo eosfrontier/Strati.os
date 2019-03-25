@@ -8,7 +8,6 @@ import { AdminMenuService } from '../../admin-menu.service';
 import { DateService } from '../../../shared/services/date.service';
 import { ValidatorService } from '../../../shared/services/form/validator.service';
 
-
 @Component({
   selector: 'app-mission-edit',
   templateUrl: './edit.component.html',
@@ -35,14 +34,10 @@ export class MissionsEditComponent implements OnInit, OnDestroy {
   ngOnInit() {
     this.missionSubscription = this.missionService.getSelectedMission().subscribe(mission => {
       this.currentMission = mission;
-      console.log(this.currentMission);
-
       if (this.currentMission.delayed === true) {
-        console.log('(!) delayed');
         this.delayed = true;
       }
     });
-
     this.missionForm = this.generateMissionForm();
   }
 
@@ -53,8 +48,6 @@ export class MissionsEditComponent implements OnInit, OnDestroy {
     return this.validator.isFieldValid(field);
   }
 
-
-
   /**
   * @description getters for the validated input fields.
   */
@@ -63,6 +56,7 @@ export class MissionsEditComponent implements OnInit, OnDestroy {
   get goal() { return this.missionForm.controls.goal; }
   get type() { return this.missionForm.controls.type; }
   get colorcode() { return this.missionForm.controls.colorcode; }
+  get xo() { return this.missionForm.controls.xo; }
   get departureTime() { return this.missionForm.controls.departureTime; }
 
   generateMissionForm(): FormGroup {
@@ -80,6 +74,8 @@ export class MissionsEditComponent implements OnInit, OnDestroy {
       goal: new FormControl(this.currentMission.goal, [Validators.required, Validators.maxLength(200)]),
       authorised: new FormControl(this.currentMission.authorised),
       authorisedby: new FormControl(this.currentMission.authorisedby),
+      shuttle: new FormControl(this.currentMission.shuttle),
+      xo: new FormControl(this.currentMission.xo, [Validators.required]),
     });
 
     return formGroup;
@@ -91,7 +87,6 @@ export class MissionsEditComponent implements OnInit, OnDestroy {
     const minutes = oldDate.getMinutes() > 9 ? oldDate.getMinutes() : '0' + oldDate.getMinutes();
     return `${hours}:${minutes}`;
   }
-
 
   clickSubmit() {
     const oldTime = this.convertDateToTime(this.oldDepartureTime);
@@ -109,7 +104,6 @@ export class MissionsEditComponent implements OnInit, OnDestroy {
     if (delayed === true) {
       mission.delayed = true;
     } else {
-      // save without delay
       mission.delayed = mission.delayed ? true : false;
       mission.departureTime = this.oldDepartureTime;
     }

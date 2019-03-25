@@ -85,10 +85,18 @@
         padding: 0.8rem 1.2rem;
         position: relative;
         width: auto;
+
+        &--small {
+            flex: 0;
+        }
     }
 
     &__null {
+        align-items: center;
         animation: blink 3s infinite;
+        display: flex;
+        height: calc(100% - 13.5rem);
+        justify-content: center;
         margin-top: 3.5rem;
         text-align: center;
     }

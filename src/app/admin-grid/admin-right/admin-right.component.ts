@@ -1,6 +1,7 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { AdminMenuService } from '../admin-menu.service';
 import { Subscription } from 'rxjs';
+import { AuthService } from '../../shared/services/auth.service';
 
 @Component({
   selector: 'app-admin-right',
@@ -10,22 +11,32 @@ import { Subscription } from 'rxjs';
 export class AdminRightComponent implements OnInit, OnDestroy {
 
   selectedMenuItem: string;
-  private subscription: Subscription;
+  authStatus: boolean;
+  private menuSubscription: Subscription;
+  authSubscription: Subscription;
 
-  constructor(private adminMenuService: AdminMenuService) { }
+  constructor(private adminMenuService: AdminMenuService, private auth: AuthService) { }
 
   ngOnInit() {
-    this.subscription = this.adminMenuService.getSelectedMenuItem().subscribe(item => {
+    this.menuSubscription = this.adminMenuService.getSelectedMenuItem().subscribe(item => {
       this.selectedMenuItem = item;
     });
+    this.authSubscription = this.auth.getAuthStatus().subscribe(
+      auth => this.authStatus = auth
+    );
   }
 
   public selectMenuItem(input: string): void {
     this.adminMenuService.setSelectedMenuItem(input);
   }
 
+  logout(): void {
+    this.adminMenuService.logout();
+  }
+
   ngOnDestroy() {
-    this.subscription.unsubscribe();
+    this.menuSubscription.unsubscribe();
+    this.authSubscription.unsubscribe();
   }
 
 }
