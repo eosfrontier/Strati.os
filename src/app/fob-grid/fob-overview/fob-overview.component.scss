@@ -12,6 +12,7 @@
     grid-template-columns: repeat(10,1fr);
     list-style-type: none;
     margin: 0 auto;
+    max-width: 120rem;
     width: 90%;
 
     &__tile { // li inside .hex

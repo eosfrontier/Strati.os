@@ -6,7 +6,7 @@
     "start": "ng serve --port 4204",
     "prodtest": "ng serve --port 4204 --prod=true",
     "server": "ng build --aot --prod && http-server ./dist -p 4204",
-    "build": "ng build --aot",
+    "build": "ng build --aot --prod",
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e"

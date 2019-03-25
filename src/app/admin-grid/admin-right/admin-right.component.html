@@ -2,4 +2,5 @@
     <button (click)="selectMenuItem('missionAdd')">New Mission</button>
     <button (click)="selectMenuItem('missionView')">Missions</button>
     <button (click)="selectMenuItem('fobView')">FOBs</button>
+    <button class="alt" *ngIf="authStatus" (click)="logout()">Logout</button>
 </div>

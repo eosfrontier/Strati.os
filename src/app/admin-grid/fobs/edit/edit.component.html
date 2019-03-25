@@ -1,3 +1,92 @@
-<p>
-  edit works!
-</p>
+<form [formGroup]="fobForm" class="form__group" *ngIf="currentFob" (ngSubmit)="onSubmit()">
+
+
+  <h2>FOB configuration</h2>
+
+
+  <div class="form__item">
+    <label for="name">Title</label>
+    <div class="form__input" [ngClass]="fieldCss(name)">
+      <input type="text" formControlName="name" id="name" name="name" placeholder="Hyperion" />
+    </div>
+    <app-form-error-field [displayError]="isValid(name)"
+      errorMsg='A base without a name? "Ah yes, the troops are stationed in FOB UNDEFINED. Great."'>
+    </app-form-error-field>
+  </div>
+
+
+  <div class="form__item">
+    <label for="coordinates">Grid location (coordinates)</label>
+    <div class="form__input" [ngClass]="fieldCss(coordinates)">
+      <input type="text" formControlName="coordinates" id="coordinates" name="coordinates" placeholder="33N.1" />
+    </div>
+    <app-form-error-field [displayError]="isValid(coordinates)"
+      errorMsg='Coordinates are required, unless you want to lose the location to your base in a twisted form of bureaucracy.'>
+    </app-form-error-field>
+  </div>
+
+
+  <div class="form__item">
+    <label for="status">FOB Status</label>
+    <div class="form__input" [ngClass]="fieldCss(status)">
+      <input type="text" formControlName="status" id="status" name="status" placeholder="OK" />
+    </div>
+    <app-form-error-field [displayError]="isValid(status)"
+      errorMsg='Status is required.'>
+    </app-form-error-field>
+  </div>
+
+
+  <div class="form__item">
+    <label for="priority">Ordercode (change this to order of the FOB overview)</label>
+    <div class="form__input" [ngClass]="fieldCss(orderCode)">
+      <input type="number" formControlName="orderCode" id="orderCode" name="orderCode" min="0" max="99" />
+    </div>
+    <app-form-error-field [displayError]="isValid(orderCode)"
+      errorMsg='The priority is invalid/missing. It can be a number from 0 to 99.'></app-form-error-field>
+  </div>
+
+
+  <h3>Supplies</h3>
+  <p>In these inputs you can set how supplied a FOB is, in a percentage ranging from 0 and 100.</p>
+
+  <div class="form__item">
+    <label for="priority">Weapon Supplies (%)</label>
+    <div class="form__input" [ngClass]="fieldCss(weaponSupplyPercentage)">
+      <input type="number" formControlName="weaponSupplyPercentage" id="weaponSupplyPercentage"
+        name="weaponSupplyPercentage" min="0" max="100" />
+    </div>
+    <app-form-error-field [displayError]="isValid(weaponSupplyPercentage)" errorMsg='Minimum is 0, maximum is 100'>
+    </app-form-error-field>
+  </div>
+
+
+  <div class="form__item">
+    <label for="priority">Medical Supplies (%)</label>
+    <div class="form__input" [ngClass]="fieldCss(medicalSupplyPercentage)">
+      <input type="number" formControlName="medicalSupplyPercentage" id="medicalSupplyPercentage"
+        name="medicalSupplyPercentage" min="0" max="100" />
+    </div>
+    <app-form-error-field [displayError]="isValid(medicalSupplyPercentage)" errorMsg='Minimum is 0, maximum is 100'>
+    </app-form-error-field>
+  </div>
+
+
+  <div class="form__item">
+    <label for="priority">Food Supplies (%)</label>
+    <div class="form__input" [ngClass]="fieldCss(foodSupplyPercentage)">
+      <input type="number" formControlName="foodSupplyPercentage" id="foodSupplyPercentage"
+        name="foodSupplyPercentage" min="0" max="100" />
+    </div>
+    <app-form-error-field [displayError]="isValid(foodSupplyPercentage)" errorMsg='Minimum is 0, maximum is 100'>
+    </app-form-error-field>
+  </div>
+
+
+    <div>
+      <button type="submit" [disabled]="!fobForm.valid" class="btn btn--green">
+        SAVE CHANGES
+      </button>
+    </div>
+
+</form>

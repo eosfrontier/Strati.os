@@ -47,6 +47,7 @@ export class MissionsAddComponent implements OnInit, OnDestroy {
   get goal() { return this.missionForm.controls.goal; }
   get type() { return this.missionForm.controls.type; }
   get colorcode() { return this.missionForm.controls.colorcode; }
+  get xo() { return this.missionForm.controls.xo; }
   get departureTime() { return this.missionForm.controls.departureTime; }
 
   generateMissionFormGroup(): FormGroup {
@@ -59,11 +60,11 @@ export class MissionsAddComponent implements OnInit, OnDestroy {
       goal: new FormControl('', [Validators.required, Validators.maxLength(200)]),
       authorised: new FormControl(false),
       authorisedby: new FormControl(''),
+      shuttle: new FormControl('none'),
+      xo: new FormControl('', [Validators.required]),
     });
-
     return formGroup;
   }
-
 
   ngOnDestroy() {
     this.missionForm = null;
