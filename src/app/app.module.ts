@@ -38,11 +38,13 @@ import {
   faCrosshairs,
   faExclamationTriangle,
 } from '@fortawesome/free-solid-svg-icons';
+import { OfflineDialogComponent } from './offline-dialog/offline-dialog.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    ErrorPageComponent
+    ErrorPageComponent,
+    OfflineDialogComponent
   ],
   imports: [
     BrowserModule,

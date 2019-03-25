@@ -1,0 +1,26 @@
+@import '../../assets/css/variables.scss';
+
+.full-display {
+
+    animation: fadeIn 0.5s linear;
+    background: #111;
+    border: 2px solid rgba($terminalorange, 0.75);
+    border-bottom: 0;
+    bottom: 0;
+    box-shadow: $googleShade;
+    color: $soedark;
+    // height: 8rem;
+    left: 2rem;
+    opacity: 0.75;
+    padding: 0.8rem;
+    position: absolute;
+    // width: 48rem;
+    z-index: 999;
+
+    p {
+        animation: blink 3s infinite;
+        color: $terminalorange;
+        font-size: 2.4rem;
+        margin: 1rem;
+    }
+}
