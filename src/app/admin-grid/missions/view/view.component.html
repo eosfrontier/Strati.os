@@ -1,15 +1,41 @@
 <div *ngIf="missionList && missionList.length > 0" class="missions">
 
-  <div class="missions__row" *ngFor="let mission of missionList | orderBy: 'priority' : reverse" [ngClass]="mission.colorcode">
-    <div class="missions__row__block" style="flex: 2;">{{ mission.title }}</div>
-    <div class="missions__row__block">{{ mission.departureTime | date:'HH:mm' }}</div>
-    <div class="missions__row__block">type: {{ mission.type }}</div>
-    <div class="missions__row__block" style="text-align: right;">
-      <button (click)="selectMission(mission);" class="btn btn--green">EDIT</button>
+  <div class="missions__row" *ngFor="let mission of missionList | orderBy: 'priority' : reverse"
+    [ngClass]="mission.colorcode">
+
+    <div class="missions__row__bar">
+
+      <div class="missions__row__block" style="flex: 2;">
+        <span class="desc">Title:</span><br />{{ mission.title }}
+      </div>
+
+      <div class="missions__row__block">
+        <span class="desc">Departing:</span>
+        <br />{{ mission.departureTime | date:'HH:mm' }}
+      </div>
+
+      <div class="missions__row__block" style="text-align: right;">
+        <button (click)="selectMission(mission);" class="btn btn--green">EDIT</button>
+      </div>
+
     </div>
-    <div class="missions__row__block" style="text-align: right;">
-      <button (click)="deleteMission(mission);" class="btn btn--orange">DELETE</button>
+
+    <div class="missions__row__bar">
+
+      <div class="missions__row__block" style="flex: 2;">
+        <span class="desc">Goal:</span><br />{{ mission.goal }}
+      </div>
+
+      <div class="missions__row__block">
+        <span class="desc">Type:</span><br />{{ mission.type }}
+      </div>
+
+      <div class="missions__row__block" style="text-align: right;">
+        <button (click)="deleteMission(mission);" class="btn btn--orange">DELETE</button>
+      </div>
+
     </div>
+
   </div>
 
 </div>

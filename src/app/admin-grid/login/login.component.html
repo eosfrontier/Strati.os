@@ -1,14 +1,15 @@
 <form [formGroup]="loginForm" class="form__group" (ngSubmit)="onSubmit()">
 
-  <h2><fa-icon icon="lock"></fa-icon>&nbsp;Login Required.</h2>
+  <h2>
+    <fa-icon icon="lock"></fa-icon>&nbsp;Login Required.
+  </h2>
 
   <div class="form__item">
     <label for="login">Enter code below.</label>
     <div class="form__input" [ngClass]="fieldCss(login)">
       <input type="number" formControlName="login" id="login" name="login" placeholder="00000" />
     </div>
-    <app-form-error-field [displayError]="isValid(login)"
-      errorMsg='Code required.'>
+    <app-form-error-field [displayError]="isValid(login)" errorMsg='Code required.'>
     </app-form-error-field>
   </div>
 

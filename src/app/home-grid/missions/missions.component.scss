@@ -27,6 +27,7 @@
 
     &__entry {
         align-items: center;
+        animation: blink 5s infinite;
         background-color: #2e2e2e;
         border-left: 3px solid $gray;
         border-right: 3px solid rgba($gray, 0.25);

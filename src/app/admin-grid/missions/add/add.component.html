@@ -1,4 +1,4 @@
-errorMsg<form [formGroup]="missionForm" class="form__group">
+<form [formGroup]="missionForm" class="form__group">
 
   <div class="form__item">
     <h2>Enter new mission here.</h2>
@@ -74,7 +74,7 @@ errorMsg<form [formGroup]="missionForm" class="form__group">
 
 
   <div class="form__item">
-    <label for="xo">Mission Leader (XO)</label>
+    <label for="xo">Mission Leader (CO)</label>
     <div class="form__input" [ngClass]="fieldCss(xo)">
       <input type="text" formControlName="xo" id="xo" name="xo" placeholder="" />
     </div>
@@ -86,8 +86,8 @@ errorMsg<form [formGroup]="missionForm" class="form__group">
 
 
   <div class="form__item">
-    <label for="goal">Authorised?</label>
-    <input formControlName="authorisedby" id="authorisedby" name="authorisedby" type="checkbox" value="authorisedby" />
+    <label for="authorised">Authorised?</label>
+    <input formControlName="authorised" id="authorised" name="authorised" type="checkbox" value="authorised" />
     <div class="form__checkbox"></div>
   </div>
 

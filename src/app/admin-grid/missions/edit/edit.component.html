@@ -73,7 +73,7 @@
 
 
   <div class="form__item">
-    <label for="xo">Mission Leader (XO)</label>
+    <label for="xo">Mission Leader (CO)</label>
     <div class="form__input" [ngClass]="fieldCss(xo)">
       <input type="text" formControlName="xo" id="xo" name="xo" placeholder="" />
     </div>
@@ -85,9 +85,9 @@
 
 
   <div class="form__item">
-    <label for="goal">Authorised?</label>
+    <label for="authorised">Authorised?</label>
 
-    <input formControlName="authorisedby" id="authorisedby" name="authorisedby" type="checkbox" value="authorisedby" />
+    <input formControlName="authorised" id="authorised" name="authorised" type="checkbox" value="authorised" />
     <div class="form__checkbox"></div>
 
   </div>
@@ -143,9 +143,9 @@
     <p>Delaying a mission can have strategic consequences, and affect crew morale.</p>
 
     <p class="buttons">
-      <a class="btn btn--orange" (click)="submitMission('true');">Confirm changes</a>
+      <a class="btn btn--orange" (click)="submitMission('YES');">Confirm changes</a>
       &nbsp;
-      <a class="btn" (click)="submitMission('false');">Save without time changes</a>
+      <a class="btn" (click)="submitMission('NO');">Save without time changes</a>
     </p>
 
     <p class="aow"><i>
