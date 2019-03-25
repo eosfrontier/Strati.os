@@ -10,18 +10,18 @@ import { Subscription } from 'rxjs';
 export class AdminRouterComponent implements OnInit, OnDestroy {
 
   public selectedMenuItem: string;
-  private subscription: Subscription;
+  private routeSubscription: Subscription;
 
   constructor(private adminMenuService: AdminMenuService) { }
 
   ngOnInit() {
-    this.subscription = this.adminMenuService.getSelectedMenuItem().subscribe(item => {
+    this.routeSubscription = this.adminMenuService.getSelectedMenuItem().subscribe(item => {
       this.selectedMenuItem = item;
     });
   }
 
   ngOnDestroy() {
-    this.subscription.unsubscribe();
+    this.routeSubscription.unsubscribe();
   }
 
 }

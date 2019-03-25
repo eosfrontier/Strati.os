@@ -1,3 +1,25 @@
-<p>
-  login works!
-</p>
+<form [formGroup]="loginForm" class="form__group" (ngSubmit)="onSubmit()">
+
+  <h2>Login Required.</h2>
+
+  <div class="form__item">
+    <label for="login">Enter code below.</label>
+    <div class="form__input" [ngClass]="fieldCss(login)">
+      <input type="number" formControlName="login" id="login" name="login" placeholder="00000" />
+    </div>
+    <app-form-error-field [displayError]="isValid(login)"
+      errorMsg='Code required.'>
+    </app-form-error-field>
+  </div>
+
+  <div class="form__item">
+    <button type="submit" [disabled]="!loginForm.valid" class="btn" [ngClass]="{ 'btn--orange' : submitAttempted }">
+      AUTHENTICATE
+    </button>
+  </div>
+
+  <div class="form__item" *ngIf="submitAttempted">
+    <p class="orange">Login failed. Please try again.</p>
+  </div>
+
+</form>

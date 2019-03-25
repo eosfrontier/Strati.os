@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Observable, BehaviorSubject } from 'rxjs';
 import { map } from 'rxjs/operators';
+import { AuthService } from '../shared/services/auth.service';
 
 @Injectable({
   providedIn: 'root'
@@ -8,9 +9,15 @@ import { map } from 'rxjs/operators';
 export class AdminMenuService {
 
   selectedMenuItem: BehaviorSubject<string> = new BehaviorSubject(null);
+  authenticated: boolean;
+  private readonly defaultScreen = 'missionView';
 
-  constructor() {
-    this.selectedMenuItem.next('missionView');
+  constructor(private auth: AuthService) {
+    this.authenticated = false;
+    this.selectedMenuItem.next(this.defaultScreen);
+    this.auth.getAuthStatus().subscribe(authenticated =>
+      this.authenticated = authenticated
+    );
   }
 
   public getSelectedMenuItem(): Observable<string> {
@@ -18,6 +25,22 @@ export class AdminMenuService {
   }
 
   public setSelectedMenuItem(input: string) {
+    if (!this.authenticated) {
+      if (
+          input === 'fobAdd'  ||
+          input === 'fobEdit' ||
+          input === 'fobView'
+      ) {
+        input = 'authFirst';
+      }
+    }
     this.selectedMenuItem.next(input);
   }
+
+  logout(): void {
+    this.auth.setAuthStatus(null);
+    this.selectedMenuItem.next(this.defaultScreen);
+  }
+
+
 }
