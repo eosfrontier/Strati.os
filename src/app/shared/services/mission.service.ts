@@ -32,7 +32,6 @@ export class MissionService {
   }
 
   public socketUpdateTrigger(): void {
-    console.log('socketupdatetrigger');
     this.renewApiSubscription();
   }
 
