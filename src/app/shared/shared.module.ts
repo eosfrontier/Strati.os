@@ -9,6 +9,7 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { DateComponent } from './components/date/date.component';
 import { SupplyBreakpointPipe } from './pipes/supply-breakpoint.pipe';
 import { FormErrorFieldComponent } from './components/form-error-field/form-error-field.component';
+import { OnlineService } from './services/connection/online.service';
 
 @NgModule({
   declarations: [
@@ -32,6 +33,9 @@ import { FormErrorFieldComponent } from './components/form-error-field/form-erro
     DateComponent,
     FormErrorFieldComponent,
     SupplyBreakpointPipe,
+  ],
+  providers: [
+    OnlineService,
   ]
 })
 export class SharedModule { }

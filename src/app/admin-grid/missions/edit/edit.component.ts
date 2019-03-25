@@ -98,13 +98,10 @@ export class MissionsEditComponent implements OnInit, OnDestroy {
 
   submitMission(timeChange: string): void {
     const mission = this.missionService.convertFormDataToMission(this.missionForm.value);
-
     mission.editcounter = (mission.editcounter + 1);
-
-    if (timeChange === 'NO') {
-      mission.departureTime = new Date(this.oldDepartureTime);
-    }
-
+      if (timeChange === 'NO') {
+        mission.departureTime = new Date(this.oldDepartureTime);
+      }
     this.missionService.updateMission(mission);
     this.adminRouter.setSelectedMenuItem('missionView');
   }
