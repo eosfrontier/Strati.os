@@ -10,6 +10,13 @@ p {
     font-size: 2.1rem;
 }
 
+.form__input {
+    input {
+        font-family: $fonttime;
+        font-size: 2.8rem;
+    }
+}
+
 .orange {
     color: $terminalorange;
 }
