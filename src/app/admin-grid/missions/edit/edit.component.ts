@@ -56,6 +56,7 @@ export class MissionsEditComponent implements OnInit, OnDestroy {
   get goal() { return this.missionForm.controls.goal; }
   get type() { return this.missionForm.controls.type; }
   get colorcode() { return this.missionForm.controls.colorcode; }
+  get xo() { return this.missionForm.controls.xo; }
   get departureTime() { return this.missionForm.controls.departureTime; }
 
   generateMissionForm(): FormGroup {
@@ -73,6 +74,8 @@ export class MissionsEditComponent implements OnInit, OnDestroy {
       goal: new FormControl(this.currentMission.goal, [Validators.required, Validators.maxLength(200)]),
       authorised: new FormControl(this.currentMission.authorised),
       authorisedby: new FormControl(this.currentMission.authorisedby),
+      shuttle: new FormControl(this.currentMission.shuttle),
+      xo: new FormControl(this.currentMission.xo, [Validators.required]),
     });
 
     return formGroup;

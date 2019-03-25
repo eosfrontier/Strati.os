@@ -85,6 +85,10 @@
         padding: 0.8rem 1.2rem;
         position: relative;
         width: auto;
+
+        &--small {
+            flex: 0;
+        }
     }
 
     &__null {

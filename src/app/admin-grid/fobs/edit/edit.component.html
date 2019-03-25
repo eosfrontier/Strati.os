@@ -43,7 +43,7 @@
       <input type="number" formControlName="orderCode" id="orderCode" name="orderCode" min="0" max="99" />
     </div>
     <app-form-error-field [displayError]="isValid(orderCode)"
-      errMsg='The priority is invalid/missing. It can be a number from 0 to 99.'></app-form-error-field>
+      errorMsg='The priority is invalid/missing. It can be a number from 0 to 99.'></app-form-error-field>
   </div>
 
 
@@ -56,7 +56,7 @@
       <input type="number" formControlName="weaponSupplyPercentage" id="weaponSupplyPercentage"
         name="weaponSupplyPercentage" min="0" max="100" />
     </div>
-    <app-form-error-field [displayError]="isValid(weaponSupplyPercentage)" errMsg='Minimum is 0, maximum is 100'>
+    <app-form-error-field [displayError]="isValid(weaponSupplyPercentage)" errorMsg='Minimum is 0, maximum is 100'>
     </app-form-error-field>
   </div>
 
@@ -67,7 +67,7 @@
       <input type="number" formControlName="medicalSupplyPercentage" id="medicalSupplyPercentage"
         name="medicalSupplyPercentage" min="0" max="100" />
     </div>
-    <app-form-error-field [displayError]="isValid(medicalSupplyPercentage)" errMsg='Minimum is 0, maximum is 100'>
+    <app-form-error-field [displayError]="isValid(medicalSupplyPercentage)" errorMsg='Minimum is 0, maximum is 100'>
     </app-form-error-field>
   </div>
 
@@ -78,7 +78,7 @@
       <input type="number" formControlName="foodSupplyPercentage" id="foodSupplyPercentage"
         name="foodSupplyPercentage" min="0" max="100" />
     </div>
-    <app-form-error-field [displayError]="isValid(foodSupplyPercentage)" errMsg='Minimum is 0, maximum is 100'>
+    <app-form-error-field [displayError]="isValid(foodSupplyPercentage)" errorMsg='Minimum is 0, maximum is 100'>
     </app-form-error-field>
   </div>
 

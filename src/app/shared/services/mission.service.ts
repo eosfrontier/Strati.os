@@ -76,10 +76,12 @@ export class MissionService {
       mission.type = formData.type;
       mission.goal = formData.goal;
       mission.title = formData.title;
+      mission.xo = formData.xo;
       mission.colorcode = formData.colorcode;
       mission.authorised = formData.authorised;
       mission.authorisedby = formData.authorisedby;
       mission.departureTime = departureTime;
+      mission.shuttle = formData.shuttle;
       mission.editcounter = 0;
       mission.delayed = false;
     return mission;

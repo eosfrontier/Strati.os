@@ -10,6 +10,7 @@ export class Mission {
     authorisedby: string;
     xo?: string;
     icdate: string; // string? Yup. In-game date.
+    shuttle: string;
     departureTime?: Date;
     delayed: boolean;
     editcounter: number;

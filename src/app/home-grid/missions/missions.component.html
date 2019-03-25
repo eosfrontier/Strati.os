@@ -1,21 +1,28 @@
-<div *ngIf="missionList && missionList.length > 0" class="missions" >
+<div *ngIf="missionList && missionList.length > 0" class="missions">
 
     <div class="missions__header">
-        <div class="missions__rows">Status <fa-icon icon="chevron-down"></fa-icon></div>
-        <div class="missions__rows">Title <fa-icon icon="chevron-down"></fa-icon></div>
-        <div class="missions__rows">Type <fa-icon icon="chevron-down"></fa-icon></div>
-        <div class="missions__rows">Departure <fa-icon icon="chevron-down"></fa-icon></div>
+        <div class="missions__rows">
+            <fa-icon icon="chevron-down"></fa-icon>&nbsp;&nbsp;Title
+        </div>
+        <div class="missions__rows">Type</div>
+        <div class="missions__rows">XO</div>
+        <div class="missions__rows">Approved?</div>
+        <div class="missions__rows">Shuttle</div>
+        <div class="missions__rows">Departing</div>
     </div>
 
-    <div *ngFor="let mission of missionList | orderBy: 'priority'"
-    [ngClass]="mission.colorcode" class="missions__entry">
-        <!-- <div class="missions__rows"></div> -->
+    <div *ngFor="let mission of missionList | orderBy: 'priority'" [ngClass]="mission.colorcode"
+        class="missions__entry">
         <div class="missions__rows">
-            <div class="status-ball"></div>
-            &nbsp;&nbsp;Status
+            <div class="status-ball"></div>&nbsp;{{ mission.title }}
         </div>
-        <div class="missions__rows">{{ mission.title }}</div>
         <div class="missions__rows">{{ mission.type }}</div>
+        <div class="missions__rows">{{ mission.xo }}</div>
+        <div class="missions__rows">
+            <span *ngIf="mission.authorised">YES</span>
+            <span *ngIf="!mission.authorised">NO</span>
+        </div>
+        <div class="missions__rows">{{ mission.shuttle }}</div>
         <div class="missions__rows">{{ mission.departureTime | date:'HH:mm' }}</div>
     </div>
 

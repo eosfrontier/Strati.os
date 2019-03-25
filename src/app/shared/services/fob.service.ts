@@ -24,6 +24,7 @@ export class FobService {
   private renewApiSubscription(): void {
     this.apiSubscription = this.getFobsFromAPI().subscribe((fobs) => {
       this.setFobList(fobs);
+      this.updateFobIfSelected(fobs);
     });
   }
 
@@ -49,6 +50,15 @@ export class FobService {
 
   public getSelectedFob(): Observable<Fob> {
     return this.selectedFob.asObservable();
+  }
+
+  private updateFobIfSelected(fobs: Fob[]): void {
+    if (this.selectedFob.getValue()) {
+      const updatedFob = fobs.find(fob => fob._id === this.selectedFob.getValue()._id);
+      if (updatedFob) {
+        this.selectFob(updatedFob);
+      }
+    }
   }
 
   private addCombinedSupplyPercentage(list: Fob[]): Fob[] {
