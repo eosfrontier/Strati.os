@@ -31,19 +31,28 @@
     <div class="form__input" [ngClass]="fieldCss(status)">
       <input type="text" formControlName="status" id="status" name="status" placeholder="OK" />
     </div>
-    <app-form-error-field [displayError]="isValid(status)"
-      errorMsg='Status is required.'>
+    <app-form-error-field [displayError]="isValid(status)" errorMsg='Status is required.'>
     </app-form-error-field>
   </div>
 
 
   <div class="form__item">
-    <label for="priority">Ordercode (change this to order of the FOB overview)</label>
+    <label for="orderCode">Ordercode (change this to order of the FOB overview)</label>
     <div class="form__input" [ngClass]="fieldCss(orderCode)">
       <input type="number" formControlName="orderCode" id="orderCode" name="orderCode" min="0" max="99" />
     </div>
     <app-form-error-field [displayError]="isValid(orderCode)"
       errorMsg='The priority is invalid/missing. It can be a number from 0 to 99.'></app-form-error-field>
+  </div>
+
+
+  <div class="form__item">
+    <label for="forces">Forces/Personnel headcount</label>
+    <div class="form__input" [ngClass]="fieldCss(forces)">
+      <input type="number" formControlName="forces" id="forces" name="forces" min="0"/>
+    </div>
+    <app-form-error-field [displayError]="isValid(forces)"
+      errorMsg='Minimum is 0.'></app-form-error-field>
   </div>
 
 
@@ -75,18 +84,18 @@
   <div class="form__item">
     <label for="priority">Food Supplies (%)</label>
     <div class="form__input" [ngClass]="fieldCss(foodSupplyPercentage)">
-      <input type="number" formControlName="foodSupplyPercentage" id="foodSupplyPercentage"
-        name="foodSupplyPercentage" min="0" max="100" />
+      <input type="number" formControlName="foodSupplyPercentage" id="foodSupplyPercentage" name="foodSupplyPercentage"
+        min="0" max="100" />
     </div>
     <app-form-error-field [displayError]="isValid(foodSupplyPercentage)" errorMsg='Minimum is 0, maximum is 100'>
     </app-form-error-field>
   </div>
 
 
-    <div>
-      <button type="submit" [disabled]="!fobForm.valid" class="btn btn--green">
-        SAVE CHANGES
-      </button>
-    </div>
+  <div>
+    <button type="submit" [disabled]="!fobForm.valid" class="btn btn--green">
+      SAVE CHANGES
+    </button>
+  </div>
 
 </form>
