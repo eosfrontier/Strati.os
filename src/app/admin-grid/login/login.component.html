@@ -7,7 +7,8 @@
   <div class="form__item">
     <label for="login">Enter code below.</label>
     <div class="form__input" [ngClass]="fieldCss(login)">
-      <input type="number" formControlName="login" id="login" name="login" placeholder="00000" />
+      <input type="number" formControlName="login" id="login" name="login" placeholder="00000"
+        onkeypress="return event.charCode >= 48 && event.charCode <= 57" pattern="[0-9]*" inputmode="numeric" />
     </div>
     <app-form-error-field [displayError]="isValid(login)" errorMsg='Code required.'>
     </app-form-error-field>
