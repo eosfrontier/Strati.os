@@ -28,7 +28,8 @@
   <div class="form__item">
     <label for="priority">Priority</label>
     <div class="form__input" [ngClass]="fieldCss(priority)">
-      <input type="number" formControlName="priority" id="priority" name="priority" min="0" max="9" />
+      <input type="number" formControlName="priority" id="priority" name="priority" min="0" max="9"
+        onkeypress="return event.charCode >= 48 && event.charCode <= 57" pattern="[0-9]*" inputmode="numeric" />
     </div>
     <app-form-error-field [displayError]="isValid(priority)"
       errorMsg='he priority is invalid/missing It can be a number from 0 to 9.'></app-form-error-field>

@@ -37,7 +37,8 @@
   <div class="form__item">
     <label for="orderCode">Ordercode (change this to order of the FOB overview)</label>
     <div class="form__input" [ngClass]="fieldCss(orderCode)">
-      <input type="number" formControlName="orderCode" id="orderCode" name="orderCode" min="0" max="99" />
+      <input type="number" formControlName="orderCode" id="orderCode" name="orderCode" min="0" max="99"
+        onkeypress="return event.charCode >= 48 && event.charCode <= 57" pattern="[0-9]*" inputmode="numeric" />
     </div>
     <app-form-error-field [displayError]="isValid(orderCode)"
       errorMsg='The priority is invalid/missing. It can be a number from 0 to 99.'></app-form-error-field>
@@ -47,10 +48,10 @@
   <div class="form__item">
     <label for="forces">Forces/Personnel headcount</label>
     <div class="form__input" [ngClass]="fieldCss(forces)">
-      <input type="number" formControlName="forces" id="forces" name="forces" min="0"/>
+      <input type="number" formControlName="forces" id="forces" name="forces" min="0"
+        onkeypress="return event.charCode >= 48 && event.charCode <= 57" pattern="[0-9]*" inputmode="numeric" />
     </div>
-    <app-form-error-field [displayError]="isValid(forces)"
-      errorMsg='Minimum is 0.'></app-form-error-field>
+    <app-form-error-field [displayError]="isValid(forces)" errorMsg='Minimum is 0.'></app-form-error-field>
   </div>
 
 
@@ -60,8 +61,8 @@
   <div class="form__item">
     <label for="priority">Weapon Supplies (%)</label>
     <div class="form__input" [ngClass]="fieldCss(weaponSupplyPercentage)">
-      <input type="number" formControlName="weaponSupplyPercentage" id="weaponSupplyPercentage"
-        name="weaponSupplyPercentage" min="0" max="100" />
+      <input type="number" formControlName="weaponSupplyPercentage" id="weaponSupplyPercentage" name="weaponSupplyPercentage"
+        min="0" max="100" onkeypress="return event.charCode >= 48 && event.charCode <= 57" pattern="[0-9]*" inputmode="numeric" />
     </div>
     <app-form-error-field [displayError]="isValid(weaponSupplyPercentage)" errorMsg='Minimum is 0, maximum is 100'>
     </app-form-error-field>
@@ -71,8 +72,8 @@
   <div class="form__item">
     <label for="priority">Medical Supplies (%)</label>
     <div class="form__input" [ngClass]="fieldCss(medicalSupplyPercentage)">
-      <input type="number" formControlName="medicalSupplyPercentage" id="medicalSupplyPercentage"
-        name="medicalSupplyPercentage" min="0" max="100" />
+      <input type="number" formControlName="medicalSupplyPercentage" id="medicalSupplyPercentage" name="medicalSupplyPercentage"
+        min="0" max="100" onkeypress="return event.charCode >= 48 && event.charCode <= 57" pattern="[0-9]*" inputmode="numeric" />
     </div>
     <app-form-error-field [displayError]="isValid(medicalSupplyPercentage)" errorMsg='Minimum is 0, maximum is 100'>
     </app-form-error-field>
@@ -83,7 +84,7 @@
     <label for="priority">Food Supplies (%)</label>
     <div class="form__input" [ngClass]="fieldCss(foodSupplyPercentage)">
       <input type="number" formControlName="foodSupplyPercentage" id="foodSupplyPercentage" name="foodSupplyPercentage"
-        min="0" max="100" />
+        min="0" max="100" onkeypress="return event.charCode >= 48 && event.charCode <= 57" pattern="[0-9]*" inputmode="numeric" />
     </div>
     <app-form-error-field [displayError]="isValid(foodSupplyPercentage)" errorMsg='Minimum is 0, maximum is 100'>
     </app-form-error-field>
