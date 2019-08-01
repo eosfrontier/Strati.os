@@ -37,10 +37,14 @@ export class EditFobComponent implements OnInit, OnDestroy {
     return this.validator.isFieldValid(field);
   }
 
-  onSubmit() {
-    this.fobService.updateFob(this.fobForm.value);
+  goBack(): void {
     this.fobService.unselectFob();
     this.adminRouter.setSelectedMenuItem('fobView');
+  }
+
+  onSubmit(): void {
+    this.fobService.updateFob(this.fobForm.value);
+    this.goBack();
   }
 
   private generateForm(): FormGroup {

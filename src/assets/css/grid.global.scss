@@ -34,6 +34,10 @@
             border-bottom: 2px solid rgba($gray, 0.5);
             display: flex;
             grid-area: top;
+
+            @media(max-width: 768px) {
+                display: none;
+            }
         }
 
         &.menu {
