@@ -1,8 +1,6 @@
 <form [formGroup]="fobForm" class="form__group" *ngIf="currentFob" (ngSubmit)="onSubmit()">
 
-
   <h2>FOB configuration</h2>
-
 
   <div class="form__item">
     <label for="name">Title</label>
@@ -96,6 +94,10 @@
     <button type="submit" [disabled]="!fobForm.valid" class="btn btn--green">
       SAVE CHANGES
     </button>
+
+    <a (click)="goBack()" class="btn btn--orange">
+      BACK
+    </a>
   </div>
 
 </form>

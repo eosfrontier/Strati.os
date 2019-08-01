@@ -10,19 +10,34 @@
         "main main main rightbar"
         "footer footer footerclock footerclock";
 
+  @media (max-width: 768px) {
+    grid-template-rows: 8.5rem 6rem auto;
+    grid-template-columns: 1fr;
+    grid-template-areas:
+        "menu"
+        "rightbar"
+        "main";
+  }
+
   .item {
 
     &.main {
       grid-area: main;
       overflow: auto;
+      @media(max-width: 768px) {
+        overflow: visible;
+      }
     }
 
     &.menu {
-      padding: 0.8rem 0.8rem 0.8rem 0;
+        padding: 0.8rem 0.8rem 0.8rem 0;
     }
 
     &.rightbar {
       grid-area: rightbar;
+      @media(max-width: 768px) {
+        padding: 0;
+      }
     }
 
     &.footer {

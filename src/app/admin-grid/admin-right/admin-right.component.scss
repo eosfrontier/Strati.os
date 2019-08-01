@@ -33,4 +33,16 @@
             }
         }
     }
+
+    @media(max-width: 768px) {
+        align-items: stretch;
+        flex-direction: row;
+        height: 100%;
+        margin: 0;
+
+        > button {
+            padding: 0;
+            border-right: 1px solid $dark-alt;
+        }
+    }
 }

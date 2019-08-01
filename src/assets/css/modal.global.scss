@@ -17,6 +17,15 @@
     width: 100vw;
     z-index: 9;
 
+    @media(max-width: 768px) {
+        grid-template-rows: 1fr auto 1fr;
+        grid-template-columns: 1fr;
+        grid-template-areas:
+            "toplayer"
+            "dialog"
+            "bottomlayer";
+    }
+
     &__overlay {
         animation: activateOverlay 0.2s ease-in forwards;
         background-color: $dark-alt;
@@ -49,12 +58,15 @@
         height: auto;
         grid-area: dialog;
         min-height: 32rem;
-        min-width: 48rem;
         opacity: 1;
         padding: 1.5rem 3rem;
         position: relative;
         transition: 0.4s;
+        width: 100%;
         z-index: 100;
+        @media (min-height: 768px) {
+            min-width: 48rem;
+        }
     }
 
     &__close {

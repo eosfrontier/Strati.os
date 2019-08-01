@@ -3,12 +3,21 @@
 
 .grid {
 
+  grid-template-rows: 8.5rem auto 1fr;
+  grid-template-columns: 1fr auto;
+  grid-template-areas:
+      "top menu"
+      "headerconnect headerconnect"
+      "main main";
+
+  @media(max-width: 768px) {
     grid-template-rows: 8.5rem auto 1fr;
-    grid-template-columns: 1fr auto;
+    grid-template-columns: 1fr;
     grid-template-areas:
-        "top menu"
-        "headerconnect headerconnect"
-        "main main";
+      "menu"
+      "headerconnect"
+      "main";
+  }
 
   .item {
 
@@ -32,21 +41,27 @@
       .block {
         flex: 1;
       }
+
+      @media(max-width: 768px) {
+        app-clock {
+          display: none;
+        }
+      }
     }
 
-    &.clock {
-      align-items: center;
-      display: flex;
-      grid-area: clock;
+    // &.clock {
+    //   align-items: center;
+    //   display: flex;
+    //   grid-area: clock;
 
-      border-bottom: 2px solid rgba($soelite, 0.5);
-    }
+    //   border-bottom: 2px solid rgba($soelite, 0.5);
+    // }
 
   }
 
 }
 
-:host /deep/ {
+:host ::ng-deep, ::ng-deep {
 
   .date-container {
     display: flex;

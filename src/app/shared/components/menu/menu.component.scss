@@ -17,11 +17,16 @@
         cursor: pointer;
         display: flex;
         font-size: 1.6rem;
+        justify-content: center;
         margin: -.8rem 0 -1rem .1rem;
         padding: .8rem 2.4rem;
         text-align: center;
         text-decoration: none;
         transition: 0.4s;
+
+        @media(max-width: 768px) {
+            flex: 1;
+        }
 
         &:hover {
             border-bottom: 2px solid rgba($bluebright, 0.5);
