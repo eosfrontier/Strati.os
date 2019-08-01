@@ -1,13 +1,13 @@
 <div class="fob" *ngIf="fobList">
 
-  <h1>Forward operational bases - scrollable overview</h1>
+  <h1 class="no-mobile">Forward operational bases</h1>
 
   <ul class="fob__list">
 
     <li class="header">
       <div>NAME</div>
-      <div>STATUS</div>
-      <div>COORDINATES</div>
+      <div class="no-mobile">STATUS</div>
+      <div class="no-mobile">COORDINATES</div>
       <div class="half">&nbsp;</div>
     </li>
 
@@ -15,11 +15,11 @@
 
       <div># {{ fob.name }}</div>
 
-      <div>
+      <div class="no-mobile">
         <fa-icon icon="heartbeat"></fa-icon>:&nbsp;{{ fob.status }}
       </div>
 
-      <div>
+      <div class="no-mobile">
         <fa-icon icon="map-marker-alt"></fa-icon>&nbsp;{{ fob.coordinates | uppercase }}
       </div>
 

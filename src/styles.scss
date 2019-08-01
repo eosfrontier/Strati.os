@@ -33,6 +33,18 @@ h4, h5 {
     font-family: $fonttitle;
 }
 
+.no-mobile {
+  @media(max-width: 768px) {
+    display: none;
+  }
+}
+.only-mobile {
+  display: none;
+  @media(max-width: 768px) {
+    display: block;
+  }
+}
+
 .time {
   font-family: $fonttime;
 }
@@ -45,6 +57,10 @@ h4, h5 {
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
+}
+
+.text-muted {
+  opacity: 0.77;
 }
 
 a.btn, .btn {
@@ -77,5 +93,9 @@ a.btn, .btn {
     border-color: $soedark;
     color: $soedark;
     cursor: not-allowed;
+  }
+
+  + .btn {
+    margin-left: .8rem;
   }
 }
