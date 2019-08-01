@@ -46,13 +46,6 @@
             transition: 0.3s;
             overflow-y: visible;
             padding-left: 0;
-
-            @media(max-width: 768px) {
-                background-image: url('/assets/img/logo.png');
-                background-position: 5%;
-                background-repeat: no-repeat;
-                background-size: 32px 32px;
-            }
         }
 
         &.footer-clock, &.clock {

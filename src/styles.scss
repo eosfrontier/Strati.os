@@ -35,7 +35,7 @@ h4, h5 {
 
 .no-mobile {
   @media(max-width: 768px) {
-    display: none;
+    display: none!important;
   }
 }
 .only-mobile {
