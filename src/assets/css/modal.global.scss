@@ -64,7 +64,7 @@
         transition: 0.4s;
         width: 100%;
         z-index: 100;
-        @media (min-height: 768px) {
+        @media (min-width: 768px) {
             min-width: 48rem;
         }
     }
