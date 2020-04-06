@@ -8,11 +8,7 @@ import { ErrorPageComponent } from './error-page/error-page.component';
 import { AdminGridModule } from './admin-grid/admin-grid.module';
 import { FobGridModule } from './fob-grid/fob-grid.module';
 
-import { environment } from '../environments/environment';
-import { SocketIoModule, SocketIoConfig } from 'ngx-socket-io';
 import { OrderModule } from 'ngx-order-pipe';
-
-const config: SocketIoConfig = { url: environment.SERVER_URL, options: {} };
 
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { library } from '@fortawesome/fontawesome-svg-core';
@@ -54,8 +50,7 @@ import { OfflineDialogComponent } from './offline-dialog/offline-dialog.componen
     SharedModule,
     FobGridModule,
     FontAwesomeModule,
-    OrderModule,
-    SocketIoModule.forRoot(config)
+    OrderModule
   ],
   providers: [],
   bootstrap: [AppComponent]

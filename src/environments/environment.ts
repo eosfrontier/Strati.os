@@ -3,7 +3,7 @@ const API_BASE = `${SERVER_URL}api/`;
 
 export const environment = {
   production: false,
-  SERVER_URL: SERVER_URL,
+  SERVER_URL,
   API_URL: API_BASE,
   WEATHER: {
     API_URL: `${API_BASE}weather/`
