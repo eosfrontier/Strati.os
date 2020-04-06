@@ -1,33 +1,39 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpHandler } from '@angular/common/http';
-import { map } from 'rxjs/operators';
-import { Observable, BehaviorSubject } from 'rxjs';
 import { environment } from '../../../../environments/environment';
-import { Socket } from 'ngx-socket-io';
+
 import { MissionService } from '../mission.service';
 import { FobService } from '../fob.service';
+
+import * as io from 'socket.io-client';
 
 @Injectable({
   providedIn: 'root'
 })
 export class SocketService {
 
+  socket: any;
+
   constructor(
-    private socket: Socket,
     private missionService: MissionService,
     private fobService: FobService
-  ) {
+  ) { }
 
-    socket.on('connect', () => {
+  /**
+   * @description set up the SOCKET IO connections to the Watchtower API
+   */
+  public setupSocketConnection(): void {
+    this.socket = io(environment.SERVER_URL);
+
+    this.socket.on('connect', () => {
       console.log('[.IO] Socket connection established.');
     });
 
-    socket.on('MissionUpdate', () => {
+    this.socket.on('MissionUpdate', () => {
       console.log('mission update');
       this.missionService.socketUpdateTrigger();
     });
 
-    socket.on('fobUpdate', () => {
+    this.socket.on('fobUpdate', () => {
       console.log('fob update');
       this.fobService.socketUpdateTrigger();
     });

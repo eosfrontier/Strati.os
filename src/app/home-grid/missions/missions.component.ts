@@ -1,6 +1,6 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { MissionService } from '../../shared/services/mission.service';
-import { Subscription, Observable, BehaviorSubject } from 'rxjs';
+import { Subscription } from 'rxjs';
 import { Mission } from '../../shared/models/mission';
 
 @Component({
@@ -15,14 +15,11 @@ export class MissionsComponent implements OnInit, OnDestroy {
 
   constructor(private missionService: MissionService) { }
 
-  ngOnInit() {
-    this.missionSubscription = this.missionService.getMissionList().subscribe(missions => {
-      this.missionList = missions;
-      console.log(missions);
-    });
+  ngOnInit(): void {
+    this.missionSubscription = this.missionService.getMissionList().subscribe(missions => this.missionList = missions);
   }
 
-  ngOnDestroy() {
+  ngOnDestroy(): void {
     this.missionSubscription.unsubscribe();
   }
 }
