@@ -27,7 +27,7 @@
     "ajv": "^6.10.2",
     "core-js": "^2.6.9",
     "http-serve": "^1.0.1",
-    "http-server": "^0.12.1",
+    "http-server": "^0.12.3",
     "ngx-order-pipe": "^2.0.4",
     "rxjs": "~6.5.4",
     "rxjs-compat": "^6.5.2",
