@@ -1,6 +1,7 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { OnlineService } from '../shared/services/connection/online.service';
 import { Subscription } from 'rxjs';
+import { faSatellite } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-offline-dialog',
@@ -11,6 +12,8 @@ export class OfflineDialogComponent implements OnInit, OnDestroy {
 
   subscription: Subscription;
   isOnline: boolean;
+
+  faSatellite = faSatellite
 
   constructor(private onlineStatus: OnlineService) { }
 

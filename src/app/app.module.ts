@@ -11,29 +11,29 @@ import { FobGridModule } from './fob-grid/fob-grid.module';
 import { OrderModule } from 'ngx-order-pipe';
 
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
-import { library } from '@fortawesome/fontawesome-svg-core';
-import {
-  faHome,
-  faChevronDown,
-  faProjectDiagram,
-  faPlaneDeparture,
-  faLock,
-  faLockOpen,
-  faSatellite,
-  faBroadcastTower,
-  faUserCog,
-  faUserShield,
-  faSatelliteDish,
-  faMapMarkerAlt,
-  faBoxes,
-  faTimes,
-  faHeartbeat,
-  faCog,
-  faBriefcaseMedical,
-  faUtensils,
-  faCrosshairs,
-  faExclamationTriangle,
-} from '@fortawesome/free-solid-svg-icons';
+// import { library } from '@fortawesome/fontawesome-svg-core';
+// import {
+//   faHome,
+//   faChevronDown,
+//   faProjectDiagram,
+//   faPlaneDeparture,
+//   faLock,
+//   faLockOpen,
+//   faSatellite,
+//   faBroadcastTower,
+//   faUserCog,
+//   faUserShield,
+//   faSatelliteDish,
+//   faMapMarkerAlt,
+//   faBoxes,
+//   faTimes,
+//   faHeartbeat,
+//   faCog,
+//   faBriefcaseMedical,
+//   faUtensils,
+//   faCrosshairs,
+//   faExclamationTriangle,
+// } from '@fortawesome/free-solid-svg-icons';
 import { OfflineDialogComponent } from './offline-dialog/offline-dialog.component';
 
 @NgModule({
@@ -57,28 +57,6 @@ import { OfflineDialogComponent } from './offline-dialog/offline-dialog.componen
 })
 export class AppModule {
   constructor() {
-    // add only the FA icons that we're using to prevent potential bloat.
-    library.add(
-      faHome,
-      faChevronDown,
-      faProjectDiagram,
-      faPlaneDeparture,
-      faLock,
-      faLockOpen,
-      faSatellite,
-      faBroadcastTower,
-      faUserCog,
-      faUserShield,
-      faSatelliteDish,
-      faMapMarkerAlt,
-      faBoxes,
-      faTimes,
-      faHeartbeat,
-      faCog,
-      faBriefcaseMedical,
-      faUtensils,
-      faCrosshairs,
-      faExclamationTriangle,
-    );
+    
   }
 }

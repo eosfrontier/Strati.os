@@ -3,6 +3,7 @@ import { Fob } from '../../../shared/models/fob';
 import { FobService } from '../../../shared/services/fob.service';
 import { Subscription } from 'rxjs';
 import { AdminMenuService } from '../../admin-menu.service';
+import { faCog, faHeartbeat, faMapMarkerAlt } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-fob-view',
@@ -10,9 +11,12 @@ import { AdminMenuService } from '../../admin-menu.service';
   styleUrls: ['./view.component.scss']
 })
 export class ViewFobComponent implements OnInit, OnDestroy {
-
   fobList: Fob[];
   fobSubscription: Subscription;
+
+  faCog = faCog
+  faHeartbeat = faHeartbeat
+  faMapMarkerAlt = faMapMarkerAlt
 
   constructor(private fobService: FobService, private adminMenu: AdminMenuService) {}
 

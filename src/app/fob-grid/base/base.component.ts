@@ -1,5 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { SupplyBreakpoints } from '../../shared/models/supplybreakpoints';
+import { faMapMarkerAlt } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-base',
@@ -9,6 +10,8 @@ import { SupplyBreakpoints } from '../../shared/models/supplybreakpoints';
 export class BaseComponent implements OnInit {
   @Input() fobData;
   supplyBreakpoints: SupplyBreakpoints;
+
+  faMapMarkerAlt = faMapMarkerAlt
 
   constructor() { }
 

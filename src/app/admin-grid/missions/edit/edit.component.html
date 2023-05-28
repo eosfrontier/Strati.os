@@ -2,7 +2,6 @@
 
   <h2>{{ currentMission.title }}</h2>
 
-
   <div class="form__item">
     <label for="title">Title</label>
     <div class="form__input" [ngClass]="fieldCss(title)">
@@ -33,7 +32,6 @@
       errorMsg='The priority is invalid/missing. It can be a number from 0 to 9.'></app-form-error-field>
   </div>
 
-
   <div class="form__item">
     <label for="type">Mission type</label>
     <div class="form__input" [ngClass]="fieldCss(type)">
@@ -43,7 +41,6 @@
       errorMsg='What kind of mission will this be? Or are you planning to send soldiers to do xeno-archeology?'>
     </app-form-error-field>
   </div>
-
 
   <div class="form__item">
     <label for="colorcode">Colour Code</label>
@@ -59,7 +56,6 @@
     </div>
   </div>
 
-
   <div class="form__item">
     <label for="goal">Mission goal</label>
     <div class="form__input" [ngClass]="fieldCss(goal)">
@@ -70,8 +66,6 @@
       errorMsg='So, there is no reason for this mission to exist? A mission needs a goal.'>
     </app-form-error-field>
   </div>
-
-
 
   <div class="form__item">
     <label for="xo">Mission Leader (CO)</label>
@@ -101,7 +95,6 @@
     </div>
   </div>
 
-
   <div class="form__item">
     <label for="shuttle">Shuttle Needed</label>
     <div class="form__input">
@@ -115,7 +108,6 @@
     </div>
   </div>
 
-
   <div>
     <button [disabled]="!missionForm.valid" class="btn btn--green" (click)="clickSubmit()">
       SAVE CHANGES
@@ -128,18 +120,15 @@
   ERR: No selected missions.
 </h2>
 
-
-
-<div class="confirm-dialog-overlay" *ngIf="showConfirmDialog">
-
+<!-- <div class="confirm-dialog-overlay" *ngIf="showConfirmDialog">
   <div class="confirm-dialog">
 
     <p class="warning" (click)="closeDialog()" style="text-align: right; cursor: pointer;">
-      <fa-icon icon="times"></fa-icon>
+      <fa-icon [icon]="faTimes"></fa-icon>
     </p>
 
     <h3 class="warning">
-      <fa-icon icon="exclamation-triangle"></fa-icon>&nbsp;Departure time has been altered
+      <fa-icon [icon]="faExclamationTriangle"></fa-icon>&nbsp;Departure time has been altered
     </h3>
 
     <p>Delaying a mission can have strategic consequences, and affect crew morale.</p>
@@ -155,6 +144,4 @@
           delays.</strong>
       </i></p>
   </div>
-
-
-</div>
+</div> -->

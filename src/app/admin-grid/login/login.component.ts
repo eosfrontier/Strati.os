@@ -3,6 +3,7 @@ import { AuthService } from '../../shared/services/auth.service';
 import { ValidatorService } from '../../shared/services/form/validator.service';
 import { FormGroup, FormControl, Validators, AbstractControl } from '@angular/forms';
 import { AdminMenuService } from '../admin-menu.service';
+import { faLock } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-login',
@@ -13,6 +14,8 @@ export class LoginComponent implements OnInit, OnDestroy {
 
   loginForm: FormGroup;
   submitAttempted: boolean;
+
+  faLock = faLock
 
   constructor(
     private authService: AuthService,
