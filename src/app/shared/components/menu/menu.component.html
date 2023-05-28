@@ -2,11 +2,11 @@
 
   <a class="menu__block" routerLink="/" routerLinkActive="menu__block--active" [routerLinkActiveOptions]="{exact:
 true}" title="Mission Board / Home">
-    <fa-icon icon="project-diagram"></fa-icon>
+    <fa-icon [icon]="faProjectDiagram"></fa-icon>
   </a>
 
   <a class="menu__block" routerLink="/fobview" routerLinkActive="menu__block--active" title="Forward Operating Bases">
-    <fa-icon icon="broadcast-tower"></fa-icon>
+    <fa-icon [icon]="faBroadcastTower"></fa-icon>
   </a>
 
   <!-- <a class="menu__block" routerLink="/shuttles" routerLinkActive="menu__block--active" title="Local Transports">
@@ -14,8 +14,8 @@ true}" title="Mission Board / Home">
   </a> -->
 
   <a class="menu__block" routerLink="/admin" routerLinkActive="menu__block--active" title="Admin">
-    <fa-icon icon="lock" *ngIf="!loggedIn"></fa-icon>
-    <fa-icon icon="lock-open" *ngIf="loggedIn"></fa-icon>
+    <fa-icon [icon]="faLock" *ngIf="!loggedIn"></fa-icon>
+    <fa-icon [icon]="faLockOpen" *ngIf="loggedIn"></fa-icon>
   </a>
 
 </div>

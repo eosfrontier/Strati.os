@@ -16,16 +16,16 @@
       <div># {{ fob.name }}</div>
 
       <div class="no-mobile">
-        <fa-icon icon="heartbeat"></fa-icon>:&nbsp;{{ fob.status }}
+        <fa-icon [icon]="faHeartbeat"></fa-icon>:&nbsp;{{ fob.status }}
       </div>
 
       <div class="no-mobile">
-        <fa-icon icon="map-marker-alt"></fa-icon>&nbsp;{{ fob.coordinates | uppercase }}
+        <fa-icon [icon]="faMapMarkerAlt"></fa-icon>&nbsp;{{ fob.coordinates | uppercase }}
       </div>
 
       <div class="half text-right">
         <button class="btn" (click)="editFob(fob)">
-          <fa-icon icon="cog"></fa-icon>&nbsp;DETAILS / EDIT
+          <fa-icon [icon]="faCog"></fa-icon>&nbsp;DETAILS / EDIT
         </button>
       </div>
     </li>

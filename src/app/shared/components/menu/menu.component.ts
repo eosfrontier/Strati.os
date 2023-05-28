@@ -1,6 +1,7 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { AuthService } from '../../services/auth.service';
 import { Subscription } from 'rxjs';
+import { faBroadcastTower, faLock, faLockOpen, faProjectDiagram } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-menu',
@@ -8,9 +9,13 @@ import { Subscription } from 'rxjs';
   styleUrls: ['./menu.component.scss']
 })
 export class MenuComponent implements OnInit, OnDestroy {
-
   loggedIn: boolean;
   loginSubscription$: Subscription;
+
+  faProjectDiagram = faProjectDiagram
+  faBroadcastTower = faBroadcastTower
+  faLock = faLock
+  faLockOpen = faLockOpen
 
   constructor(private authService: AuthService) { }
 

@@ -3,32 +3,32 @@
     <div class="modal__dialog">
 
         <div class="modal__close" (click)='closeModal()'>
-            <fa-icon icon="times"></fa-icon>
+            <fa-icon [icon]="faTimes"></fa-icon>
         </div>
 
         <h1>{{ fobData.name | uppercase }}</h1>
 
         <h2 class="modal__coordinates ">
-            <fa-icon icon="map-marker-alt"></fa-icon>&nbsp;
+            <fa-icon [icon]="faMapMarkerAlt"></fa-icon>&nbsp;
             <span class="highlight">{{ fobData.coordinates | uppercase }}</span>
         </h2>
 
         <p>
             <strong>
-                <fa-icon icon="heartbeat"></fa-icon>:&nbsp;
+                <fa-icon [icon]="faHeartbeat"></fa-icon>:&nbsp;
                 <span class="highlight">{{ fobData.status | uppercase }}</span>
             </strong>
         </p>
 
         <p>
-            <fa-icon icon="user-shield"></fa-icon>:&nbsp;
+            <fa-icon [icon]="faUserShield"></fa-icon>:&nbsp;
             <span class="highlight">{{ fobData.forces }}</span>
         </p>
 
         <p>&nbsp;</p>
 
         <p>
-            <fa-icon icon="boxes"></fa-icon>&nbsp;
+            <fa-icon [icon]="faBoxes"></fa-icon>&nbsp;
             Current supplies:
         </p>
 

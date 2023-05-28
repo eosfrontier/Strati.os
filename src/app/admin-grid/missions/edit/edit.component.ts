@@ -7,6 +7,7 @@ import { IcDate } from '../../../shared/models/icdate';
 import { AdminMenuService } from '../../admin-menu.service';
 import { DateService } from '../../../shared/services/date.service';
 import { ValidatorService } from '../../../shared/services/form/validator.service';
+import { faExclamationTriangle, faTimes } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-mission-edit',
@@ -14,10 +15,12 @@ import { ValidatorService } from '../../../shared/services/form/validator.servic
   styleUrls: ['./edit.component.scss']
 })
 export class MissionsEditComponent implements OnInit, OnDestroy {
-
   missionSubscription: Subscription;
   currentMission: Mission;
   missionForm: FormGroup;
+
+  faTimes = faTimes
+  faExclamationTriangle = faExclamationTriangle
 
   constructor(
     private missionService: MissionService,
@@ -27,14 +30,11 @@ export class MissionsEditComponent implements OnInit, OnDestroy {
     private validator: ValidatorService
   ) { }
 
-  oldDepartureTime: Date;
-  delayed = false;
-  showConfirmDialog = false;
+  // showConfirmDialog = false;
 
   ngOnInit() {
     this.missionSubscription = this.missionService.getSelectedMission().subscribe(mission => {
       this.currentMission = mission;
-      this.delayed = false;
     });
     this.missionForm = this.generateMissionForm();
   }
@@ -58,9 +58,7 @@ export class MissionsEditComponent implements OnInit, OnDestroy {
   get departureTime() { return this.missionForm.controls.departureTime; }
 
   generateMissionForm(): FormGroup {
-
-    this.oldDepartureTime = new Date(this.currentMission.departureTime);
-    const newDeparture = this.convertDateToTime(this.oldDepartureTime);
+    const newDeparture = this.convertDateToTime(this.currentMission.departureTime);
 
     const formGroup = new FormGroup({
       _id: new FormControl(this.currentMission._id),
@@ -87,28 +85,19 @@ export class MissionsEditComponent implements OnInit, OnDestroy {
   }
 
   clickSubmit(): void {
-    const oldTime = this.convertDateToTime(this.oldDepartureTime);
-    const newTime = this.missionForm.value.departureTime;
-      if (oldTime !== newTime) {
-        this.showConfirmDialog = true;
-      } else {
-        this.submitMission('NO');
-      }
+    return this.submitMission()
   }
 
-  submitMission(timeChange: string): void {
+  submitMission(): void {
     const mission = this.missionService.convertFormDataToMission(this.missionForm.value);
     mission.editcounter = (mission.editcounter + 1);
-      if (timeChange === 'NO') {
-        mission.departureTime = new Date(this.oldDepartureTime);
-      }
     this.missionService.updateMission(mission);
     this.adminRouter.setSelectedMenuItem('missionView');
   }
 
-  closeDialog(): void {
-    this.showConfirmDialog = false;
-  }
+  // closeDialog(): void {
+  //   this.showConfirmDialog = false;
+  // }
 
   ngOnDestroy() {
     this.missionSubscription.unsubscribe();
