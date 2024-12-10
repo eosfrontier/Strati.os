@@ -38,6 +38,13 @@ export class ShuttleService {
     }
 
     private getShuttlesFromAPI(): any {
+        const headerDict = {
+            'getAll': 'true'
+          }
+          
+          const requestOptions = {                                                                                                                                                                                 
+            headers: new Headers(headerDict), 
+          };
         return this.http.get(environment.SHUTTLE.API_URL).pipe(map(res => {
             return res
         }));
