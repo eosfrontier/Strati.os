@@ -28,7 +28,7 @@ export class ShuttleService {
 
         list.forEach((shuttle) => {
             const _shuttle = new Shuttle();
-            _shuttle._id = shuttle._id;
+            _shuttle.id = shuttle.id;
             _shuttle.name = shuttle.name;
             _shuttle.serial_number = shuttle.serial_number;
             _shuttle.class = shuttle.class;
