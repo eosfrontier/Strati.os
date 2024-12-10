@@ -99,11 +99,11 @@
     <label for="shuttle">Shuttle Needed</label>
     <div class="form__input">
       <select name="shuttle" id="shuttle" formControlName="shuttle">
-        <option value="none" selected="selected">None</option>
-        <option value="SC-01 Louisa">SC-01 Louisa</option>
-        <option value="SC-05 Najat">SC-05 Najat</option>
-        <option value="SC-06 Mouse">SC-06 Mouse</option>
-        <option value="SC-07 Ambrotos Libertatem">SC-07 Ambrotos Libertatem</option>
+
+        <option selected="selected" value="none">(None)</option>
+        <option *ngFor="let shuttle of shuttleList | orderBy 'name'" [value]="shuttle.name">{{ shuttle.name }} - {{
+          shuttle.class }}</option>
+
       </select>
     </div>
   </div>

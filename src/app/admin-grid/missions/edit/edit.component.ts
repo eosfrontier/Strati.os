@@ -8,6 +8,8 @@ import { AdminMenuService } from '../../admin-menu.service';
 import { DateService } from '../../../shared/services/date.service';
 import { ValidatorService } from '../../../shared/services/form/validator.service';
 import { faExclamationTriangle, faTimes } from '@fortawesome/free-solid-svg-icons';
+import { ShuttleService } from 'src/app/shared/services/shuttle.service';
+import { Shuttle } from 'src/app/shared/models/shuttle';
 
 @Component({
   selector: 'app-mission-edit',
@@ -16,7 +18,9 @@ import { faExclamationTriangle, faTimes } from '@fortawesome/free-solid-svg-icon
 })
 export class MissionsEditComponent implements OnInit, OnDestroy {
   missionSubscription: Subscription;
+  shuttleSubscription: Subscription;
   currentMission: Mission;
+  shuttleList: Shuttle[];
   missionForm: FormGroup;
 
   faTimes = faTimes
@@ -24,6 +28,7 @@ export class MissionsEditComponent implements OnInit, OnDestroy {
 
   constructor(
     private missionService: MissionService,
+    private shuttleService: ShuttleService,
     private fb: FormBuilder,
     private dateService: DateService,
     private adminRouter: AdminMenuService,
@@ -36,6 +41,9 @@ export class MissionsEditComponent implements OnInit, OnDestroy {
     this.missionSubscription = this.missionService.getSelectedMission().subscribe(mission => {
       this.currentMission = mission;
     });
+    this.shuttleSubscription = this.shuttleService.getShuttleList().subscribe(shuttles => {
+      this.shuttleList = shuttles
+    })
     this.missionForm = this.generateMissionForm();
   }
 
@@ -55,6 +63,7 @@ export class MissionsEditComponent implements OnInit, OnDestroy {
   get type() { return this.missionForm.controls.type; }
   get colorcode() { return this.missionForm.controls.colorcode; }
   get xo() { return this.missionForm.controls.xo; }
+  get shuttle() { return this.missionForm.controls.shuttle }
   get departureTime() { return this.missionForm.controls.departureTime; }
 
   generateMissionForm(): FormGroup {
@@ -101,5 +110,6 @@ export class MissionsEditComponent implements OnInit, OnDestroy {
 
   ngOnDestroy() {
     this.missionSubscription.unsubscribe();
+    this.shuttleSubscription.unsubscribe();
   }
 }

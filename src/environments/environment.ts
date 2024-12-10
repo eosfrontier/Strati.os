@@ -1,5 +1,6 @@
 const SERVER_URL = 'http://localhost:5000/';
 const API_BASE = `${SERVER_URL}api/`;
+const API_ORTHANC = `http://localhost:3000/`
 
 export const environment = {
   production: false,
@@ -20,6 +21,9 @@ export const environment = {
   MISSIONS: {
     API_URL: `${API_BASE}missions/`
   },
+  SHUTTLE: {
+    API_URL: `${API_ORTHANC}v2/shuttlebay/`
+  }
 };
 /*
  * For easier debugging in development mode, you can import the following file
