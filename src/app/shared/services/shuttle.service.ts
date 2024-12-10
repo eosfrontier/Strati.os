@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpHandler } from '@angular/common/http';
+import { HttpClient, HttpHeaders, HttpHandler } from '@angular/common/http';
 import { Observable, BehaviorSubject, Subscription } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { Shuttle } from '../models/shuttle';
@@ -38,7 +38,15 @@ export class ShuttleService {
     }
 
     private getShuttlesFromAPI(): any {
-        return this.http.get(environment.SHUTTLE.API_URL).pipe(map(res => {
+        const httpOptions : Object = {
+            headers: new HttpHeaders({
+              'getAll': 'true'
+            }),
+            responseType: 'text'
+          };
+          
+
+        return this.http.get(environment.SHUTTLE.API_URL, httpOptions).pipe(map(res => {
             return res
         }));
     }

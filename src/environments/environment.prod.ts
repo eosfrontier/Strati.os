@@ -1,6 +1,6 @@
 const SERVER_URL = 'https://cic.eosfrontier.space/';
 const API_BASE = `${SERVER_URL}api/`;
-const API_ORTHANC = `https://thijsboerma.dev/404/`
+const API_ORTHANC = `https://api.eosfrontier.space/orthanc/`
 
 export const environment = {
   production: true,
