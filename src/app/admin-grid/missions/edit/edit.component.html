@@ -101,8 +101,10 @@
       <select name="shuttle" id="shuttle" formControlName="shuttle">
 
         <option selected="selected" value="none">(None)</option>
-        <option *ngFor="let shuttle of shuttleList | orderBy 'name'" [value]="shuttle.name">{{ shuttle.name }} - {{
-          shuttle.class }}</option>
+        <ng-container *ngIf="shuttleList">
+          <option *ngFor="let shuttle of shuttleList | orderBy 'name'" [value]="shuttle.name">{{ shuttle.name }} - {{
+            shuttle.class }}</option>
+        </ng-container>
 
       </select>
     </div>
