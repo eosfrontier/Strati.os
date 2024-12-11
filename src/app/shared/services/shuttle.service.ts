@@ -23,20 +23,23 @@ export class ShuttleService {
         return this.shuttleList.asObservable();
     }
 
-    private setShuttleList(list: Shuttle[] = []): void {
+    private setShuttleList(list: any = []): void {
         const _shuttles = []
 
         if (list) {
-            list.forEach((shuttle) => {
+            const parsedList = JSON.parse(list);
+
+            parsedList.forEach((shuttle) => {
                 const _shuttle = new Shuttle();
                 _shuttle.id = shuttle.id;
                 _shuttle.name = shuttle.name;
                 _shuttle.serial_number = shuttle.serial_number;
                 _shuttle.class = shuttle.class;
+                _shuttles.push(_shuttle)
             })
         }
 
-        this.shuttleList.next(list);
+        this.shuttleList.next(_shuttles);
     }
 
     private getShuttlesFromAPI(): any {
