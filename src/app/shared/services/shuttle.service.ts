@@ -13,7 +13,7 @@ import { environment } from '../../../environments/environment';
 export class ShuttleService {
 
     apiSubscription: Subscription;
-    shuttleList: BehaviorSubject<Shuttle[]> = new BehaviorSubject(null);
+    shuttleList: BehaviorSubject<Shuttle[]> = new BehaviorSubject([]);
 
     constructor(private http: HttpClient) {
         this.renewApiSubscription();
@@ -23,18 +23,23 @@ export class ShuttleService {
         return this.shuttleList.asObservable();
     }
 
-    private setShuttleList(list: Shuttle[]): void {
+    private setShuttleList(list: any = []): void {
         const _shuttles = []
 
-        list.forEach((shuttle) => {
-            const _shuttle = new Shuttle();
-            _shuttle.id = shuttle.id;
-            _shuttle.name = shuttle.name;
-            _shuttle.serial_number = shuttle.serial_number;
-            _shuttle.class = shuttle.class;
-        })
+        if (list) {
+            const parsedList = JSON.parse(list);
 
-        this.shuttleList.next(list);
+            parsedList.forEach((shuttle) => {
+                const _shuttle = new Shuttle();
+                _shuttle.id = shuttle.id;
+                _shuttle.name = shuttle.name;
+                _shuttle.serial_number = shuttle.serial_number;
+                _shuttle.class = shuttle.class;
+                _shuttles.push(_shuttle)
+            })
+        }
+
+        this.shuttleList.next(_shuttles);
     }
 
     private getShuttlesFromAPI(): any {
