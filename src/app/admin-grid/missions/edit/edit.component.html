@@ -112,7 +112,7 @@
 
         <option selected="selected" value="none">(None)</option>
         <ng-container *ngIf="shuttleList">
-          <option *ngFor="let shuttle of shuttleList | orderBy 'name'" [value]="shuttle.name">{{ shuttle.name }} - {{
+          <option *ngFor="let shuttle of shuttleList | orderBy: 'name'" [value]="shuttle.name">{{ shuttle.name }} - {{
             shuttle.class }}</option>
         </ng-container>
 

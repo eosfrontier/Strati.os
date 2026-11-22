@@ -1,4 +1,4 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { HttpClientTestingModule, HttpTestingController } from '@angular/common/http/testing';
 import { MissionsViewComponent } from './view.component';
 import { MissionService } from '../../../shared/services/mission.service';
@@ -24,13 +24,15 @@ describe('MissionsViewComponent', () => {
   let missionService: MissionService;
   let httpMock: HttpTestingController;
 
-  beforeEach(() => {
+  beforeEach(async(() => {
     TestBed.configureTestingModule({
       imports: [HttpClientTestingModule],
       declarations: [MissionsViewComponent],
       providers: [DateService, MissionService]
     }).compileComponents();
+  }));
 
+  beforeEach(() => {
     missionService = TestBed.inject(MissionService);
     httpMock = TestBed.inject(HttpTestingController);
     httpMock.match(environment.DATETIME.API_URL);

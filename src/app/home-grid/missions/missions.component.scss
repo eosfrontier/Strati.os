@@ -96,6 +96,9 @@
         &.ic-date, &.departure-time {
             white-space: nowrap;
         }
+        .ic-day {
+            color: $bluebright;
+        }
     }
 
     &__null {

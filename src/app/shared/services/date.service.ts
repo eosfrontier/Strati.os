@@ -19,6 +19,8 @@ export interface ParsedIcDate {
 export class DateService {
 
   private static readonly IC_DATE_PATTERN = /^\s*(\d{1,2})\.(\d{1,2})\.(\d+)([A-Za-z]*)\s*$/;
+  private static readonly DAY_NAMES = ['sun', 'mon', 'tue', 'wed', 'thu', 'fri', 'sat'];
+  private static readonly MS_PER_DAY = 86400000;
 
   public icDate: BehaviorSubject<IcDate> = new BehaviorSubject(null);
 
@@ -105,6 +107,57 @@ export class DateService {
       }
       return this.parseIcDate(control.value) ? null : { invalidIcDate: true };
     };
+  }
+
+  /**
+   * @description computes the uppercase 3-letter IC day of week (e.g. 'FRI') for an IC date string
+   * relative to the current IC date and day of week.
+   */
+  public getIcDayOfWeek(icdate: string, referenceDate: IcDate = this.icDate.getValue()): string {
+    const parsed = this.parseIcDate(icdate);
+    if (!parsed || !referenceDate || !referenceDate.dayName) {
+      return '';
+    }
+    const refDay = Number(referenceDate.day);
+    const refMonth = Number(referenceDate.month);
+    const refYear = Number(referenceDate.year);
+    if (isNaN(refDay) || isNaN(refMonth) || isNaN(refYear)) {
+      return '';
+    }
+
+    const currentShort = this.shortenDayName(referenceDate.dayName.trim()).toLowerCase();
+    if (parsed.day === refDay && parsed.month === refMonth && parsed.year === refYear) {
+      return currentShort.toUpperCase();
+    }
+
+    const currentDayIndex = DateService.DAY_NAMES.indexOf(currentShort);
+    if (currentDayIndex === -1) {
+      return '';
+    }
+
+    const targetDayNumber = this.toUtcDayNumber(parsed.year, parsed.month, parsed.day);
+    const refDayNumber = this.toUtcDayNumber(refYear, refMonth, refDay);
+    if (targetDayNumber === null || refDayNumber === null) {
+      return '';
+    }
+
+    const offset = targetDayNumber - refDayNumber;
+    const targetDayIndex = ((currentDayIndex + offset) % 7 + 7) % 7;
+    return DateService.DAY_NAMES[targetDayIndex].toUpperCase();
+  }
+
+  private toUtcDayNumber(year: number, month: number, day: number): number | null {
+    const date = new Date(0);
+    date.setUTCFullYear(year, month - 1, day);
+    date.setUTCHours(0, 0, 0, 0);
+    if (
+      date.getUTCFullYear() !== year ||
+      date.getUTCMonth() !== month - 1 ||
+      date.getUTCDate() !== day
+    ) {
+      return null;
+    }
+    return Math.round(date.getTime() / DateService.MS_PER_DAY);
   }
 
   private padTwoDigits(value: number): string {

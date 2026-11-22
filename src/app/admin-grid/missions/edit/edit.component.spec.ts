@@ -1,4 +1,4 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { HttpClientTestingModule, HttpTestingController } from '@angular/common/http/testing';
 import { ReactiveFormsModule } from '@angular/forms';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
@@ -19,12 +19,14 @@ describe('MissionsEditComponent', () => {
   let missionService: MissionService;
   let httpMock: HttpTestingController;
 
-  beforeEach(() => {
+  beforeEach(async(() => {
     TestBed.configureTestingModule({
       imports: [HttpClientTestingModule, ReactiveFormsModule, FontAwesomeModule, OrderModule],
       declarations: [MissionsEditComponent, FormErrorFieldComponent]
     }).compileComponents();
+  }));
 
+  beforeEach(() => {
     dateService = TestBed.inject(DateService);
     missionService = TestBed.inject(MissionService);
     TestBed.inject(ShuttleService);

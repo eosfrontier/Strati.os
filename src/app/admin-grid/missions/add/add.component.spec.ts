@@ -1,4 +1,4 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { HttpClientTestingModule, HttpTestingController } from '@angular/common/http/testing';
 import { ReactiveFormsModule } from '@angular/forms';
 import { OrderModule } from 'ngx-order-pipe';
@@ -17,12 +17,14 @@ describe('MissionsAddComponent', () => {
   let missionService: MissionService;
   let httpMock: HttpTestingController;
 
-  beforeEach(() => {
+  beforeEach(async(() => {
     TestBed.configureTestingModule({
       imports: [HttpClientTestingModule, ReactiveFormsModule, OrderModule],
       declarations: [MissionsAddComponent, FormErrorFieldComponent]
     }).compileComponents();
+  }));
 
+  beforeEach(() => {
     dateService = TestBed.inject(DateService);
     missionService = TestBed.inject(MissionService);
     TestBed.inject(ShuttleService);

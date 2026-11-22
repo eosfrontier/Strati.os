@@ -101,4 +101,59 @@ describe('Service: DateService', () => {
         expect(validator(new FormControl('32.05.240NT'))).toEqual({ invalidIcDate: true });
     }));
 
+    it('should compute the IC day of week anchored on the current IC date', inject([DateService], (service: DateService) => {
+        const ref = new IcDate();
+        ref.day = 18;
+        ref.dayName = 'fri';
+        ref.month = 5;
+        ref.monthName = 'May';
+        ref.year = 240;
+        ref.yearAfter = 'NT';
+
+        expect(service.getIcDayOfWeek('18.05.240NT', null)).toEqual('');
+        service.icDate.next(ref);
+
+        // Same date uses the current IC day of week
+        expect(service.getIcDayOfWeek('18.05.240NT')).toEqual('FRI');
+        // Forward offsets within month
+        expect(service.getIcDayOfWeek('19.05.240NT')).toEqual('SAT');
+        expect(service.getIcDayOfWeek('20.05.240NT')).toEqual('SUN');
+        expect(service.getIcDayOfWeek('21.05.240NT')).toEqual('MON');
+        expect(service.getIcDayOfWeek('25.05.240NT')).toEqual('FRI');
+        // Backward offsets within month (including unpadded)
+        expect(service.getIcDayOfWeek('17.05.240NT')).toEqual('THU');
+        expect(service.getIcDayOfWeek('13.05.240NT')).toEqual('SUN');
+        expect(service.getIcDayOfWeek('12.05.240NT')).toEqual('SAT');
+        expect(service.getIcDayOfWeek('9.5.240NT')).toEqual('WED');
+        // Month boundary (May has 31 days: 18 May -> 1 Jun is +14 days)
+        expect(service.getIcDayOfWeek('01.06.240NT')).toEqual('FRI');
+        expect(service.getIcDayOfWeek('02.06.240NT')).toEqual('SAT');
+        // Year boundary
+        const yearEnd = new IcDate();
+        yearEnd.day = 31;
+        yearEnd.dayName = 'tuesday';
+        yearEnd.month = 12;
+        yearEnd.year = 240;
+        yearEnd.yearAfter = 'NT';
+        expect(service.getIcDayOfWeek('01.01.241NT', yearEnd)).toEqual('WED');
+        // Leap year (240) vs non-leap year (241)
+        const febLeap = new IcDate();
+        febLeap.day = 28;
+        febLeap.dayName = 'mon';
+        febLeap.month = 2;
+        febLeap.year = 240;
+        expect(service.getIcDayOfWeek('29.02.240NT', febLeap)).toEqual('TUE');
+        expect(service.getIcDayOfWeek('01.03.240NT', febLeap)).toEqual('WED');
+        const febNonLeap = new IcDate();
+        febNonLeap.day = 28;
+        febNonLeap.dayName = 'mon';
+        febNonLeap.month = 2;
+        febNonLeap.year = 241;
+        expect(service.getIcDayOfWeek('01.03.241NT', febNonLeap)).toEqual('TUE');
+        // Invalid/impossible calendar dates return empty string
+        expect(service.getIcDayOfWeek('31.04.240NT')).toEqual('');
+        expect(service.getIcDayOfWeek('invalid')).toEqual('');
+        expect(service.getIcDayOfWeek('')).toEqual('');
+    }));
+
 });
