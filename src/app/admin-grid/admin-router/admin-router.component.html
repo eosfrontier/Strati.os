@@ -10,6 +10,12 @@
 
 <app-fob-view *ngIf="selectedMenuItem === 'fobView'"></app-fob-view>
 
+<app-shuttle-add *ngIf="selectedMenuItem === 'shuttleAdd'"></app-shuttle-add>
+
+<app-shuttle-edit *ngIf="selectedMenuItem === 'shuttleEdit'"></app-shuttle-edit>
+
+<app-shuttle-view *ngIf="selectedMenuItem === 'shuttleView'"></app-shuttle-view>
+
 <app-adminstatus *ngIf="selectedMenuItem === 'adminStatus'"></app-adminstatus>
 
 <app-login *ngIf="selectedMenuItem === 'authFirst'"></app-login>

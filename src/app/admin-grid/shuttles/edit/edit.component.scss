@@ -1,0 +1,19 @@
+@import '../../../../assets/css/form.scss';
+@import '../../../../assets/css/variables.scss';
+
+.btn {
+    font-size: 1.4rem;
+    margin-top: 1.5rem;
+    padding: 1.5rem 3.5rem;
+}
+
+.shuttles__null {
+    align-items: center;
+    animation: blink 3s infinite;
+    color: $orbitgreen;
+    display: flex;
+    height: calc(100% - 13.5rem);
+    justify-content: center;
+    margin-top: 3.5rem;
+    text-align: center;
+}

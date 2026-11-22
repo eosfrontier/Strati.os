@@ -6,7 +6,7 @@ import { DateService } from '../../../shared/services/date.service';
 import { Mission } from '../../../shared/models/mission';
 import { environment } from '../../../../environments/environment';
 
-function createMission(title: string, icdate: string, hour: number, minute: number, priority: number): Mission {
+function createMission(title: string, icdate: string, hour: number, minute: number, priority: number, shuttle?: string): Mission {
   const mission = new Mission();
   mission._id = title;
   mission.title = title;
@@ -14,6 +14,7 @@ function createMission(title: string, icdate: string, hour: number, minute: numb
   mission.goal = 'Goal';
   mission.colorcode = 'blue';
   mission.icdate = icdate;
+  mission.shuttle = shuttle;
   mission.departureTime = new Date(2026, 10, 22, hour, minute, 0, 0);
   mission.priority = priority;
   return mission;
@@ -41,11 +42,11 @@ describe('MissionsViewComponent', () => {
     fixture = TestBed.createComponent(MissionsViewComponent);
   });
 
-  it('should display missions sorted by IC date then departure time with their IC date shown', () => {
+  it('should display missions sorted by IC date then departure time with their IC date and shuttle shown', () => {
     missionService.missionList.next([
-      createMission('Later Day', '19.05.240NT', 8, 0, 0),
-      createMission('Same Day Late', '18.05.240NT', 15, 0, 1),
-      createMission('Same Day Early', '18.05.240NT', 9, 30, 5)
+      createMission('Later Day', '19.05.240NT', 8, 0, 0, 'Mouse'),
+      createMission('Same Day Late', '18.05.240NT', 15, 0, 1, undefined),
+      createMission('Same Day Early', '18.05.240NT', 9, 30, 5, 'Louisa')
     ]);
 
     fixture.detectChanges();
@@ -55,9 +56,12 @@ describe('MissionsViewComponent', () => {
     expect(rows[0].textContent).toContain('Same Day Early');
     expect(rows[0].textContent).toContain('18.05.240NT');
     expect(rows[0].textContent).toContain('09:30');
+    expect(rows[0].querySelector('.shuttle-col').textContent).toContain('Louisa');
     expect(rows[1].textContent).toContain('Same Day Late');
     expect(rows[1].textContent).toContain('15:00');
+    expect(rows[1].querySelector('.shuttle-col').textContent).toContain('none');
     expect(rows[2].textContent).toContain('Later Day');
     expect(rows[2].textContent).toContain('19.05.240NT');
+    expect(rows[2].querySelector('.shuttle-col').textContent).toContain('Mouse');
   });
 });

@@ -1,0 +1,109 @@
+<form [formGroup]="shuttleForm" class="form__group" *ngIf="currentShuttle" (ngSubmit)="submitShuttle()">
+
+  <h2>{{ currentShuttle.name }}</h2>
+
+  <div class="form__item">
+    <label for="name">Name</label>
+    <div class="form__input" [ngClass]="fieldCss(name)">
+      <input type="text" formControlName="name" id="name" name="name" placeholder="Louisa" />
+    </div>
+    <app-form-error-field [displayError]="isValid(name)" errorMsg='Shuttle name is required.'>
+    </app-form-error-field>
+  </div>
+
+  <div class="form__item">
+    <label for="serial_number">Serial Number</label>
+    <div class="form__input" [ngClass]="fieldCss(serial_number)">
+      <input type="text" formControlName="serial_number" id="serial_number" name="serial_number" placeholder="LS-0032" />
+    </div>
+    <app-form-error-field [displayError]="isValid(serial_number)" errorMsg='Serial number is required.'>
+    </app-form-error-field>
+  </div>
+
+  <div class="form__item">
+    <label for="class">Class</label>
+    <div class="form__input" [ngClass]="fieldCss(shuttleClass)">
+      <input type="text" formControlName="class" id="class" name="class" placeholder="Vespa-class multirole shuttle" />
+    </div>
+    <app-form-error-field [displayError]="isValid(shuttleClass)" errorMsg='Shuttle class is required.'>
+    </app-form-error-field>
+  </div>
+
+  <div class="form__item">
+    <label for="type">Type</label>
+    <div class="form__input" [ngClass]="fieldCss(type)">
+      <input type="text" formControlName="type" id="type" name="type" placeholder="Personnel Carrier" />
+    </div>
+  </div>
+
+  <div class="form__item">
+    <label for="capacity">Capacity</label>
+    <div class="form__input" [ngClass]="fieldCss(capacity)">
+      <input type="number" formControlName="capacity" id="capacity" name="capacity" min="0" placeholder="16"
+        onkeypress="return event.charCode >= 48 && event.charCode <= 57" pattern="[0-9]*" inputmode="numeric" />
+    </div>
+    <app-form-error-field [displayError]="isValid(capacity)" errorMsg='Capacity cannot be negative.'>
+    </app-form-error-field>
+  </div>
+
+  <div class="form__item">
+    <label for="base">Home Base</label>
+    <div class="form__input" [ngClass]="fieldCss(base)">
+      <input type="text" formControlName="base" id="base" name="base" placeholder="Bastion" />
+    </div>
+  </div>
+
+  <div class="form__item">
+    <label for="state">State</label>
+    <div class="form__input" [ngClass]="fieldCss(state)">
+      <input type="text" formControlName="state" id="state" name="state" list="shuttle-state-options" placeholder="Fully operational" />
+      <datalist id="shuttle-state-options">
+        <option value="Fully operational"></option>
+        <option value="Minor damage"></option>
+        <option value="Major damage"></option>
+        <option value="Under maintenance"></option>
+        <option value="Out of service"></option>
+      </datalist>
+    </div>
+  </div>
+
+  <div class="form__item">
+    <label for="status_name">Status</label>
+    <div class="form__input" [ngClass]="fieldCss(status_name)">
+      <input type="text" formControlName="status_name" id="status_name" name="status_name" list="shuttle-status-options" placeholder="Ready" />
+      <datalist id="shuttle-status-options">
+        <option value="Ready"></option>
+        <option value="On Mission"></option>
+        <option value="Maintenance"></option>
+        <option value="Grounded"></option>
+      </datalist>
+    </div>
+  </div>
+
+  <div class="form__item">
+    <label for="operable">Operable?</label>
+    <input formControlName="operable" id="operable" name="operable" type="checkbox" />
+    <div class="form__checkbox"></div>
+  </div>
+
+  <div class="form__item">
+    <label for="required_skill">Required Skill</label>
+    <div class="form__input" [ngClass]="fieldCss(required_skill)">
+      <input type="text" formControlName="required_skill" id="required_skill" name="required_skill" placeholder="Balance / Vliegbrevet" />
+    </div>
+  </div>
+
+  <div>
+    <button type="submit" [disabled]="!shuttleForm.valid" class="btn btn--green">
+      SAVE CHANGES
+    </button>
+    <a (click)="goBack()" class="btn btn--orange">
+      BACK
+    </a>
+  </div>
+
+</form>
+
+<h2 *ngIf="!currentShuttle" class="shuttles__null">
+  ERR: No selected shuttle.
+</h2>

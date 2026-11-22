@@ -11,6 +11,7 @@ export class AdminMenuService {
   selectedMenuItem: BehaviorSubject<string> = new BehaviorSubject(null);
   authenticated: boolean;
   private readonly defaultScreen = 'missionView';
+  private pendingMenuItem: string;
 
   constructor(private auth: AuthService) {
     this.authenticated = false;
@@ -27,17 +28,28 @@ export class AdminMenuService {
   public setSelectedMenuItem(input: string) {
     if (!this.authenticated) {
       if (
-          input === 'fobAdd'  ||
-          input === 'fobEdit' ||
-          input === 'fobView'
+          input === 'fobAdd'      ||
+          input === 'fobEdit'     ||
+          input === 'fobView'     ||
+          input === 'shuttleAdd'  ||
+          input === 'shuttleEdit' ||
+          input === 'shuttleView'
       ) {
+        this.pendingMenuItem = input;
         input = 'authFirst';
       }
     }
     this.selectedMenuItem.next(input);
   }
 
+  public getPostLoginMenuItem(): string {
+    const target = this.pendingMenuItem || 'fobView';
+    this.pendingMenuItem = null;
+    return target;
+  }
+
   logout(): void {
+    this.pendingMenuItem = null;
     this.auth.setAuthStatus(null);
     this.selectedMenuItem.next(this.defaultScreen);
   }

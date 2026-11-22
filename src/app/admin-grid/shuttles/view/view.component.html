@@ -1,0 +1,64 @@
+<div class="shuttles">
+
+  <div class="shuttles__header">
+    <h2>Shuttlebay</h2>
+    <button (click)="addShuttle()" class="btn btn--green">+ ADD SHUTTLE</button>
+  </div>
+
+  <ng-container *ngIf="shuttleList && shuttleList.length > 0">
+    <div class="shuttles__row" *ngFor="let shuttle of shuttleList | orderBy: 'name'"
+      [ngClass]="getStatusClass(shuttle)">
+
+      <div class="shuttles__row__bar">
+
+        <div class="shuttles__row__block" style="flex: 2;">
+          <span class="desc">Name:</span><br />{{ shuttle.name }}
+          <span class="desc" *ngIf="shuttle.serial_number">&nbsp;({{ shuttle.serial_number }})</span>
+        </div>
+
+        <div class="shuttles__row__block" style="flex: 2;">
+          <span class="desc">Class:</span><br />{{ shuttle.class }}
+        </div>
+
+        <div class="shuttles__row__block">
+          <span class="desc">Status:</span><br />{{ shuttle.status_name || '-' }}
+        </div>
+
+        <div class="shuttles__row__block" style="text-align: right;">
+          <button (click)="selectShuttle(shuttle)" class="btn btn--green">EDIT</button>
+        </div>
+
+      </div>
+
+      <div class="shuttles__row__bar">
+
+        <div class="shuttles__row__block" style="flex: 2;">
+          <span class="desc">Type:</span><br />{{ shuttle.type || '-' }}
+        </div>
+
+        <div class="shuttles__row__block">
+          <span class="desc">Base:</span><br />{{ shuttle.base || '-' }}
+        </div>
+
+        <div class="shuttles__row__block">
+          <span class="desc">Capacity:</span><br />{{ shuttle.capacity || '-' }}
+        </div>
+
+        <div class="shuttles__row__block">
+          <span class="desc">State:</span><br />{{ shuttle.state || '-' }}
+        </div>
+
+        <div class="shuttles__row__block" style="text-align: right;">
+          <button (click)="deleteShuttle(shuttle)" class="btn btn--orange">DELETE</button>
+        </div>
+
+      </div>
+
+    </div>
+  </ng-container>
+
+  <h2 *ngIf="!shuttleList || shuttleList.length === 0" class="shuttles__null">
+    No shuttles registered.
+  </h2>
+
+</div>

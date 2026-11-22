@@ -1,0 +1,89 @@
+@import '../../../../assets/css/variables.scss';
+
+.shuttles {
+    display: flex;
+    height: auto;
+    flex-direction: column;
+    padding: 1.5rem;
+    transition: 0.4s;
+    width: 100%;
+
+    @media(max-width: 768px) {
+        padding: 0;
+    }
+
+    &__header {
+        align-items: center;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        margin-bottom: 1.2rem;
+
+        h2 {
+            color: $soedark;
+            margin: 0;
+        }
+    }
+
+    &__null {
+        align-items: center;
+        animation: blink 3s infinite;
+        color: $orbitgreen;
+        display: flex;
+        height: calc(100% - 13.5rem);
+        justify-content: center;
+        margin-top: 3.5rem;
+        text-align: center;
+    }
+
+    &__row {
+        align-items: center;
+        background-color: rgba($soedark, 0.33);
+        border-left: 0.8rem solid rgba($soedark, 0.33);
+        border-radius: 2px;
+        box-shadow: $googleShade;
+        display: flex;
+        flex-direction: column;
+        margin-bottom: 0.2rem;
+        padding: 0.8rem 1.5rem;
+        width: 100%;
+
+        &__bar {
+            align-items: center;
+            display: flex;
+            flex: 1;
+            flex-direction: row;
+            margin-bottom: 1rem;
+            width: 100%;
+        }
+
+        &__block {
+            flex: 1;
+            padding-right: 0.8rem;
+            width: auto;
+        }
+
+        &.green {
+            border-color: rgba($orbitgreen, 0.33);
+        }
+        &.red {
+            border-color: rgba($orbitred, 0.33);
+        }
+        &.orange {
+            border-color: rgba($terminalorange, 0.33);
+        }
+        &.blue {
+            border-color: rgba($beaconblue, 0.33);
+        }
+    }
+}
+
+.btn {
+    padding-left: 2.2rem;
+    padding-right: 2.2rem;
+}
+
+.desc {
+    opacity: 0.5;
+    font-size: 1rem;
+}

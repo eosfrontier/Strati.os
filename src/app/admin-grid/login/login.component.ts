@@ -42,7 +42,7 @@ export class LoginComponent implements OnInit, OnDestroy {
   onSubmit(): void {
     const loginSuccess = this.authService.setAuthStatus(this.login.value);
       if (loginSuccess) {
-        this.adminRouter.setSelectedMenuItem('fobView');
+        this.adminRouter.setSelectedMenuItem(this.adminRouter.getPostLoginMenuItem());
       } else {
         this.submitAttempted = true;
       }
