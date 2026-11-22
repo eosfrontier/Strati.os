@@ -1,6 +1,6 @@
 import { DateService } from './date.service';
 import { TestBed, inject } from '@angular/core/testing';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { FormControl } from '@angular/forms';
 import { IcDate } from '../models/icdate';
 
@@ -11,7 +11,7 @@ describe('Service: DateService', () => {
     beforeEach(() => {
 
         TestBed.configureTestingModule({
-            imports: [HttpClientModule],
+            imports: [HttpClientTestingModule],
             providers: [DateService]
         });
 
