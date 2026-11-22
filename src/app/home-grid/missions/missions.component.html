@@ -8,10 +8,11 @@
         <div class="missions__rows no-mobile">CO</div>
         <div class="missions__rows no-mobile">Approved?</div>
         <div class="missions__rows no-mobile">Shuttle</div>
+        <div class="missions__rows text-right">IC Date</div>
         <div class="missions__rows text-right">Departing</div>
     </div>
 
-    <div *ngFor="let mission of missionList | orderBy: 'priority'" [ngClass]="mission.colorcode"
+    <div *ngFor="let mission of missionList" [ngClass]="mission.colorcode"
         class="missions__entry">
         <div class="missions__rows">
             <div class="status-ball"></div>&nbsp;{{ mission.title }}
@@ -23,6 +24,7 @@
             <ng-container *ngIf="!mission.authorised">NO</ng-container>
         </div>
         <div class="missions__rows no-mobile">{{ mission.shuttle }}</div>
+        <div class="missions__rows text-right ic-date">{{ mission.icdate || '-' }}</div>
         <div class="missions__rows text-right departure-time">{{ mission.departureTime | date:'HH:mm' }}</div>
     </div>
 

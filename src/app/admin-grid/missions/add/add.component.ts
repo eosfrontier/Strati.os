@@ -16,6 +16,7 @@ import { Subscription } from 'rxjs';
 export class MissionsAddComponent implements OnInit, OnDestroy {
   shuttleList: Shuttle[];
   shuttleSubscription: Subscription;
+  dateSubscription: Subscription;
 
   constructor(
     private missionService: MissionService,
@@ -30,9 +31,17 @@ export class MissionsAddComponent implements OnInit, OnDestroy {
 
   ngOnInit() {
     this.missionForm = this.generateMissionFormGroup();
+    this.dateSubscription = this.dateService.getIcDate().subscribe(icDate => {
+      if (icDate && this.missionForm) {
+        const icdateControl = this.missionForm.controls.icdate;
+        if (!icdateControl.dirty && !icdateControl.value) {
+          icdateControl.setValue(this.dateService.formatIcDate(icDate));
+        }
+      }
+    });
     this.shuttleSubscription = this.shuttleService.getShuttleList().subscribe(shuttles => {
-      this.shuttleList = shuttles
-    })
+      this.shuttleList = shuttles;
+    });
   }
 
   fieldCss(field: any): {} {
@@ -57,12 +66,14 @@ export class MissionsAddComponent implements OnInit, OnDestroy {
   get type() { return this.missionForm.controls.type; }
   get colorcode() { return this.missionForm.controls.colorcode; }
   get xo() { return this.missionForm.controls.xo; }
-  get shuttle() { return this.missionForm.controls.shuttle }
+  get shuttle() { return this.missionForm.controls.shuttle; }
+  get icdate() { return this.missionForm.controls.icdate; }
   get departureTime() { return this.missionForm.controls.departureTime; }
 
   generateMissionFormGroup(): FormGroup {
     const formGroup = new FormGroup({
       priority: new FormControl(9, [Validators.required, Validators.max(9), Validators.min(0)]),
+      icdate: new FormControl('', [Validators.required, this.dateService.icDateValidator()]),
       departureTime: new FormControl('00:00', [Validators.required]),
       colorcode: new FormControl('gray'),
       title: new FormControl('', [Validators.required]),
@@ -78,6 +89,11 @@ export class MissionsAddComponent implements OnInit, OnDestroy {
 
   ngOnDestroy() {
     this.missionForm = null;
-    this.shuttleSubscription.unsubscribe();
+    if (this.dateSubscription) {
+      this.dateSubscription.unsubscribe();
+    }
+    if (this.shuttleSubscription) {
+      this.shuttleSubscription.unsubscribe();
+    }
   }
 }

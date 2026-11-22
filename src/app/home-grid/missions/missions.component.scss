@@ -93,6 +93,9 @@
         &.text-right {
             text-align: right;
         }
+        &.ic-date, &.departure-time {
+            white-space: nowrap;
+        }
     }
 
     &__null {

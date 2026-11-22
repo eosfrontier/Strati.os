@@ -19,12 +19,13 @@ import { Shuttle } from 'src/app/shared/models/shuttle';
 export class MissionsEditComponent implements OnInit, OnDestroy {
   missionSubscription: Subscription;
   shuttleSubscription: Subscription;
+  dateSubscription: Subscription;
   currentMission: Mission;
   shuttleList: Shuttle[];
   missionForm: FormGroup;
 
-  faTimes = faTimes
-  faExclamationTriangle = faExclamationTriangle
+  faTimes = faTimes;
+  faExclamationTriangle = faExclamationTriangle;
 
   constructor(
     private missionService: MissionService,
@@ -42,9 +43,19 @@ export class MissionsEditComponent implements OnInit, OnDestroy {
       this.currentMission = mission;
     });
     this.shuttleSubscription = this.shuttleService.getShuttleList().subscribe(shuttles => {
-      this.shuttleList = shuttles
-    })
-    this.missionForm = this.generateMissionForm();
+      this.shuttleList = shuttles;
+    });
+    if (this.currentMission) {
+      this.missionForm = this.generateMissionForm();
+    }
+    this.dateSubscription = this.dateService.getIcDate().subscribe(icDate => {
+      if (icDate && this.missionForm) {
+        const icdateControl = this.missionForm.controls.icdate;
+        if (!icdateControl.dirty && !icdateControl.value) {
+          icdateControl.setValue(this.dateService.formatIcDate(icDate));
+        }
+      }
+    });
   }
 
   fieldCss(field: any): {} {
@@ -63,7 +74,8 @@ export class MissionsEditComponent implements OnInit, OnDestroy {
   get type() { return this.missionForm.controls.type; }
   get colorcode() { return this.missionForm.controls.colorcode; }
   get xo() { return this.missionForm.controls.xo; }
-  get shuttle() { return this.missionForm.controls.shuttle }
+  get shuttle() { return this.missionForm.controls.shuttle; }
+  get icdate() { return this.missionForm.controls.icdate; }
   get departureTime() { return this.missionForm.controls.departureTime; }
 
   generateMissionForm(): FormGroup {
@@ -72,6 +84,7 @@ export class MissionsEditComponent implements OnInit, OnDestroy {
     const formGroup = new FormGroup({
       _id: new FormControl(this.currentMission._id),
       priority: new FormControl(this.currentMission.priority, [Validators.required, Validators.max(9), Validators.min(0)]),
+      icdate: new FormControl(this.currentMission.icdate || '', [Validators.required, this.dateService.icDateValidator()]),
       departureTime: new FormControl(newDeparture, [Validators.required]),
       colorcode: new FormControl(this.currentMission.colorcode),
       title: new FormControl(this.currentMission.title, [Validators.required]),
@@ -109,7 +122,14 @@ export class MissionsEditComponent implements OnInit, OnDestroy {
   // }
 
   ngOnDestroy() {
-    this.missionSubscription.unsubscribe();
-    this.shuttleSubscription.unsubscribe();
+    if (this.missionSubscription) {
+      this.missionSubscription.unsubscribe();
+    }
+    if (this.shuttleSubscription) {
+      this.shuttleSubscription.unsubscribe();
+    }
+    if (this.dateSubscription) {
+      this.dateSubscription.unsubscribe();
+    }
   }
 }

@@ -19,7 +19,9 @@ export class MissionsComponent implements OnInit, OnDestroy {
   constructor(private missionService: MissionService) { }
 
   ngOnInit(): void {
-    this.missionSubscription = this.missionService.getMissionList().subscribe(missions => this.missionList = missions);
+    this.missionSubscription = this.missionService.getMissionList().subscribe(
+      missions => this.missionList = this.missionService.sortMissions(missions)
+    );
   }
 
   ngOnDestroy(): void {

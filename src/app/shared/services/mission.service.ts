@@ -1,9 +1,10 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpHandler } from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
 import { Observable, BehaviorSubject, Subscription } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { Mission } from '../models/mission';
 import { environment } from '../../../environments/environment';
+import { DateService } from './date.service';
 
 
 @Injectable({
@@ -15,7 +16,10 @@ export class MissionService {
   missionList: BehaviorSubject<Mission[]> = new BehaviorSubject(null);
   selectedMission: BehaviorSubject<Mission> = new BehaviorSubject(null);
 
-  constructor(private http: HttpClient) {
+  constructor(
+    private http: HttpClient,
+    private dateService: DateService
+  ) {
     this.renewApiSubscription();
   }
 
@@ -24,7 +28,65 @@ export class MissionService {
   }
 
   private setMissionList(list: Mission[]): void {
-    this.missionList.next(list);
+    this.missionList.next(this.sortMissions(list));
+  }
+
+  /**
+   * @description returns a new array sorted by IC date ascending, then departure time (HH:mm) ascending, then priority.
+   */
+  public sortMissions(missions: Mission[]): Mission[] {
+    if (!missions) {
+      return missions;
+    }
+    return [...missions].sort((a, b) => this.compareMissions(a, b));
+  }
+
+  private compareMissions(a: Mission, b: Mission): number {
+    const dateDiff = this.compareNumbers(
+      this.dateService.getIcDateSortKey(a && a.icdate),
+      this.dateService.getIcDateSortKey(b && b.icdate)
+    );
+    if (dateDiff !== 0) {
+      return dateDiff;
+    }
+
+    const timeDiff = this.compareNumbers(
+      this.getDepartureTimeSortKey(a && a.departureTime),
+      this.getDepartureTimeSortKey(b && b.departureTime)
+    );
+    if (timeDiff !== 0) {
+      return timeDiff;
+    }
+
+    return this.compareNumbers(
+      this.getPrioritySortKey(a && a.priority),
+      this.getPrioritySortKey(b && b.priority)
+    );
+  }
+
+  private getDepartureTimeSortKey(departureTime: Date | string): number {
+    if (departureTime == null || departureTime === '') {
+      return Infinity;
+    }
+    const date = new Date(departureTime);
+    if (isNaN(date.getTime())) {
+      return Infinity;
+    }
+    return date.getHours() * 60 + date.getMinutes();
+  }
+
+  private getPrioritySortKey(priority: number): number {
+    if (priority == null || isNaN(Number(priority))) {
+      return Infinity;
+    }
+    return Number(priority);
+  }
+
+  private compareNumbers(a: number, b: number): number {
+    if (a === b) {
+      return 0;
+    }
+    return a < b ? -1 : 1;
   }
 
   public selectMission(selected: Mission): void {
@@ -65,8 +127,14 @@ export class MissionService {
 
     const departureTime = new Date();
       departureTime.setSeconds(0);
+      departureTime.setMilliseconds(0);
       departureTime.setHours(formData.departureTime.split(':')[0]);
       departureTime.setMinutes(formData.departureTime.split(':')[1]);
+
+    const rawIcDate = typeof formData.icdate === 'string' ? formData.icdate.trim() : '';
+    const icdate = rawIcDate
+      ? this.dateService.normalizeIcDate(rawIcDate)
+      : this.dateService.getCurrentIcDateString();
 
     const mission = new Mission();
       mission._id = formData._id;
@@ -76,6 +144,7 @@ export class MissionService {
       mission.goal = formData.goal;
       mission.title = formData.title;
       mission.xo = formData.xo;
+      mission.icdate = icdate;
       mission.colorcode = formData.colorcode;
       mission.authorised = formData.authorised;
       mission.authorisedby = formData.authorisedby;

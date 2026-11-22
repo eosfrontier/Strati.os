@@ -16,7 +16,17 @@
 
 
   <div class="form__item">
-    <label for="title">Departure time</label>
+    <label for="icdate">IC Date</label>
+    <div class="form__input" [ngClass]="fieldCss(icdate)">
+      <input type="text" formControlName="icdate" id="icdate" name="icdate" placeholder="DD.MM.240NT" />
+    </div>
+    <app-form-error-field [displayError]="isValid(icdate)" errorMsg='This is not a valid IC date (e.g. 18.05.240NT).'>
+    </app-form-error-field>
+  </div>
+
+
+  <div class="form__item">
+    <label for="departureTime">Departure time</label>
     <div class="form__input" [ngClass]="fieldCss(departureTime)">
       <input type="time" formControlName="departureTime" id="departureTime" name="departureTime" />
     </div>

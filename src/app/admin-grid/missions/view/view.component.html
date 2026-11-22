@@ -1,6 +1,6 @@
 <div *ngIf="missionList && missionList.length > 0" class="missions">
 
-  <div class="missions__row" *ngFor="let mission of missionList | orderBy: 'priority' : reverse"
+  <div class="missions__row" *ngFor="let mission of missionList"
     [ngClass]="mission.colorcode">
 
     <div class="missions__row__bar">
@@ -11,7 +11,7 @@
 
       <div class="missions__row__block">
         <span class="desc">Departing:</span>
-        <br />{{ mission.departureTime | date:'HH:mm' }}
+        <br /><ng-container *ngIf="mission.icdate">{{ mission.icdate }}&nbsp;</ng-container>{{ mission.departureTime | date:'HH:mm' }}
       </div>
 
       <div class="missions__row__block" style="text-align: right;">

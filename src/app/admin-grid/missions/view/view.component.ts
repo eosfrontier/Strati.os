@@ -3,7 +3,6 @@ import { MissionService } from '../../../shared/services/mission.service';
 import { Subscription } from 'rxjs';
 import { Mission } from '../../../shared/models/mission';
 import { AdminMenuService } from '../../admin-menu.service';
-import { OrderPipe } from 'ngx-order-pipe';
 
 @Component({
   selector: 'app-mission-view',
@@ -17,13 +16,12 @@ export class MissionsViewComponent implements OnInit, OnDestroy {
 
   constructor(
     private missionService: MissionService,
-    private adminRouter: AdminMenuService,
-    private orderPipe: OrderPipe
+    private adminRouter: AdminMenuService
   ) { }
 
   ngOnInit() {
     this.missionSubscription = this.missionService.getMissionList().subscribe(missions => {
-      this.missionList = missions;
+      this.missionList = this.missionService.sortMissions(missions);
     });
   }
 
