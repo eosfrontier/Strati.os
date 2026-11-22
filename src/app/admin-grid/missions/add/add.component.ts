@@ -1,9 +1,12 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { FormGroup, FormControl, Validators, FormBuilder } from '@angular/forms';
 import { MissionService } from '../../../shared/services/mission.service';
+import { ShuttleService } from '../../../shared/services/shuttle.service';
 import { DateService } from '../../../shared/services/date.service';
 import { AdminMenuService } from '../../admin-menu.service';
 import { ValidatorService } from '../../../shared/services/form/validator.service';
+import { Shuttle } from 'src/app/shared/models/shuttle';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-mission-add',
@@ -11,9 +14,12 @@ import { ValidatorService } from '../../../shared/services/form/validator.servic
   styleUrls: ['./add.component.scss']
 })
 export class MissionsAddComponent implements OnInit, OnDestroy {
+  shuttleList: Shuttle[];
+  shuttleSubscription: Subscription;
 
   constructor(
     private missionService: MissionService,
+    private shuttleService: ShuttleService,
     private dateService: DateService,
     private fb: FormBuilder,
     private adminRouter: AdminMenuService,
@@ -24,6 +30,9 @@ export class MissionsAddComponent implements OnInit, OnDestroy {
 
   ngOnInit() {
     this.missionForm = this.generateMissionFormGroup();
+    this.shuttleSubscription = this.shuttleService.getShuttleList().subscribe(shuttles => {
+      this.shuttleList = shuttles
+    })
   }
 
   fieldCss(field: any): {} {
@@ -48,6 +57,7 @@ export class MissionsAddComponent implements OnInit, OnDestroy {
   get type() { return this.missionForm.controls.type; }
   get colorcode() { return this.missionForm.controls.colorcode; }
   get xo() { return this.missionForm.controls.xo; }
+  get shuttle() { return this.missionForm.controls.shuttle }
   get departureTime() { return this.missionForm.controls.departureTime; }
 
   generateMissionFormGroup(): FormGroup {
@@ -68,5 +78,6 @@ export class MissionsAddComponent implements OnInit, OnDestroy {
 
   ngOnDestroy() {
     this.missionForm = null;
+    this.shuttleSubscription.unsubscribe();
   }
 }
