@@ -25,6 +25,11 @@
         }
     }
 
+    &__error {
+        color: $orbitred;
+        margin: 0 0 1.2rem 0;
+    }
+
     &__null {
         align-items: center;
         animation: blink 3s infinite;

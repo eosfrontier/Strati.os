@@ -7,6 +7,48 @@
     padding: 1.5rem 3.5rem;
 }
 
+option {
+    background-color: #312f2f;
+}
+
+.class-stats {
+    background-color: rgba($dark-terminal, 0.55);
+    border-left: 3px solid $bluedim;
+    margin-bottom: 1.5rem;
+    padding: 1rem 1.4rem;
+
+    &__header {
+        color: $soedark;
+        font-size: 1.1rem;
+        margin-bottom: 0.8rem;
+        text-transform: uppercase;
+    }
+
+    &__grid {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 1.2rem;
+    }
+
+    &__item {
+        display: flex;
+        flex: 1 1 16rem;
+        flex-direction: column;
+    }
+
+    &__label {
+        font-size: 1rem;
+        opacity: 0.6;
+        text-transform: uppercase;
+    }
+
+    &__value {
+        color: $gray;
+        font-size: 1.4rem;
+        margin-top: 0.2rem;
+    }
+}
+
 .shuttles__null {
     align-items: center;
     animation: blink 3s infinite;

@@ -5,6 +5,8 @@
     <button (click)="addShuttle()" class="btn btn--green">+ ADD SHUTTLE</button>
   </div>
 
+  <p *ngIf="shuttleError" class="shuttles__error">{{ shuttleError }}</p>
+
   <ng-container *ngIf="shuttleList && shuttleList.length > 0">
     <div class="shuttles__row" *ngFor="let shuttle of shuttleList | orderBy: 'name'"
       [ngClass]="getStatusClass(shuttle)">

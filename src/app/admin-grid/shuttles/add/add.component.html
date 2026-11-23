@@ -25,27 +25,44 @@
   <div class="form__item">
     <label for="class">Class</label>
     <div class="form__input" [ngClass]="fieldCss(shuttleClass)">
-      <input type="text" formControlName="class" id="class" name="class" placeholder="Vespa-class multirole shuttle" />
+      <select name="class" id="class" formControlName="class">
+        <option value="" disabled *ngIf="loadingClasses">Loading shuttle classes...</option>
+        <option value="" *ngIf="!loadingClasses && shuttleClasses.length > 0">-- Select a shuttle class --</option>
+        <option value="" disabled *ngIf="!loadingClasses && shuttleClasses.length === 0">No shuttle classes available</option>
+        <option *ngFor="let sc of shuttleClasses" [value]="sc.name">{{ sc.name }}</option>
+      </select>
     </div>
     <app-form-error-field [displayError]="isValid(shuttleClass)" errorMsg='Shuttle class is required.'>
     </app-form-error-field>
-  </div>
-
-  <div class="form__item">
-    <label for="type">Type</label>
-    <div class="form__input" [ngClass]="fieldCss(type)">
-      <input type="text" formControlName="type" id="type" name="type" placeholder="Personnel Carrier" />
+    <div class="error-text" *ngIf="classLoadError">
+      <p>{{ classLoadError }}</p>
     </div>
   </div>
 
-  <div class="form__item">
-    <label for="capacity">Capacity</label>
-    <div class="form__input" [ngClass]="fieldCss(capacity)">
-      <input type="number" formControlName="capacity" id="capacity" name="capacity" min="0" placeholder="16"
-        onkeypress="return event.charCode >= 48 && event.charCode <= 57" pattern="[0-9]*" inputmode="numeric" />
+  <div class="class-stats" *ngIf="selectedClass">
+    <div class="class-stats__header">Class Specifications (read-only)</div>
+    <div class="class-stats__grid">
+      <div class="class-stats__item">
+        <span class="class-stats__label">Type</span>
+        <span class="class-stats__value class-stats__type">{{ selectedClass.type || '-' }}</span>
+      </div>
+      <div class="class-stats__item">
+        <span class="class-stats__label">Capacity</span>
+        <span class="class-stats__value class-stats__capacity">
+          {{ selectedClass.capacity !== null && selectedClass.capacity !== undefined ? selectedClass.capacity : '-' }}
+        </span>
+      </div>
+      <div class="class-stats__item">
+        <span class="class-stats__label">Armor</span>
+        <span class="class-stats__value class-stats__armor">{{ selectedClass.armor || 'None' }}</span>
+      </div>
+      <div class="class-stats__item">
+        <span class="class-stats__label">Required Skill</span>
+        <span class="class-stats__value class-stats__skill">
+          {{ loadingSkills ? 'Loading...' : (resolvedSkillDisplay || 'None') }}
+        </span>
+      </div>
     </div>
-    <app-form-error-field [displayError]="isValid(capacity)" errorMsg='Capacity cannot be negative.'>
-    </app-form-error-field>
   </div>
 
   <div class="form__item">
@@ -86,13 +103,6 @@
     <label for="operable">Operable?</label>
     <input formControlName="operable" id="operable" name="operable" type="checkbox" />
     <div class="form__checkbox"></div>
-  </div>
-
-  <div class="form__item">
-    <label for="required_skill">Required Skill</label>
-    <div class="form__input" [ngClass]="fieldCss(required_skill)">
-      <input type="text" formControlName="required_skill" id="required_skill" name="required_skill" placeholder="Balance / Vliegbrevet" />
-    </div>
   </div>
 
   <div>

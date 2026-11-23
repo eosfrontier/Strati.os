@@ -87,4 +87,11 @@ describe('ShuttlesViewComponent', () => {
     component.deleteShuttle(shuttle);
     expect(shuttleService.deleteShuttle).toHaveBeenCalledWith(shuttle);
   });
+
+  it('should display an error banner when shuttle loading fails', () => {
+    shuttleService.shuttleError.next('Unauthorized (401): invalid or missing Orthanc API token.');
+    fixture.detectChanges();
+
+    expect(fixture.nativeElement.querySelector('.shuttles__error').textContent).toContain('401');
+  });
 });

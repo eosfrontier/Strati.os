@@ -12,7 +12,9 @@ import { AdminMenuService } from '../../admin-menu.service';
 export class ShuttlesViewComponent implements OnInit, OnDestroy {
 
   shuttleList: Shuttle[];
+  shuttleError: string;
   shuttleSubscription: Subscription;
+  errorSubscription: Subscription;
 
   constructor(
     private shuttleService: ShuttleService,
@@ -22,6 +24,9 @@ export class ShuttlesViewComponent implements OnInit, OnDestroy {
   ngOnInit() {
     this.shuttleSubscription = this.shuttleService.getShuttleList().subscribe(shuttles => {
       this.shuttleList = shuttles;
+    });
+    this.errorSubscription = this.shuttleService.getShuttleError().subscribe(err => {
+      this.shuttleError = err;
     });
   }
 
@@ -62,6 +67,9 @@ export class ShuttlesViewComponent implements OnInit, OnDestroy {
   ngOnDestroy() {
     if (this.shuttleSubscription) {
       this.shuttleSubscription.unsubscribe();
+    }
+    if (this.errorSubscription) {
+      this.errorSubscription.unsubscribe();
     }
   }
 }

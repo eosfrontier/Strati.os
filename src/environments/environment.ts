@@ -24,6 +24,10 @@ export const environment = {
   SHUTTLE: {
     API_URL: `${API_ORTHANC}v2/shuttlebay/`,
     TOKEN: ''
+  },
+  SKILL: {
+    API_URL: `${API_ORTHANC}v2/skills/`,
+    TOKEN: ''
   }
 };
 /*
