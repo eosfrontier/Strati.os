@@ -1,6 +1,8 @@
+import { environmentSecret } from './environment.prod.secret';
+
 const SERVER_URL = 'https://cic.eosfrontier.space/';
 const API_BASE = `${SERVER_URL}api/`;
-const API_ORTHANC = `https://api.eosfrontier.space/orthanc/`
+const API_ORTHANC = 'https://api.eosfrontier.space/orthanc/';
 
 export const environment = {
   production: true,
@@ -22,6 +24,7 @@ export const environment = {
     API_URL: `${API_BASE}missions/`
   },
   SHUTTLE: {
-    API_URL: `${API_ORTHANC}v2/shuttlebay/`
+    API_URL: `${API_ORTHANC}v2/shuttlebay/`,
+    TOKEN: environmentSecret.SHUTTLE_TOKEN
   }
 };

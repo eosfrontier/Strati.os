@@ -22,7 +22,8 @@ export const environment = {
     API_URL: `${API_BASE}missions/`
   },
   SHUTTLE: {
-    API_URL: `${API_ORTHANC}v2/shuttlebay/`
+    API_URL: `${API_ORTHANC}v2/shuttlebay/`,
+    TOKEN: ''
   }
 };
 /*

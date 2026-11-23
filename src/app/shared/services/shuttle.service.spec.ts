@@ -8,8 +8,12 @@ import { environment } from '../../../environments/environment';
 describe('Service: ShuttleService', () => {
   let service: ShuttleService;
   let httpMock: HttpTestingController;
+  let originalToken: string;
 
   beforeEach(() => {
+    originalToken = environment.SHUTTLE.TOKEN;
+    environment.SHUTTLE.TOKEN = 'test-orthanc-token';
+
     TestBed.configureTestingModule({
       imports: [HttpClientTestingModule],
       providers: [ShuttleService]
@@ -20,6 +24,7 @@ describe('Service: ShuttleService', () => {
   });
 
   afterEach(() => {
+    environment.SHUTTLE.TOKEN = originalToken;
     httpMock.verify();
   });
 
@@ -64,6 +69,7 @@ describe('Service: ShuttleService', () => {
     service.createNewShuttle(created);
     const postReq = httpMock.expectOne(environment.SHUTTLE.API_URL);
     expect(postReq.request.method).toEqual('POST');
+    expect(postReq.request.headers.get('token')).toEqual('test-orthanc-token');
     expect(postReq.request.body.name).toEqual('Falcon');
     postReq.flush({ id: '99' });
 
@@ -113,6 +119,7 @@ describe('Service: ShuttleService', () => {
     service.updateShuttle(updated);
     const putReq = httpMock.expectOne(`${environment.SHUTTLE.API_URL}4`);
     expect(putReq.request.method).toEqual('PUT');
+    expect(putReq.request.headers.get('token')).toEqual('test-orthanc-token');
     expect(putReq.request.body.name).toEqual('FireBird II');
     putReq.flush({});
 
@@ -131,10 +138,25 @@ describe('Service: ShuttleService', () => {
     service.deleteShuttle(shuttle);
     const delReq = httpMock.expectOne(`${environment.SHUTTLE.API_URL}5`);
     expect(delReq.request.method).toEqual('DELETE');
+    expect(delReq.request.headers.get('token')).toEqual('test-orthanc-token');
     delReq.flush({});
 
     expect(service.selectedShuttle.getValue()).toBeNull();
     httpMock.expectOne(environment.SHUTTLE.API_URL).flush('[]');
     expect(service.shuttleList.getValue()).toEqual([]);
+  });
+
+  it('should omit the token header when no shuttle token is configured', () => {
+    httpMock.expectOne(environment.SHUTTLE.API_URL).flush('[]');
+    environment.SHUTTLE.TOKEN = '';
+
+    const shuttle = new Shuttle();
+    shuttle.id = '7';
+    service.deleteShuttle(shuttle);
+    const delReq = httpMock.expectOne(`${environment.SHUTTLE.API_URL}7`);
+    expect(delReq.request.headers.has('token')).toBeFalsy();
+    delReq.flush({});
+
+    httpMock.expectOne(environment.SHUTTLE.API_URL).flush('[]');
   });
 });

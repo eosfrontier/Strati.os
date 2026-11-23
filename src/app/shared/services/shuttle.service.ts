@@ -70,7 +70,7 @@ export class ShuttleService {
   }
 
   public createNewShuttle(shuttle: Shuttle): void {
-    this.http.post(environment.SHUTTLE.API_URL, shuttle).subscribe(
+    this.http.post(environment.SHUTTLE.API_URL, shuttle, this.getWriteHttpOptions()).subscribe(
       () => {
         this.renewApiSubscription();
       },
@@ -84,7 +84,11 @@ export class ShuttleService {
     if (!shuttle || !shuttle.id) {
       return;
     }
-    this.http.put(`${environment.SHUTTLE.API_URL}${encodeURIComponent(shuttle.id)}`, shuttle).subscribe(
+    this.http.put(
+      `${environment.SHUTTLE.API_URL}${encodeURIComponent(shuttle.id)}`,
+      shuttle,
+      this.getWriteHttpOptions()
+    ).subscribe(
       () => {
         this.renewApiSubscription();
       },
@@ -98,7 +102,10 @@ export class ShuttleService {
     if (!shuttle || !shuttle.id) {
       return;
     }
-    this.http.delete(`${environment.SHUTTLE.API_URL}${encodeURIComponent(shuttle.id)}`).subscribe(
+    this.http.delete(
+      `${environment.SHUTTLE.API_URL}${encodeURIComponent(shuttle.id)}`,
+      this.getWriteHttpOptions()
+    ).subscribe(
       () => {
         const selected = this.selectedShuttle.getValue();
         if (selected && selected.id === shuttle.id) {
@@ -110,6 +117,18 @@ export class ShuttleService {
         console.error('Failed to delete shuttle', err);
       }
     );
+  }
+
+  private getWriteHttpOptions(): { headers?: HttpHeaders } {
+    const token = environment.SHUTTLE.TOKEN ? environment.SHUTTLE.TOKEN.trim() : '';
+    if (!token) {
+      return {};
+    }
+    return {
+      headers: new HttpHeaders({
+        'token': token
+      })
+    };
   }
 
   private resolveStatusCode(statusName: string, fallback?: string): string {
