@@ -124,7 +124,7 @@ describe('Service: ShuttleService', () => {
     expect(status).toEqual(404);
   });
 
-  it('should fetch individual skill names via skill_id query params and cache responses', () => {
+  it('should fetch individual skill names via skill_id request header and cache responses', () => {
     httpMock.expectOne(r => r.headers.get('getAll') === 'true').flush('[]');
 
     const multiClass: ShuttleClass = {
@@ -141,17 +141,21 @@ describe('Service: ShuttleService', () => {
     service.getSkillNamesForClass(multiClass).subscribe(res => names = res);
 
     const skillReq1 = httpMock.expectOne(r =>
-      r.url === environment.SKILL.API_URL && r.params.get('skill_id') === '31152'
+      r.url === environment.SKILL.API_URL && r.headers.get('skill_id') === '31152'
     );
     expect(skillReq1.request.method).toEqual('GET');
     expect(skillReq1.request.headers.get('token')).toEqual('test-skill-token');
+    expect(skillReq1.request.headers.get('skill_id')).toEqual('31152');
+    expect(skillReq1.request.params.has('skill_id')).toBeFalsy();
     skillReq1.flush({ id: 31152, name: 'Vliegbrevet' });
 
     const skillReq2 = httpMock.expectOne(r =>
-      r.url === environment.SKILL.API_URL && r.params.get('skill_id') === '31162'
+      r.url === environment.SKILL.API_URL && r.headers.get('skill_id') === '31162'
     );
     expect(skillReq2.request.method).toEqual('GET');
     expect(skillReq2.request.headers.get('token')).toEqual('test-skill-token');
+    expect(skillReq2.request.headers.get('skill_id')).toEqual('31162');
+    expect(skillReq2.request.params.has('skill_id')).toBeFalsy();
     skillReq2.flush([{ id: 31162, name: 'Dynamic Entry' }]);
 
     expect(names).toEqual(['Vliegbrevet', 'Dynamic Entry']);

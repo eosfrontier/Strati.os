@@ -88,7 +88,7 @@ describe('ShuttlesAddComponent', () => {
     });
 
     const skillReq = httpMock.expectOne(r =>
-      r.url === environment.SKILL.API_URL && r.params.get('skill_id') === '31152'
+      r.url === environment.SKILL.API_URL && r.headers.get('skill_id') === '31152'
     );
     skillReq.flush({ id: 31152, name: 'Balance / Vliegbrevet' });
     fixture.detectChanges();

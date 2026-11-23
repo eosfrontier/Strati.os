@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable, BehaviorSubject, Subscription, forkJoin, of } from 'rxjs';
 import { catchError, map } from 'rxjs/operators';
 import { Shuttle, ShuttleClass } from '../models/shuttle';
@@ -79,10 +79,8 @@ export class ShuttleService {
     if (this.skillNameCache.has(id)) {
       return of(this.skillNameCache.get(id));
     }
-    const params = new HttpParams().set('skill_id', id);
     return this.http.get<any>(environment.SKILL.API_URL, {
-      headers: this.authHeaders({}, environment.SKILL.TOKEN),
-      params
+      headers: this.authHeaders({ skill_id: id }, environment.SKILL.TOKEN)
     }).pipe(
       map(res => {
         const parsed = typeof res === 'string' ? this.safeJsonParse(res) : res;

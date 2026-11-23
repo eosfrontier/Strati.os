@@ -85,7 +85,7 @@ describe('ShuttlesEditComponent', () => {
     classReq.flush(MOCK_CLASSES);
 
     const initSkillReq = httpMock.expectOne(r =>
-      r.url === environment.SKILL.API_URL && r.params.get('skill_id') === '31152'
+      r.url === environment.SKILL.API_URL && r.headers.get('skill_id') === '31152'
     );
     initSkillReq.flush({ id: 31152, name: 'Vliegbrevet' });
     fixture.detectChanges();
@@ -106,7 +106,7 @@ describe('ShuttlesEditComponent', () => {
     });
 
     const extraSkillReq = httpMock.expectOne(r =>
-      r.url === environment.SKILL.API_URL && r.params.get('skill_id') === '31162'
+      r.url === environment.SKILL.API_URL && r.headers.get('skill_id') === '31162'
     );
     extraSkillReq.flush({ id: 31162, name: 'Dynamic Entry' });
     fixture.detectChanges();
